@@ -9,10 +9,9 @@ public class EnemyController : MonoBehaviour
     [Header("Ω∫≈»√¢")]
     public float speed = 0;
     public Transform target;
-
+    public bool isMove = false;
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform> OnMove;
-    public UnityEvent<Vector3> OnAnimation;
     void Start()
     {
 
@@ -20,7 +19,9 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        OnMove?.Invoke(speed, target);
-        OnAnimation?.Invoke(this.transform.position);
+        if (Input.GetKeyDown(KeyCode.Space))
+            isMove = true ? true : false;
+        if (isMove)
+            OnMove?.Invoke(speed, target);
     }
 }

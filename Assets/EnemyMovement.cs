@@ -17,9 +17,10 @@ public class EnemyMovement : MonoBehaviour
     {
         agent.speed = speed;
         agent.SetDestination(target.position);
+        MoveAnimation(agent.speed);
     }
-    public void MoveAnimation()
+    public void MoveAnimation(float speed)
     {
-
+        anim.SetFloat("Move", speed);
     }
 }
