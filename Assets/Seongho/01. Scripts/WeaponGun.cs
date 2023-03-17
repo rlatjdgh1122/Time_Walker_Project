@@ -6,8 +6,13 @@ public class WeaponGun : MonoBehaviour
 {
     [SerializeField]
     private GunSOData gunData;
+
     public void Shooting()
     {
         
+    }
+    public void Reloading()
+    {
+
     }
 }

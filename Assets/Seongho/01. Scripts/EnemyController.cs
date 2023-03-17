@@ -12,11 +12,6 @@ public class EnemyController : MonoBehaviour
     public bool isMove = false;
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform> OnMove;
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
