@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5c1b54c930344847b68640fd0ab3f9a, type: 3}
-  m_Name: SO_GunSOData
+  m_Name: RifleData
   m_EditorClassIdentifier: 
   bullet: {fileID: 9057801964440008699, guid: 5968a42dba99f2c49975ca54d26ad4f9, type: 3}
+  ammoCapacity: 118
+  weaponDelay: 2
+  autoFire: 0
