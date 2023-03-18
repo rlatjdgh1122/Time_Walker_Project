@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
         MoveSpeed = 5.0f;
         rotSpeed = 3.0f;
         currentRot = 0f;
+        fpsCam = transform.Find("Main Camera").GetComponent<Camera>();
     }
 
     void Update()

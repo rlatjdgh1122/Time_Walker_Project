@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -496,10 +496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fbf1bec18c9814eb7d40db788fb893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  lookSensitivity: 1
-  cameraRotationLimit: 45
-  theCamera: {fileID: 1580137949}
+  playerRigidbody: {fileID: 0}
+  fpsCam: {fileID: 0}
 --- !u!54 &1525739200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -720,10 +718,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8312239219602916464, guid: fff568fa58877c7479db6688e96bd373, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9194776309125417192, guid: fff568fa58877c7479db6688e96bd373, type: 3}
       propertyPath: m_Name
       value: PlayerExample
       objectReference: {fileID: 0}
+    - target: {fileID: 9194776309125417193, guid: fff568fa58877c7479db6688e96bd373, type: 3}
+      propertyPath: fpsCam
+      value: 
+      objectReference: {fileID: 1580137949}
     - target: {fileID: 9194776309125417197, guid: fff568fa58877c7479db6688e96bd373, type: 3}
       propertyPath: m_RootOrder
       value: 1
