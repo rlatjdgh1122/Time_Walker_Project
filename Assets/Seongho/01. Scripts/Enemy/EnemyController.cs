@@ -11,14 +11,11 @@ public class EnemyController : MonoBehaviour
     public float shootDistance = 10;
     public float speed = 0;
     public Transform target;
-    public bool isMove = false;
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform> OnMove;
-    public int radius = 3;
+
     private Rigidbody rigid;
-    private Animator anim;
-    public LayerMask layer;
-    public bool isHit;
+    private bool isMove = false;
 
     private void Awake()
     {
@@ -38,15 +35,14 @@ public class EnemyController : MonoBehaviour
     private void Shoot()
     {
         RaycastHit hit;
-        /*bool isHit = Physics.Raycast(transform.position + Vector3.up,
-            transform.forward, out hit, shootDistance);*/
-
-        if (Physics.Raycast(transform.position + Vector3.up + Vector3.forward*2,
+        if (Physics.Raycast(transform.position + Vector3.up,
             transform.forward, out hit, shootDistance)) // 공격할 수 있는 상태
         {
             if (hit.collider.CompareTag("Player"))
-                // OnShooting?.Invoke();
+            {
+                OnShooting?.Invoke();
                 isMove = false;
+            }
             else isMove = true;
         }
         else isMove = true;
@@ -56,23 +52,6 @@ public class EnemyController : MonoBehaviour
     {
         if (isMove)
             OnMove?.Invoke(speed, target);
-        else if(!isMove) OnMove?.Invoke(0, this.transform);
-    }
-    private void OnDrawGizmos()
-    {
-        RaycastHit hit;
-        bool isHit = Physics.Raycast(transform.position + Vector3.up + Vector3.forward,
-            transform.forward, out hit, shootDistance, layer);
-        if (isHit)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(transform.position + Vector3.up + Vector3.forward, transform.forward * hit.distance);
-        }
-        else
-
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position + Vector3.up + Vector3.forward, transform.forward * shootDistance);
-        }
+        else if (!isMove) OnMove?.Invoke(0, this.transform);
     }
 }

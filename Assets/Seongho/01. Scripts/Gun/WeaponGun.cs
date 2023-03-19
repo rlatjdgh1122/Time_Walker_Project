@@ -31,7 +31,7 @@ public class WeaponGun : MonoBehaviour
             if (ammo > 0)
             {
                 OnFeedbackShoot?.Invoke();
-                ShootBullet();
+                Shooting();
             }
             else
             {
@@ -55,15 +55,11 @@ public class WeaponGun : MonoBehaviour
         yield return new WaitForSeconds(gunData.weaponDelay);
         delayCoroutine = false;
     }
-    private void ShootBullet()
-    {
-        GameObject GO = Instantiate(gunData.bullet, firePos.position, Quaternion.identity);
-    }
-
     public virtual void Shooting()
     {
         Debug.Log("½¸");
         GameObject gameObject = Instantiate(gunData.bullet, firePos.position, Quaternion.identity);
+        gameObject.transform.SetParent(firePos);
     }
     public void TryShooting()
     {
