@@ -11,6 +11,10 @@ public class Gun : MonoBehaviour
         weapon = GetComponentInChildren<WeaponGun>();
         this.transform.position = gunPivot.position;
     }
+    protected virtual void Update()
+    {
+        this.transform.position = gunPivot.position;
+    }
     public virtual void Shoot()
     {
         weapon?.TryShooting();
