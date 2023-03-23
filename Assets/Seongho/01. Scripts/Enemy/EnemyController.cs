@@ -50,8 +50,8 @@ public class EnemyController : MonoBehaviour
 
     private void Move()
     {
-        if (isMove)
+       /* if (isMove)
             OnMove?.Invoke(speed, target);
-        else if (!isMove) OnMove?.Invoke(0, this.transform);
+        else if (!isMove) OnMove?.Invoke(0, this.transform);*/
     }
 }

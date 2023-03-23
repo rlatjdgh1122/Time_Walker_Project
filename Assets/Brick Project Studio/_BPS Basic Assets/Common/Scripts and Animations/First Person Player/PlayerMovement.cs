@@ -7,7 +7,7 @@ namespace SojaExiles
 {
     public class PlayerMovement : MonoBehaviour
     {
-
+        public Vector3 saveDir;
         public CharacterController controller;
 
         public float speed = 5f;
