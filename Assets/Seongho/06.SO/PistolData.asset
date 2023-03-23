@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3443322076479331290, guid: 0df96ef5d5471c742873a3d910734c97, type: 3}
   ammoCapacity: 100
-  weaponDelay: 2
+  weaponDelay: 0.1
   liveBulletTime: 1.5
   autoFire: 0
