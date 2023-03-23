@@ -10,15 +10,18 @@ using UnityEngine.UIElements;
 public class EnemyController : MonoBehaviour
 {
     [Header("설정")]
+    private bool isPause = false;
     public float shootDistance = 10;
     public float speed = 0;
+
+    private bool isMove = false;
+
     public Transform target;
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform> OnMove;
+
     private Rigidbody rigid;
     private Animator anim;
-    private bool isMove = false;
-
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
@@ -35,6 +38,10 @@ public class EnemyController : MonoBehaviour
     {
         Move();
         Shoot();
+
+        if (Input.GetKeyDown(KeyCode.Q)) //퍼즈기능
+            isPause = false;
+        else if (Input.GetKeyUp(KeyCode.Q)) isPause = true;
     }
 
     private void Shoot()
@@ -50,7 +57,7 @@ public class EnemyController : MonoBehaviour
         }
         else isMove = true;
 
-        anim.SetBool("Shooting", !isMove);
+        anim.SetBool("Shooting", !isMove && !isPause);
     }
     public void EventShooting()
     {
