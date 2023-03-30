@@ -7,6 +7,12 @@ namespace Core
 {
     public class Define
     {
+        public enum StateType
+        {
+            Normal = 0,
+            Attack = 1,
+        }
+
         public static Camera MainCam
         {
             get

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AgentMovement : MonoBehaviour
 {
-    private AgentInput _agentInput;
     private CharacterController _controller;
 
     [SerializeField] private float _moveSpeed = 8f, _gravityScale = -9.81f;
@@ -15,12 +14,7 @@ public class AgentMovement : MonoBehaviour
 
     private void Awake()
     {
-        _agentInput  = GetComponent<AgentInput>();
         _controller = GetComponent<CharacterController>();
-    }
-    private void Start()
-    {
-        _agentInput.OnMovementKeyPress += SetMovementVelocity;
     }
 
     private void FixedUpdate()
@@ -44,6 +38,4 @@ public class AgentMovement : MonoBehaviour
         _movementVelocity.Normalize();
         _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
     }
-
-
 }

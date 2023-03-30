@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class AgentAttack : MonoBehaviour
 {
-    private AgentInput _agentInput;
-
-    private void Awake()
+    public void TryToAttack()
     {
-        _agentInput = GetComponent<AgentInput>();
-        _agentInput.OnFireButtonPress += TryToAttack;
-    }
-
-
-    private void TryToAttack()
-    {
-
+        Debug.Log("Attack");
     }
 }
