@@ -36,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
     public void AttackDetect(float attackRadius)
     {
         this.attackRadius = attackRadius;
+        AttackRaycast(attackRadius);
         Collider[] col = Physics.OverlapSphere(this.transform.position, attackRadius, 1 << LayerMask.NameToLayer("Player"));
         if (col.Length > 0) //플레이어가 감지됐다면 움직임을 멈추고 플레이어를 계속해서 쳐다봄
         {
@@ -57,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("플레이어가 감지되지 않음");
         }
     }
-    public void AttackRaycast(float distance)
+    private void AttackRaycast(float distance)
     {
         RaycastHit hit;
         bool IsHit = Physics.Raycast(transform.position + Vector3.up,
@@ -74,13 +75,13 @@ public class EnemyMovement : MonoBehaviour
 
         //anim.SetBool("Shooting", !isMove && !isPause);
     }
-    public void MoveAnimation(float speed)
+    private void MoveAnimation(float speed)
     {
         anim.SetFloat("Move", speed);
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(this.transform.position, attackRadius);
+        Gizmos.DrawWireSphere(this.transform.position, attackRadius);
     }
 }

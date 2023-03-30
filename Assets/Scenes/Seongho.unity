@@ -3414,7 +3414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4255188856577334281}
   m_LocalRotation: {x: -0, y: -0.9715698, z: 0, w: -0.23675323}
-  m_LocalPosition: {x: 5.478, y: 1.87, z: -2.93}
+  m_LocalPosition: {x: -3.05, y: 1.87, z: -2.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3800,7 +3800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootDistance: 50
   speed: 2
-  attackRadius: 0
+  attackRadius: 14.39
   OnShooting:
     m_PersistentCalls:
       m_Calls:
@@ -3818,10 +3818,34 @@ MonoBehaviour:
         m_CallState: 2
   OnMovement:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6424349726087206597}
+        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
+        m_MethodName: MoveAgent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAttakDetect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6424349726087206597}
+        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
+        m_MethodName: AttackDetect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &4151485113927580910
 Transform:
   m_ObjectHideFlags: 0
@@ -5110,7 +5134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6461117434922677417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5877,7 +5901,7 @@ Animator:
   m_GameObject: {fileID: 6430464992553574316}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 32dc5c27c06a11942b83f9ebd3a5ed1c, type: 3}
-  m_Controller: {fileID: 22100000, guid: f89d57035ec6c7a44a319100a7b7884e, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8f83e88354362464e9afd472d3b144e9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
