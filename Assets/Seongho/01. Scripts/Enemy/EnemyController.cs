@@ -14,16 +14,17 @@ public class EnemyController : MonoBehaviour
     private bool isPause = false;
     public float shootDistance = 10;
     public float speed = 0;
-
-    private bool isMove = false;
+    public float attackRadius;
 
     public UnityEvent OnShooting;
-    public UnityEvent<float, Transform> OnMove;
+    public UnityEvent<float, Transform> OnMovement;
+    public UnityEvent<float> OnAttakDetect;
 
     private Rigidbody rigid;
     private Animator anim;
 
     private Transform target;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -41,20 +42,23 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
-        Shoot();
-
-        if (Input.GetKeyDown(KeyCode.Q)) //퍼즈기능
-            isPause = false;
-        else if (Input.GetKeyUp(KeyCode.Q)) isPause = true;
+        AttackDetect();
+        //Shoot();
     }
-    private void Shoot()
+
+    private void AttackDetect()
+    {
+        OnAttakDetect?.Invoke(attackRadius);
+    }
+
+    /*private void Shoot()
     {
         RaycastHit hit;
         bool IsHit = Physics.Raycast(transform.position + Vector3.up,
-            transform.forward, out hit, shootDistance,LayerMask.NameToLayer("Player")); 
+            transform.forward, out hit, shootDistance, 1 << LayerMask.NameToLayer("Player"));
         if (IsHit)
         {
-            if (hit.collider.gameObject.transform.GetChild(0).CompareTag("HitCore"))
+            if (hit.collider.gameObject.transform.GetChild(0).CompareTag("Player"))
                 isMove = false;
 
             else isMove = true;
@@ -62,16 +66,14 @@ public class EnemyController : MonoBehaviour
         else isMove = true;
 
         anim.SetBool("Shooting", !isMove && !isPause);
-    }
+    }*/
     public void EventShooting()
     {
         OnShooting?.Invoke();
     }
     private void Move()
     {
-        if (isMove)
-            OnMove?.Invoke(speed, target);
-        else if (!isMove) { OnMove?.Invoke(0, this.transform); };
+        OnMovement?.Invoke(speed, target);
     }
     private void OnDrawGizmos()
     {
