@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Time.timeScale = Mathf.Clamp(new Vector2(xInput, zInput).magnitude,0.0002f,100);
+            Time.timeScale = Mathf.Clamp(new Vector2(xInput, zInput).magnitude,0.2f,100);
         }
     }
 
