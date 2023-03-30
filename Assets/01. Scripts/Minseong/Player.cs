@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     public Rigidbody playerRigidbody;
     public Camera fpsCam;
-
+    public UnityEvent<Vector3> OnMove;
+    public UnityEvent OnAttack;
     float moveSpeed;
     float rotSpeed;
     float currentRot;
 
     float xInput;
     float zInput;
+
+    public bool isAttacking;
 
     void Start()
     {
@@ -26,13 +30,18 @@ public class Player : MonoBehaviour
         PlayerMove();
         RotCtrl();
 
-        if(Mathf.Abs(xInput) > 0 || Mathf.Abs(zInput) > 0)
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnAttack?.Invoke();
+        }
+
+        if(Mathf.Abs(xInput) > 0 || Mathf.Abs(zInput) > 0 || isAttacking)
         {
             Time.timeScale = 1;
         }
         else
         {
-            Time.timeScale = Mathf.Clamp(new Vector2(xInput, zInput).magnitude,0.002f,100);
+            Time.timeScale = Mathf.Clamp(new Vector2(xInput, zInput).magnitude,0.0002f,100);
         }
     }
 
@@ -44,8 +53,9 @@ public class Player : MonoBehaviour
         float xSpeed = xInput * moveSpeed;
         float zSpeed = zInput * moveSpeed;
 
-        transform.Translate(Vector3.forward * zSpeed * Time.unscaledDeltaTime);
-        transform.Translate(Vector3.right * xSpeed * Time.unscaledDeltaTime);
+        Vector3 moveDir = Vector3.forward * zSpeed * Time.unscaledDeltaTime + 
+            Vector3.right * xSpeed * Time.unscaledDeltaTime;
+        OnMove?.Invoke(moveDir);
     }
 
     void RotCtrl()
