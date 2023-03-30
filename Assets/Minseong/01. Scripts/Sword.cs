@@ -13,6 +13,16 @@ public class Sword : MonoBehaviour
         player = GetComponentInParent<Player>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            animator.SetBool("block", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.F))
+            animator.SetBool("block", false);
+    }
+
     public void Attack()
     {
         if (!player.isAttacking)
