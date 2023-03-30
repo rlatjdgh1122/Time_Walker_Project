@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c1b54c930344847b68640fd0ab3f9a, type: 3}
   m_Name: RifleData
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2274561487271076051, guid: 8f24d647fee3a2142be18828d33fd6d9, type: 3}
+  bullet: {fileID: 843603141423992483, guid: 5f2e960cefb2b934eaedbf54a6bd31e9, type: 3}
   ammoCapacity: 118
   weaponDelay: 0.1
   liveBulletTime: 1.5
