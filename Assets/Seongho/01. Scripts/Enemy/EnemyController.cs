@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Start()
     {
-        target = GameManager.Instance.taget.transform;
+        target = GameManager.Instance.target.transform;
     }
     private void FixedUpdate()
     {
