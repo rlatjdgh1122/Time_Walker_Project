@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Animator anim;
     private float attackRadius;
-    private bool isMove = true;
-    private bool isRotate = true;
+    private bool isMove { get; set; }
+    private bool isRotate { get; set; }
 
     private void Awake()
     {
@@ -67,12 +67,11 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector3 targetCenterPos =
             hit.collider.bounds.center;
-            if (hit.point == targetCenterPos)
+            if (hit.point == targetCenterPos) //플레이어를 발견했다면 
             {
-                isRotate = false;
+                //isRotate = false;
             }
         }
-
         //anim.SetBool("Shooting", !isMove && !isPause);
     }
     private void MoveAnimation(float speed)

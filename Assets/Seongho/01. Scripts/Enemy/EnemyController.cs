@@ -50,23 +50,6 @@ public class EnemyController : MonoBehaviour
     {
         OnAttakDetect?.Invoke(attackRadius);
     }
-
-    /*private void Shoot()
-    {
-        RaycastHit hit;
-        bool IsHit = Physics.Raycast(transform.position + Vector3.up,
-            transform.forward, out hit, shootDistance, 1 << LayerMask.NameToLayer("Player"));
-        if (IsHit)
-        {
-            if (hit.collider.gameObject.transform.GetChild(0).CompareTag("Player"))
-                isMove = false;
-
-            else isMove = true;
-        }
-        else isMove = true;
-
-        anim.SetBool("Shooting", !isMove && !isPause);
-    }*/
     public void EventShooting()
     {
         OnShooting?.Invoke();

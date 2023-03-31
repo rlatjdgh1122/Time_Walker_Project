@@ -57,7 +57,6 @@ public class WeaponGun : MonoBehaviour
     }
     public virtual void Shooting()
     {
-        Debug.Log("½¸");
         GameObject gameObject = Instantiate(gunData.bullet, firePos.position, Quaternion.identity);
         gameObject.transform.SetParent(firePos);
         Destroy(gameObject, gunData.liveBulletTime);
