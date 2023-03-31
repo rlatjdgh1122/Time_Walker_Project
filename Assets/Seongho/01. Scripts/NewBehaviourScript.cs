@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolableMono : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     private void Update()
     {
@@ -12,4 +12,5 @@ public class PoolableMono : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.E))
             Time.timeScale = 1f;
-    }}
+    }
+}
