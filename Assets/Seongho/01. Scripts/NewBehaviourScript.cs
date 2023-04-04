@@ -12,4 +12,5 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.E))
             Time.timeScale = 1f;
-    }}
+    }
+}
