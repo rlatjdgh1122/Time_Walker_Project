@@ -4,17 +4,22 @@ using UnityEngine;
 using static Core.Define;
 public class AttackState : CommonState
 {
-    private AgentAttack _agentAttack;
+    private PlayerAttack _playerAttack;
+
+    private void Awake() {
+        _playerAttack.OnAnimationEnd.AddListener(() => OnNormalState());
+    }
 
     public override void SetUp(Transform agentTransform)
     {
         base.SetUp(agentTransform);
-        _agentAttack = agentTransform.GetComponent<AgentAttack>();
+        _playerAttack = agentTransform.GetComponent<PlayerAttack>();
     }
 
     public override void OnEnterState()
     {
         _agentInput.OnFireButtonPress += AgentAttackHandle;
+        _agentMovement.StopImmediately();
     }
 
     public override void OnExitState()
@@ -29,8 +34,7 @@ public class AttackState : CommonState
 
     public void AgentAttackHandle()
     {
-        _agentAttack.TryToAttack();
-        Invoke("OnNormalState", 3f);
+        _playerAttack.TryToAttack();
     }
 
     public void OnNormalState()

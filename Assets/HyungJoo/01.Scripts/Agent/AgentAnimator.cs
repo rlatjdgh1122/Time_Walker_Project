@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AgentAnimator : MonoBehaviour
 {
-    private Animator _animator;
+    protected Animator _animator;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _animator = GetComponent<Animator>();
     }
