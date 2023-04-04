@@ -27,7 +27,10 @@ public class AgentMovement : MonoBehaviour
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
     }
-
+    public void StopImmediately()
+    {
+        _movementVelocity = Vector3.zero;
+    }
     public void SetMovementVelocity(Vector3 velocity)
     {
         this._movementVelocity = velocity;
