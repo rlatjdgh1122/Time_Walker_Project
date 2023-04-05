@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.collider.CompareTag("ENEMY")){
-
+            
         }
     }
 }

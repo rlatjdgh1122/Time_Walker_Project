@@ -13,7 +13,6 @@ public class SwordAnimator : AgentAnimator
         _playerAttack = transform.parent.GetComponent<PlayerAttack>();
     }
     
-
     public void OnAttackAnimation(){
         _animator.SetTrigger(_attackHash);
     }

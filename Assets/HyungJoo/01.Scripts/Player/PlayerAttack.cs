@@ -23,5 +23,4 @@ public class PlayerAttack : AgentAttack
         isAttacking = true;
         _swordAnimator.OnAttackAnimation();
     }
-
 }
