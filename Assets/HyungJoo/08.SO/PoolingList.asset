@@ -15,3 +15,5 @@ MonoBehaviour:
   poolingList:
   - poolObject: {fileID: 8132043854236849012, guid: d7c951a0f1834f34b83009155355deee, type: 3}
     poolCount: 10
+  - poolObject: {fileID: 2757639265608168494, guid: c6a3e1f27ead2484aa09626d4694305a, type: 3}
+    poolCount: 10

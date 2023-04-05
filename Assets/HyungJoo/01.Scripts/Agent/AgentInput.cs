@@ -25,6 +25,7 @@ public class AgentInput : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(h, 0, v);
         OnMovementKeyPress?.Invoke(direction);
+
     }
 
 
