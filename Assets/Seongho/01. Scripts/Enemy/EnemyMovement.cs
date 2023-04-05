@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Rendering;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -13,13 +16,23 @@ public class EnemyMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
-    public void MoveAgent(float speed, Transform target)
+    public void MoveAgent(float speed, Transform target, bool isMove)
     {
-        agent.speed = speed;
-        agent.SetDestination(target.position);
+        if (isMove)
+        {
+            agent.speed = speed;
+
+            agent.SetDestination(target.position);
+        }
+        else
+        {
+            agent.speed = 0;
+            agent.SetDestination(this.transform.position);
+        }
         MoveAnimation(agent.speed);
     }
-    public void MoveAnimation(float speed)
+
+    private void MoveAnimation(float speed)
     {
         anim.SetFloat("Move", speed);
     }
