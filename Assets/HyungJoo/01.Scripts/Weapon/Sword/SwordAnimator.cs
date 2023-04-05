@@ -10,7 +10,9 @@ public class SwordAnimator : AgentAnimator
 
     protected override void Awake(){
         base.Awake();
-        _playerAttack = transform.parent.GetComponent<PlayerAttack>();
+        _playerAttack = transform.GetComponentInParent<PlayerAttack>();
+    }
+    private void Update() {
     }
     
     public void OnAttackAnimation(){
@@ -18,6 +20,7 @@ public class SwordAnimator : AgentAnimator
     }
 
     public void EndAttackAnimation(){
+        TimeController.Instance.SetTimeScale(0.1f,false);
         _playerAttack.OnAnimationEnd?.Invoke();
         _playerAttack.isAttacking = false;
     }

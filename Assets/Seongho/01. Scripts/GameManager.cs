@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public void CreatePool()
     {
         PoolManager manager = new PoolManager(this.transform);
+        TimeController controller = transform.AddComponent<TimeController>();
+        
         Debug.Log(manager);
         foreach(PoolClass p in _poolingList.poolingList)
         {

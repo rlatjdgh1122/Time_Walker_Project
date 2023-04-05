@@ -24,22 +24,18 @@ public class AgentController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
+    private void Start(){
         ChangeState(StateType.Normal);
     }
 
-    private void Update()
-    {
-        Debug.Log(_currentState);
+    private void Update(){
+        Debug.Log(Time.timeScale);
         _currentState.UpdateState();
     }
 
-    public void ChangeState(StateType state)
-    {
+    public void ChangeState(StateType state){
         _currentState?.OnExitState();
         _currentState = _stateDictionary[state];
         _currentState?.OnEnterState();
     }
-
 }
