@@ -29,7 +29,7 @@ public class AgentController : MonoBehaviour
     }
 
     private void Update(){
-        Debug.Log(Time.timeScale);
+        Debug.Log(_currentState);
         _currentState.UpdateState();
     }
 
