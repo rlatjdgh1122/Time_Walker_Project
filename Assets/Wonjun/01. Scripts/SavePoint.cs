@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SavePoint : MonoBehaviour
 {
+    public static SavePoint Instance;
+
     [Header("Transforms")]
     [SerializeField]
     private Vector3 spawnPoint;
@@ -20,6 +22,8 @@ public class SavePoint : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
+
         spawnPoint = player.transform.position; //첫 스폰포인트 설정(플레이어 첫 생성위치)
     }
 
