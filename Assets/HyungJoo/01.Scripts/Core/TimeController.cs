@@ -25,8 +25,6 @@ public class TimeController : MonoBehaviour{
         else{
             _timer -= Time.unscaledDeltaTime;
         }
-
-
     }
     public void SetTimeScale(float timeScale,bool canPlusTimer){
         Time.timeScale = timeScale;

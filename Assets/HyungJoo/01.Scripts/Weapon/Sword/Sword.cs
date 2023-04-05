@@ -8,8 +8,11 @@ public class Sword : MonoBehaviour
     private float _attackPower;
 
     private void OnCollisionEnter(Collision other) {
-        if(other.collider.CompareTag("ENEMY")){
+        if(other.collider.CompareTag("WALL")){
             
         }
+        PoolableMono obj = PoolManager.Instance.Pop("EnemyHItParticle");
+
+        obj.GetComponent<HitParticle>().SpawnParticle(other.collider.transform.position);
     }
 }
