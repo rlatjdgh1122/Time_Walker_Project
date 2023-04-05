@@ -1025,7 +1025,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123056048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.91, y: 3, z: -2.78}
+  m_LocalPosition: {x: 0.16, y: 3, z: -2.78}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 8662292612449833427}
   - component: {fileID: 573956512751211973}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: WeaponGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3798,9 +3798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c088849e10baf74eb7ffa85c5a30dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDistance: 50
-  speed: 2
-  attackRadius: 14.39
+  enemySoData: {fileID: 0}
+  isPause: 0
   OnShooting:
     m_PersistentCalls:
       m_Calls:
@@ -3819,24 +3818,9 @@ MonoBehaviour:
   OnMovement:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6424349726087206597}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
         m_MethodName: MoveAgent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnAttakDetect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6424349726087206597}
-        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
-        m_MethodName: AttackDetect
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3909,6 +3893,7 @@ GameObject:
   - component: {fileID: 7396753095955553480}
   - component: {fileID: 7396753095955553485}
   - component: {fileID: 7396753095955553484}
+  - component: {fileID: 7396753095955553488}
   m_Layer: 0
   m_Name: PistolEnemy
   m_TagString: Untagged
@@ -4982,7 +4967,7 @@ GameObject:
   - component: {fileID: 3594459140480540347}
   - component: {fileID: 6243870933851869277}
   m_Layer: 0
-  m_Name: default
+  m_Name: WeaponGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5101,18 +5086,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6424349726087206597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6430464992553574316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a23eab446075b24187ee9b6928a6360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6430464992553574316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5127,14 +5100,13 @@ GameObject:
   - component: {fileID: 3458897488550658202}
   - component: {fileID: 1556684766975678109}
   - component: {fileID: 4102307882876101332}
-  - component: {fileID: 6424349726087206597}
   m_Layer: 0
   m_Name: RifleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6461117434922677417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,9 +5738,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c088849e10baf74eb7ffa85c5a30dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDistance: 50
-  speed: 2.64
-  attackRadius: 3.82
+  enemySoData: {fileID: 11400000, guid: 80c69ed3ed3be2243802a203732fc944, type: 2}
+  isPause: 0
   OnShooting:
     m_PersistentCalls:
       m_Calls:
@@ -5790,21 +5761,6 @@ MonoBehaviour:
       - m_Target: {fileID: 7396753095955553484}
         m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
         m_MethodName: MoveAgent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnAttakDetect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7396753095955553484}
-        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
-        m_MethodName: AttackDetect
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5843,6 +5799,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7396753095955553488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255188856577334281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafa178174b8fe34392e80855b141c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7461373735273585816
 GameObject:
   m_ObjectHideFlags: 0
