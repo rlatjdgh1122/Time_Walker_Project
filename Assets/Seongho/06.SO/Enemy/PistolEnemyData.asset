@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PistolEnemyData
   m_EditorClassIdentifier: 
   attackCoolTime: 1
-  shootDistance: 10
+  shootDistance: 3.86
   speed: 3
