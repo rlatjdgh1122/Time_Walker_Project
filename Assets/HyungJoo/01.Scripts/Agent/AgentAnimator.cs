@@ -6,8 +6,7 @@ public class AgentAnimator : MonoBehaviour
 {
     protected Animator _animator;
 
-    protected virtual void Awake()
-    {
+    protected virtual void Awake(){
         _animator = GetComponent<Animator>();
     }
 
