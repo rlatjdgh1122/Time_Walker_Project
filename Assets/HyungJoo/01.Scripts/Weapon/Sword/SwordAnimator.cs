@@ -26,7 +26,17 @@ public class SwordAnimator : AgentAnimator{
         _playerAttack.OnAnimationEnd?.Invoke();
         _playerAttack.isAttacking = false;
         _animator.SetBool(_isAttackHash, false);
-        _attackState.SetKeyDelay(0.5f);
+        _attackState.SetKeyDelay(1f);
+    }
+    public void SetTriggerAttack(bool value){
+        if(!value){
+            _animator.ResetTrigger(_attackHash);
+            _animator.SetBool(_isAttackHash, value);
+        }
+        else{
+            _animator.SetTrigger(_attackHash);
+            _animator.SetBool(_isAttackHash, value);
+        }
     }
 
 }
