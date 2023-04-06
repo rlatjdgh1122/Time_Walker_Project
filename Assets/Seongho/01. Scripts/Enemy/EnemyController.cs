@@ -90,7 +90,7 @@ public class EnemyController : MonoBehaviour
             {
 
                 Quaternion rotTarget = Quaternion.LookRotation(target.position - this.transform.position);
-                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, 50 * Time.deltaTime);
+                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, 150 * Time.deltaTime);
             }
             else if (!isRotate)
             {

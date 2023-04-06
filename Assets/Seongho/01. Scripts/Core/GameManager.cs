@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         PoolManager manager = new PoolManager(this.transform);
         TimeController controller = transform.AddComponent<TimeController>();
         
-        Debug.Log(manager);
         foreach(PoolClass p in _poolingList.poolingList)
         {
             manager.CreatePool(p.poolObject, p.poolCount);
