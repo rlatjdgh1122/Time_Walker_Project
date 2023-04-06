@@ -29,11 +29,9 @@ public class AttackState : CommonState
     }
 
     public override void UpdateState(){
-        if(!_playerAttack.isAttacking && _keyTimer > 0f)
-        {
+        if(!_playerAttack.isAttacking && _keyTimer > 0f){
             _keyTimer -= Time.deltaTime;
-            if(_keyTimer <= 0f)
-            {
+            if(_keyTimer <= 0f){
                 _agentController.ChangeState(StateType.Normal);
                 SwordAnimator animator = _agentAnimator as SwordAnimator;
                 animator.SetTriggerAttack(false);
@@ -45,7 +43,7 @@ public class AttackState : CommonState
     }
     public void AgentAttackHandle()
     {
-        if(!_playerAttack.isAttacking && _attackCombo < 3){
+        if(!_playerAttack.isAttacking && _attackCombo < 3){            
             _playerAttack.TryToAttack();
             _attackCombo++;
         }
