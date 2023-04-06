@@ -10460,6 +10460,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 754181842478346696, guid: cdf32afa8d667bf48bdf584b0f842bd6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4483515459328784227, guid: b9f8e7afdb61396439e846122be21924, type: 3}
+    - target: {fileID: 754181842478346703, guid: cdf32afa8d667bf48bdf584b0f842bd6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c126c2d20bbb8944d8c9e25c6db462d5, type: 2}
     - target: {fileID: 7060492080096176533, guid: cdf32afa8d667bf48bdf584b0f842bd6, type: 3}
       propertyPath: m_Name
       value: Player
