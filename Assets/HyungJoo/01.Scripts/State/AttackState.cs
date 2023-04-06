@@ -34,6 +34,8 @@ public class AttackState : CommonState
             if(_keyTimer <= 0f)
             {
                 _agentController.ChangeState(StateType.Normal);
+                SwordAnimator animator = _agentAnimator as SwordAnimator;
+                animator.SetTriggerAttack(false);
             }
         }
     }
