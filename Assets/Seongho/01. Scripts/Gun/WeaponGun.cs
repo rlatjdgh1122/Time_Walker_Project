@@ -9,6 +9,7 @@ public class WeaponGun : MonoBehaviour
 {
     public GunSOData gunData;
     public Transform firePos;
+
     public UnityEvent OnFeedbackShoot;
     public UnityEvent OnFeedbackNoAmmo;
     public UnityEvent OnFeedbackStopShooting;
@@ -39,26 +40,25 @@ public class WeaponGun : MonoBehaviour
                 OnFeedbackNoAmmo?.Invoke();
                 return;
             }
-            FinishOneShooting();
+            //FinishOneShooting();
         }
     }
 
-    private void FinishOneShooting()
+/*    private void FinishOneShooting()
     {
         StartCoroutine(DelayNextShootingCorotine());
-        if (gunData.autoFire == false)
-            isShooting = false;
-    }
-    private IEnumerator DelayNextShootingCorotine()
+    }*/
+/*    private IEnumerator DelayNextShootingCorotine()
     {
         delayCoroutine = true;
         yield return new WaitForSeconds(gunData.weaponDelay);
         delayCoroutine = false;
-    }
+    }*/
     public virtual void Shooting()
     {
-        Debug.Log("½¸");
-        GameObject gameObject = Instantiate(gunData.bullet, firePos.position, Quaternion.identity);
+        ammo--;
+
+        GameObject gameObject = Instantiate(gunData.bullet, firePos.position, transform.rotation);
         gameObject.transform.SetParent(firePos);
         Destroy(gameObject, gunData.liveBulletTime);
     }

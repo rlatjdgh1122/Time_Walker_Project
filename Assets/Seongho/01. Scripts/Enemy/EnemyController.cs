@@ -4,34 +4,42 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    [Header("설정")]
-    private bool isPause = false;
-    public float shootDistance = 10;
-    public float speed = 0;
+    [SerializeField]
+    private EnemySoData enemySoData;
 
-    private bool isMove = false;
+    public bool isPause = false;
+
 
     public UnityEvent OnShooting;
-    public UnityEvent<float, Transform> OnMove;
+    public UnityEvent<float, Transform, bool> OnMovement;
 
     private Rigidbody rigid;
-    private Animator anim;
+
 
     private Transform target;
+    private CooldownManager cooldown;
+    private bool isMove = true;
+    private bool isRotate = false;
+    private bool inAttackDetect;
+    private bool isHit;
+    private Collider[] cols;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
     }
     private void Start()
     {
-        target = GameManager.Instance.target.transform;
+        target = GameManager.Instance.taget.transform;
+
+        cooldown = new CooldownManager();
+        cooldown.SetCooldown("EnemyAttackCoolTime", enemySoData.attackCoolTime);
     }
     private void FixedUpdate()
     {
@@ -41,42 +49,68 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
-        Shoot();
+        AttackDetect(enemySoData.attackRadius);
 
-        if (Input.GetKeyDown(KeyCode.Q)) //퍼즈기능
-            isPause = false;
-        else if (Input.GetKeyUp(KeyCode.Q)) isPause = true;
+        Pause();
     }
-    private void Shoot()
+
+    private void Pause()
     {
-        RaycastHit hit;
-        bool IsHit = Physics.Raycast(transform.position + Vector3.up,
-            transform.forward, out hit, shootDistance,LayerMask.NameToLayer("Player")); 
-        if (IsHit)
-        {
-            if (hit.collider.gameObject.transform.GetChild(0).CompareTag("HitCore"))
-                isMove = false;
-
-            else isMove = true;
-        }
-        else isMove = true;
-
-        anim.SetBool("Shooting", !isMove && !isPause);
+        if (isPause)
+            Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
-    public void EventShooting()
+    public void Shooting()
     {
-        OnShooting?.Invoke();
+        if (cooldown.IsCooldown("EnemyAttackCoolTime"))
+            OnShooting?.Invoke();
     }
+
     private void Move()
     {
-        if (isMove)
-            OnMove?.Invoke(speed, target);
-        else if (!isMove) { OnMove?.Invoke(0, this.transform); };
+        OnMovement?.Invoke(enemySoData.speed, target, isMove);
+    }
+    public void AttackDetect(float attackRadius)
+    {
+        AttackRaycast(attackRadius);
+
+        inAttackDetect = cols.AttackDetect(attackRadius, transform.position);
+        if (inAttackDetect && isRotate) //범위 안에 들어왔다면
+        {
+            isMove = false; //움직임을 멈춤
+
+            Vector3 rot = new Vector3(target.position.x, transform.position.y, target.position.z);
+            transform.LookAt(rot); //플레이어를 계속해서 쳐다봄
+        }
+        else
+        {
+            transform.LookAt(this.transform);
+            isMove = true; //움직임을 멈춤
+            Shooting();
+        }
+    }
+    private void AttackRaycast(float distance)
+    {
+        RaycastHit hit;
+        bool isFace = isHit.FaceDetect(distance, out hit, transform);
+        if (isFace)
+        {
+            Vector3 targetCenterPos =
+            hit.collider.bounds.center;
+            if (hit.point == targetCenterPos) //플레이어를 발견했다면 
+            {
+                isRotate = false;
+            }
+            else isRotate = true;
+        }
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position + Vector3.up,
-            transform.forward * shootDistance);
+            transform.forward * enemySoData.shootDistance);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, enemySoData.attackRadius);
     }
 }
