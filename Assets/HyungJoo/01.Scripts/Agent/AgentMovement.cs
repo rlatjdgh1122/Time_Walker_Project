@@ -28,6 +28,7 @@ public class AgentMovement : MonoBehaviour
         if (_controller.isGrounded == false)
         {
             _verticalVelocity = _gravityScale * Time.fixedDeltaTime;
+            TimeController.Instance.SetTimeScale(1f, false);
         }
             Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
             _controller.Move(transform.TransformDirection(move));
