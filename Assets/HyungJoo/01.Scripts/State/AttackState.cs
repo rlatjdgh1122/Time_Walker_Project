@@ -25,6 +25,7 @@ public class AttackState : CommonState
     public override void OnExitState()
     {
         _agentInput.OnFireButtonPress -= AgentAttackHandle;
+        _attackCombo = 0;
     }
 
     public override void UpdateState(){
