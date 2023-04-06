@@ -14,23 +14,30 @@ public class WeaponGun : MonoBehaviour
     public UnityEvent OnFeedbackNoAmmo;
     public UnityEvent OnFeedbackStopShooting;
     bool isShooting;
-    bool delayCoroutine = false;
     int ammo;
+
+    private GameObject target;
     private void Awake()
     {
         ammo = gunData.ammoCapacity;
+        target = GameManager.Instance.target;
     }
-    private void Update()
+    public virtual void Shooting()
     {
-        UseWeapon();
-    }
+        GameObject gameObject = Instantiate(gunData.bullet, firePos.position,
+            Quaternion.Euler(new Vector3(0, -90, 0)));
+        gameObject.transform.SetParent(firePos);
+        Destroy(gameObject, gunData.liveBulletTime);
 
-    private void UseWeapon()
+    }
+    public void TryShooting()
     {
-        if (isShooting && delayCoroutine == false)
+        isShooting = true;
+        if (isShooting)
         {
             if (ammo > 0)
             {
+                ammo--;
                 OnFeedbackShoot?.Invoke();
                 Shooting();
             }
@@ -40,31 +47,7 @@ public class WeaponGun : MonoBehaviour
                 OnFeedbackNoAmmo?.Invoke();
                 return;
             }
-            //FinishOneShooting();
         }
-    }
-
-/*    private void FinishOneShooting()
-    {
-        StartCoroutine(DelayNextShootingCorotine());
-    }*/
-/*    private IEnumerator DelayNextShootingCorotine()
-    {
-        delayCoroutine = true;
-        yield return new WaitForSeconds(gunData.weaponDelay);
-        delayCoroutine = false;
-    }*/
-    public virtual void Shooting()
-    {
-        ammo--;
-
-        GameObject gameObject = Instantiate(gunData.bullet, firePos.position, transform.rotation);
-        gameObject.transform.SetParent(firePos);
-        Destroy(gameObject, gunData.liveBulletTime);
-    }
-    public void TryShooting()
-    {
-        isShooting = true;
     }
     public void StopShooting()
     {

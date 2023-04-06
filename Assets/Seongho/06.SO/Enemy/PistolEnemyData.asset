@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1be2cd1f9a32f241882dffb54990c38, type: 3}
   m_Name: PistolEnemyData
   m_EditorClassIdentifier: 
-  attackCoolTime: 5
+  attackCoolTime: 1
   shootDistance: 10
   speed: 3

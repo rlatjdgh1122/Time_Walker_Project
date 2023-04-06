@@ -27,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             agent.speed = 0;
-            agent.SetDestination(this.transform.position);
+            agent.SetDestination(Vector3.zero);
         }
         MoveAnimation(agent.speed);
     }
