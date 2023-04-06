@@ -22,11 +22,11 @@ public class SwordAnimator : AgentAnimator{
     }
 
     public void EndAttackAnimation(){
-        TimeController.Instance.SetTimeScale(0.1f,false);
         _playerAttack.OnAnimationEnd?.Invoke();
         _playerAttack.isAttacking = false;
         _animator.SetBool(_isAttackHash, false);
-        _attackState.SetKeyDelay(1f);
+        _attackState.SetKeyDelay(0.5f);
+        TimeController.Instance.SetTimeScale(0.1f,false);
     }
     public void SetTriggerAttack(bool value){
         if(!value){

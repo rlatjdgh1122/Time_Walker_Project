@@ -9,5 +9,4 @@ public class AgentAnimator : MonoBehaviour
     protected virtual void Awake(){
         _animator = transform.GetComponent<Animator>();
     }
-
 }
