@@ -6,20 +6,21 @@ using System;
 public class PlayerAttack : AgentAttack{
     private SwordAnimator _swordAnimator;
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         _swordAnimator = GetComponentInChildren<SwordAnimator>();
-        isAttacking = false;
+        _actionData.isAttacking = false;
     }
 
     public void TryToAttack(){
-        if(!isAttacking){
+        if(!_actionData.isAttacking){
             SwordAttack();
         }
     }
 
     private void SwordAttack(){
+        _actionData.isAttacking = true;
         TimeController.Instance.SetTimeScale(1f,true);
-        isAttacking = true;
         _swordAnimator.OnAttackAnimation();
 
     }

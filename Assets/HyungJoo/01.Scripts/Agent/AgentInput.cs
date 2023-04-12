@@ -12,11 +12,11 @@ public class AgentInput : MonoBehaviour
     {
         InputFireButton();
         InputMovementKeyPress();
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            PoolableMono obj = PoolManager.Instance.Pop("TestPool");
-            obj.transform.position = transform.position;
-        }
+        // if(Input.GetKeyDown(KeyCode.T))
+        // {
+        //     PoolableMono obj = PoolManager.Instance.Pop("TestPool");
+        //     obj.transform.position = transform.position;
+        // }
     }
 
     private void InputMovementKeyPress()

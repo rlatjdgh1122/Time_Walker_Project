@@ -8,6 +8,7 @@ public abstract class CommonState : MonoBehaviour, IState
     protected AgentAnimator _agentAnimator;
     protected AgentController _agentController;
     protected AgentMovement _agentMovement;
+    protected PlayerActionData _actionData;
 
     public abstract void OnEnterState();
     public abstract void OnExitState();
@@ -20,6 +21,7 @@ public abstract class CommonState : MonoBehaviour, IState
         _agentMovement = agentTransform.GetComponent<AgentMovement>();
         _agentController = agentTransform.GetComponent<AgentController>();
         _agentInput = agentTransform.GetComponent<AgentInput>();
+        _actionData = agentTransform.Find("ActionData").GetComponent<PlayerActionData>();
         
     }
 

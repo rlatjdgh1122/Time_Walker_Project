@@ -12,17 +12,17 @@ public class AgentMovement : MonoBehaviour
 
     private Vector3 _movementVelocity;
     private float _verticalVelocity;
-
+    private PlayerActionData _actionData;
     public bool isMove = false;
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
         _playerAttack = GetComponent<PlayerAttack>();
+        _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
 
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate(){
         CalculateMovement();
         CalculateTimeScale();
         if (_controller.isGrounded == false)
@@ -30,28 +30,21 @@ public class AgentMovement : MonoBehaviour
             _verticalVelocity = _gravityScale * Time.fixedDeltaTime;
             TimeController.Instance.SetTimeScale(1f, false);
         }
-            Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
-            _controller.Move(transform.TransformDirection(move));
-        
-
+        Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
+        _controller.Move(transform.TransformDirection(move));
     }
-    public void StopImmediately()
-    {
+    public void StopImmediately(){
         _movementVelocity = Vector3.zero;
     }
-    public void SetMovementVelocity(Vector3 velocity)
-    {
+    public void SetMovementVelocity(Vector3 velocity){
         this._movementVelocity = velocity;
     }
-
-    private void CalculateMovement()
-    {
+    private void CalculateMovement(){
         _movementVelocity.Normalize();
         _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
-
     }
     public void CalculateTimeScale(){
-        if(_playerAttack.isAttacking){
+        if(_actionData.isAttacking){
             TimeController.Instance.SetTimeScale(1f,true);
             return;
         }

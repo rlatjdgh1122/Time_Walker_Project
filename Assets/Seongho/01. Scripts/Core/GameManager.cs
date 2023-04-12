@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour
     private GameObject Target;
     public GameObject target => Target;
 
+    public AgentHP PlayerHP{
+        get{
+            _playerHP ??= GameObject.FindGameObjectWithTag("Player").GetComponent<AgentHP>();
+            return _playerHP;
+        }
+    }
+    private AgentHP _playerHP;
+
     private void Awake()
     {
         if (Instance == null)
