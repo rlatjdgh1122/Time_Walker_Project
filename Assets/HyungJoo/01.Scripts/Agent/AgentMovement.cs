@@ -39,10 +39,12 @@ public class AgentMovement : MonoBehaviour
     public void SetMovementVelocity(Vector3 velocity){
         this._movementVelocity = velocity;
     }
+    
     private void CalculateMovement(){
         _movementVelocity.Normalize();
         _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
     }
+
     public void CalculateTimeScale(){
         if(_actionData.isAttacking){
             TimeController.Instance.SetTimeScale(1f,true);

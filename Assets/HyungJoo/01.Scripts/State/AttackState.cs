@@ -49,6 +49,11 @@ public class AttackState : CommonState
             _attackCombo++;
         }
     }
+    public void AgentDashHandle(){
+        if(!_actionData.isAttacking){
+            _playerAttack.TryDash();
+        }
+    }
 
     public void OnNormalState()
     {

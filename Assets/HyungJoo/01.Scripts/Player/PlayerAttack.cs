@@ -18,10 +18,14 @@ public class PlayerAttack : AgentAttack{
         }
     }
 
+    public void TryDash(){
+        
+    }
+
     private void SwordAttack(){
         _actionData.isAttacking = true;
         TimeController.Instance.SetTimeScale(1f,true);
         _swordAnimator.OnAttackAnimation();
-
     }
+
 }
