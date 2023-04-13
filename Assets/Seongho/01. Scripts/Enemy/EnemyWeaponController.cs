@@ -30,6 +30,8 @@ public class EnemyWeaponController : MonoBehaviour
     {
         weapon = Instantiate(weaponDataSO.Weapon, weaponPivot);
         fireLocalPos = weaponDataSO.firePos.localPosition;
+
+        Debug.Log(fireLocalPos);
         ammo = weaponDataSO.ammoCapacity;
     }
     public void shoot()
@@ -100,10 +102,15 @@ public class EnemyWeaponController : MonoBehaviour
     }
     private void SpawnBullet(Vector3 position, Quaternion rot)
     {
-        Debug.Log(position);
-        Debug.Log(position);
+    
         RegularBullet b = PoolManager.Instance.Pop(weaponDataSO.bullet.name) as RegularBullet;
-        //b.SetPositionAndRotation(position, rot);
+
+       /* Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
+        Vector3 direction = (randomPosition - firePos.position);
+
+        regularBullet.Init();
+        regularBullet.SetPositionAndRotation(firePos.position,
+            Quaternion.LookRotation(direction));*/
         b.isEnemy = false;
     }
 

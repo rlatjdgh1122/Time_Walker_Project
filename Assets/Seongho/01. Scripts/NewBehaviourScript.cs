@@ -6,6 +6,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     RegularBullet regularBullet;
+    public GameObject gameObject;
     public Transform firePos;
     private void Awake()
     {
@@ -13,16 +14,23 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void Start()
     {
-        Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 2;
-        for (int i = 0; i < 10000000; i++)
-        {
-            Vector3 a = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 2;
-            Debug.Log(a);
-        }
+        Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
         Vector3 direction = (randomPosition - firePos.position);
 
         regularBullet.Init();
         regularBullet.SetPositionAndRotation(firePos.position,
             Quaternion.LookRotation(direction));
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
+            Vector3 direction = (randomPosition - firePos.position);
+
+            regularBullet.Init();
+            regularBullet.SetPositionAndRotation(firePos.position,
+                Quaternion.LookRotation(direction));
+        }
     }
 }
