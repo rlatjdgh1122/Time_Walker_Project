@@ -12,12 +12,10 @@ using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]
-    private EnemySoData enemySoData;
+    public EnemySoData enemySoData;
 
+    [HideInInspector]
     public bool isPause = false;
-
-    public Transform firePos;
 
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform, bool> OnMovement;
@@ -38,12 +36,10 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-
     }
     private void Start()
     {
         target = GameManager.Instance.target.transform;
-
     }
     private void FixedUpdate()
     {
@@ -53,7 +49,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
-        AttackDetect(enemySoData.attackRadius);
+        AttackDetect(enemySoData.weaponSoData.attackRadius);
         Pause();
     }
 
@@ -67,17 +63,14 @@ public class EnemyController : MonoBehaviour
     {
         if (!cooldown.IsCooldown(cooltimeName))
         {
-            cooldown.SetCooldown(cooltimeName, enemySoData.attackCoolTime);
-            Debug.Log("슛!!!!!!!!!!!!!!!!!!!!!");
+            cooldown.SetCooldown(cooltimeName, enemySoData.weaponSoData.attackCoolTime);
+            Debug.Log("쿨타임돎");
             OnShooting?.Invoke();
         }
-
-        //Debug.Log(cooldown.IsCooldown(cooltimeName));
     }
-
     private void Move()
     {
-        OnMovement?.Invoke(enemySoData.speed, target, isMove);
+        OnMovement?.Invoke(enemySoData.weaponSoData.speed, target, isMove);
     }
     public void AttackDetect(float attackRadius)
     {
@@ -88,7 +81,6 @@ public class EnemyController : MonoBehaviour
             isMove = false;
             if (isRotate) //돌아봐야 한다면
             {
-
                 Quaternion rotTarget = Quaternion.LookRotation(target.position - this.transform.position);
                 this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, 150 * Time.deltaTime);
             }
@@ -102,7 +94,7 @@ public class EnemyController : MonoBehaviour
     }
     private void AttackRaycast(float distance)
     {
-        bool isFace = isHit.FaceDetect(distance, out isRotate, firePos);
+        bool isFace = isHit.FaceDetect(distance, out isRotate, this.transform);
         if (isFace) //레이케스트가 플레이어 맞았다면
         {
             Shooting();
@@ -111,10 +103,10 @@ public class EnemyController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(firePos.position,
-            firePos.forward * enemySoData.shootDistance);
+        Gizmos.DrawRay(transform.position,
+            transform.forward * enemySoData.weaponSoData.shootDistance);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, enemySoData.attackRadius);
+        Gizmos.DrawWireSphere(transform.position, enemySoData.weaponSoData.attackRadius);
     }
 }
