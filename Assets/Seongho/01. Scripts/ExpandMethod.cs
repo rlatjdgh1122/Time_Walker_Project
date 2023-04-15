@@ -20,6 +20,7 @@ public static class ExpandMethod
         if (Physics.Raycast(trm.position + Vector3.up,
            trm.forward, out hit, attackDistance))
         {
+            Debug.Log(hit.collider.tag);
             if (hit.collider.CompareTag("Player")) //플레이어가 맞으면 로테이트를 꺼주고 트루를 반환
             {
                 isRotate = false;

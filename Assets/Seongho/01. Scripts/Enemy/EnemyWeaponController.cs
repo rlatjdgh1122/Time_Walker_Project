@@ -33,7 +33,6 @@ public class EnemyWeaponController : MonoBehaviour
         weapon = Instantiate(weaponDataSO.Weapon, weaponPivot);
         fireLocalPos = weaponDataSO.firePos.localPosition;
 
-        Debug.Log(fireLocalPos);
         ammo = weaponDataSO.ammoCapacity;
     }
     public void shoot()
@@ -101,22 +100,14 @@ public class EnemyWeaponController : MonoBehaviour
         animController.ShootAnim();
 
         Vector3 randomPosition = fireLocalPos + Vector3.forward + Random.insideUnitSphere * weaponDataSO.spreadAngle;
-        Debug.Log("랜덤위치 : " + randomPosition);
-        Debug.Log("날아갈 방향 : " + Quaternion.Euler(fireLocalPos - randomPosition).normalized);
-        SpawnBullet(fireLocalPos, Quaternion.Euler(fireLocalPos - randomPosition).normalized);
-        Debug.Log("발사됨");
+        Quaternion rot = Quaternion.LookRotation(randomPosition - fireLocalPos);
+        Debug.Log("날아갈 방향 : " + rot);
+        SpawnBullet(fireLocalPos, rot);
     }
     private void SpawnBullet(Vector3 position, Quaternion rot)
     {
 
         RegularBullet b = PoolManager.Instance.Pop(weaponDataSO.bullet.name) as RegularBullet;
-
-        /* Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
-         Vector3 direction = (randomPosition - firePos.position);
-
-         regularBullet.Init();
-         regularBullet.SetPositionAndRotation(firePos.position,
-             Quaternion.LookRotation(direction));*/
         b.isEnemy = false;
     }
 

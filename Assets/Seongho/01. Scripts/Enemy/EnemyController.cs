@@ -53,6 +53,7 @@ public class EnemyController : MonoBehaviour
         Move();
         AttackDetect(weaponDataSO.attackRadius);
         Pause();
+        Debug.Log(isRotate);
     }
 
     private void Pause()
@@ -105,7 +106,7 @@ public class EnemyController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position,
+        Gizmos.DrawRay(transform.position + Vector3.up,
             transform.forward * weaponDataSO.shootDistance);
 
         Gizmos.color = Color.green;
