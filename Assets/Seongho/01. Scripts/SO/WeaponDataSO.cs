@@ -28,5 +28,6 @@ public class WeaponDataSO : ScriptableObject
     
     public int bulletCount;
 
+    public AnimatorOverrideController animatiorController;
     public AudioClip reloadClip;
 }

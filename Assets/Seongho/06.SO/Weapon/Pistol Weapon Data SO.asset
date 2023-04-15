@@ -15,12 +15,13 @@ MonoBehaviour:
   Weapon: {fileID: 6886621923722612385, guid: b59553771c7d2a14bba057e1b60da79d, type: 3}
   bullet: {fileID: 6259118857423753517, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
   meleeAttackWeapon: 0
-  attackCoolTime: 1
-  shootDistance: 10
+  attackCoolTime: 3
+  shootDistance: 1
   speed: 3
   ammoCapacity: 26
   weaponDelay: 1
   spreadAngle: 0
   reloadTime: 1.203
   bulletCount: 1
+  animatiorController: {fileID: 22100000, guid: 75726160c56fc3b41be5fcf1ec6b9309, type: 2}
   reloadClip: {fileID: 0}

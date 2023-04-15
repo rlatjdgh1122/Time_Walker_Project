@@ -10,18 +10,17 @@ using UnityEngine.Rendering;
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
-    private Animator anim;
+    private EnemyAnimationController animController;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        animController = GetComponent<EnemyAnimationController>();
     }
     public void MoveAgent(float speed, Transform target, bool isMove)
     {
         if (isMove)
         {
             agent.speed = speed;
-
             agent.SetDestination(target.position);
         }
         else
@@ -34,6 +33,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveAnimation(float speed)
     {
-        anim.SetFloat("Move", speed);
+        animController.MoveAnim(speed);
     }
 }

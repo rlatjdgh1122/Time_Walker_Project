@@ -8,12 +8,13 @@ using Random = UnityEngine.Random;
 
 public class EnemyWeaponController : MonoBehaviour
 {
+    private EnemyAnimationController animController;
     private WeaponDataSO weaponDataSO;
     public Transform weaponPivot;
 
-    public UnityEvent OnFeedbackShoot;
-    public UnityEvent OnFeedbackNoAmmo;
-    public UnityEvent OnFeedbackStopShooting;
+    /* public UnityEvent OnFeedbackShoot;
+     public UnityEvent OnFeedbackNoAmmo;
+     public UnityEvent OnFeedbackStopShooting;*/
 
     bool isShooting = false;
     bool isReloading = false;
@@ -22,7 +23,8 @@ public class EnemyWeaponController : MonoBehaviour
 
     private void Awake()
     {
-        weaponDataSO = GetComponent<EnemyController>().enemySoData.weaponSoData;
+        animController = GetComponent<EnemyAnimationController>();
+        weaponDataSO = GetComponent<EnemyController>().weaponDataSO;
     }
     private GameObject weapon;
     private Vector3 fireLocalPos;
@@ -42,23 +44,24 @@ public class EnemyWeaponController : MonoBehaviour
     }
     public void TryShooting()
     {
-        isShooting = true;
 
+        isShooting = true;
         if (isShooting && delayCoroutine == false)
         {
             if (ammo > 0)
             {
                 Debug.Log("발사 가능");
                 ammo--;
-                OnFeedbackShoot?.Invoke();
+                //OnFeedbackShoot?.Invoke();
                 Shooting();
+
             }
             else
             {
                 Debug.Log("총알이 다떨어짐");
                 isShooting = false;
                 Reloading();
-                OnFeedbackNoAmmo?.Invoke();
+                //OnFeedbackNoAmmo?.Invoke();
                 return;
             }
         }
@@ -67,10 +70,6 @@ public class EnemyWeaponController : MonoBehaviour
     private void FinishOneShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
-        if (weaponDataSO.meleeAttackWeapon == true)
-        {
-            isShooting = false;
-        }
     }
     private IEnumerator DelayNextShootCoroutine()
     {
@@ -89,11 +88,18 @@ public class EnemyWeaponController : MonoBehaviour
         isReloading = true;
         yield return new WaitForSeconds(weaponDataSO.reloadTime);
         isReloading = false;
-        Debug.Log("장전완료");
+        Reload();
     }
+    private void Reload()
+    {
+        ammo = weaponDataSO.ammoCapacity;
+    }
+
 
     private void Shooting()
     {
+        animController.ShootAnim();
+
         Vector3 randomPosition = fireLocalPos + Vector3.forward + Random.insideUnitSphere * weaponDataSO.spreadAngle;
         Debug.Log("랜덤위치 : " + randomPosition);
         Debug.Log("날아갈 방향 : " + Quaternion.Euler(fireLocalPos - randomPosition).normalized);
@@ -102,21 +108,21 @@ public class EnemyWeaponController : MonoBehaviour
     }
     private void SpawnBullet(Vector3 position, Quaternion rot)
     {
-    
+
         RegularBullet b = PoolManager.Instance.Pop(weaponDataSO.bullet.name) as RegularBullet;
 
-       /* Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
-        Vector3 direction = (randomPosition - firePos.position);
+        /* Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
+         Vector3 direction = (randomPosition - firePos.position);
 
-        regularBullet.Init();
-        regularBullet.SetPositionAndRotation(firePos.position,
-            Quaternion.LookRotation(direction));*/
+         regularBullet.Init();
+         regularBullet.SetPositionAndRotation(firePos.position,
+             Quaternion.LookRotation(direction));*/
         b.isEnemy = false;
     }
 
     public void StopShooting()
     {
         isShooting = false;
-        OnFeedbackStopShooting?.Invoke();
+        //OnFeedbackStopShooting?.Invoke();
     }
 }

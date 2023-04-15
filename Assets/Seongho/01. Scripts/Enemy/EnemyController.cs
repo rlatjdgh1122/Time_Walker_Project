@@ -12,7 +12,9 @@ using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    public EnemySoData enemySoData;
+    //public EnemySoData enemySoData;
+
+    public WeaponDataSO weaponDataSO;
 
     [HideInInspector]
     public bool isPause = false;
@@ -28,8 +30,8 @@ public class EnemyController : MonoBehaviour
     private bool isMove = true;
     private bool isRotate = false;
     private bool inAttackDetect;
-    private bool isHit;
-    private Collider[] cols;
+    private bool isHit = false;
+    private Collider[] cols = null;
 
     private string cooltimeName = "EnemyAttackCoolTime";
 
@@ -49,7 +51,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
-        AttackDetect(enemySoData.weaponSoData.attackRadius);
+        AttackDetect(weaponDataSO.attackRadius);
         Pause();
     }
 
@@ -63,14 +65,14 @@ public class EnemyController : MonoBehaviour
     {
         if (!cooldown.IsCooldown(cooltimeName))
         {
-            cooldown.SetCooldown(cooltimeName, enemySoData.weaponSoData.attackCoolTime);
+            cooldown.SetCooldown(cooltimeName, weaponDataSO.attackCoolTime);
             Debug.Log("ÄðÅ¸ÀÓµº");
             OnShooting?.Invoke();
         }
     }
     private void Move()
     {
-        OnMovement?.Invoke(enemySoData.weaponSoData.speed, target, isMove);
+        OnMovement?.Invoke(weaponDataSO.speed, target, isMove);
     }
     public void AttackDetect(float attackRadius)
     {
@@ -104,9 +106,9 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position,
-            transform.forward * enemySoData.weaponSoData.shootDistance);
+            transform.forward * weaponDataSO.shootDistance);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, enemySoData.weaponSoData.attackRadius);
+        Gizmos.DrawWireSphere(transform.position, weaponDataSO.attackRadius);
     }
 }
