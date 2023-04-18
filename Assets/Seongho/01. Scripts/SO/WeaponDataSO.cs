@@ -6,11 +6,6 @@ using UnityEngine;
 public class WeaponDataSO : ScriptableObject
 {
     public GameObject Weapon;
-    public GameObject bullet;
-   
-    public Transform firePos => Weapon.transform.Find("FirePos").transform;
-    public bool meleeAttackWeapon = false;
-
 
     public float attackCoolTime;
     public float shootDistance;
@@ -25,7 +20,7 @@ public class WeaponDataSO : ScriptableObject
     public float spreadAngle;
     [Range(1, 3f)]
     public float reloadTime;
-    
+
     public int bulletCount;
 
     public AnimatorOverrideController animatiorController;

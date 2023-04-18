@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/EnemySoData")]
 public class EnemySoData : ScriptableObject
 {
-    public WeaponDataSO weaponSoData;
+    public GameObject weaponObject;
+    public WeaponDataSO  weaponData => weaponObject.GetComponent<GunWeapon>().weaponDataSO;
 }

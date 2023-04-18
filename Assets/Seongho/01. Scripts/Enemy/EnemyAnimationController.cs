@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,13 @@ using UnityEngine;
 public class EnemyAnimationController : MonoBehaviour
 {
     private Animator anim;
-    private WeaponDataSO weaponDataSO;
+    private EnemySoData enemySoData;
     protected virtual void Awake()
     {
-        weaponDataSO = GetComponent<EnemyController>().weaponDataSO;
+        enemySoData = GetComponent<EnemyController>().EnemySoData;
         anim = GetComponent<Animator>();
 
-        anim.runtimeAnimatorController = weaponDataSO.animatiorController;
+        anim.runtimeAnimatorController = enemySoData.weaponData.animatiorController;
     }
     public void SetAnimatorController(AnimatorOverrideController animator)
     {

@@ -9,9 +9,10 @@ using Random = UnityEngine.Random;
 public class EnemyWeaponController : MonoBehaviour
 {
     private EnemyAnimationController animController;
-    private WeaponDataSO weaponDataSO;
+    private EnemySoData enemySoData;
     public Transform weaponPivot;
 
+    public Action OnShoot;
     /* public UnityEvent OnFeedbackShoot;
      public UnityEvent OnFeedbackNoAmmo;
      public UnityEvent OnFeedbackStopShooting;*/
@@ -24,16 +25,17 @@ public class EnemyWeaponController : MonoBehaviour
     private void Awake()
     {
         animController = GetComponent<EnemyAnimationController>();
-        weaponDataSO = GetComponent<EnemyController>().weaponDataSO;
+        enemySoData = GetComponent<EnemyController>().EnemySoData;
     }
-    private GameObject weapon;
-    private Vector3 fireLocalPos;
     private void Start()
     {
-        weapon = Instantiate(weaponDataSO.Weapon, weaponPivot);
-        fireLocalPos = weaponDataSO.firePos.localPosition;
 
-        ammo = weaponDataSO.ammoCapacity;
+        Init();
+        ammo = enemySoData.weaponData.ammoCapacity;
+    }
+    public void Init()
+    {
+        Instantiate(enemySoData.weaponObject, weaponPivot);
     }
     public void shoot()
     {
@@ -73,7 +75,7 @@ public class EnemyWeaponController : MonoBehaviour
     private IEnumerator DelayNextShootCoroutine()
     {
         delayCoroutine = true;
-        yield return new WaitForSeconds(weaponDataSO.weaponDelay);
+        yield return new WaitForSeconds(enemySoData.weaponData.weaponDelay);
         delayCoroutine = false;
     }
     private void Reloading()
@@ -85,32 +87,20 @@ public class EnemyWeaponController : MonoBehaviour
     {
         Debug.Log("장전타임");
         isReloading = true;
-        yield return new WaitForSeconds(weaponDataSO.reloadTime);
+        yield return new WaitForSeconds(enemySoData.weaponData.reloadTime);
         isReloading = false;
         Reload();
     }
     private void Reload()
     {
-        ammo = weaponDataSO.ammoCapacity;
+        ammo = enemySoData.weaponData.ammoCapacity;
     }
-
-
     private void Shooting()
     {
         animController.ShootAnim();
-
-        Vector3 randomPosition = fireLocalPos + Vector3.forward + Random.insideUnitSphere * weaponDataSO.spreadAngle;
-        Quaternion rot = Quaternion.LookRotation(randomPosition - fireLocalPos);
-        Debug.Log("날아갈 방향 : " + rot);
-        SpawnBullet(fireLocalPos, rot);
+        Debug.Log(OnShoot);
+        OnShoot?.Invoke();
     }
-    private void SpawnBullet(Vector3 position, Quaternion rot)
-    {
-
-        RegularBullet b = PoolManager.Instance.Pop(weaponDataSO.bullet.name) as RegularBullet;
-        b.isEnemy = false;
-    }
-
     public void StopShooting()
     {
         isShooting = false;
