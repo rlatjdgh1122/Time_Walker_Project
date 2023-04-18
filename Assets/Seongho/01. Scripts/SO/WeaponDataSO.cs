@@ -7,8 +7,7 @@ public class WeaponDataSO : ScriptableObject
 {
     public GameObject Weapon;
     public GameObject bullet;
-   
-    public Transform firePos => Weapon.transform.Find("FirePos").transform;
+    public Gun gunData;
     public bool meleeAttackWeapon = false;
 
 
@@ -25,9 +24,13 @@ public class WeaponDataSO : ScriptableObject
     public float spreadAngle;
     [Range(1, 3f)]
     public float reloadTime;
-    
+
     public int bulletCount;
 
+<<<<<<< Updated upstream
     public AnimatorOverrideController animatiorController;
+=======
+    public AnimatorOverrideController overrideController;
+>>>>>>> Stashed changes
     public AudioClip reloadClip;
 }

@@ -8,7 +8,13 @@ using Random = UnityEngine.Random;
 
 public class EnemyWeaponController : MonoBehaviour
 {
+<<<<<<< Updated upstream
     private EnemyAnimationController animController;
+=======
+    public
+        GameObject
+        a;
+>>>>>>> Stashed changes
     private WeaponDataSO weaponDataSO;
     public Transform weaponPivot;
 
@@ -26,13 +32,15 @@ public class EnemyWeaponController : MonoBehaviour
         animController = GetComponent<EnemyAnimationController>();
         weaponDataSO = GetComponent<EnemyController>().weaponDataSO;
     }
-    private GameObject weapon;
-    private Vector3 fireLocalPos;
     private void Start()
     {
+<<<<<<< Updated upstream
         weapon = Instantiate(weaponDataSO.Weapon, weaponPivot);
         fireLocalPos = weaponDataSO.firePos.localPosition;
 
+=======
+        GameObject weapon = GameObject.Instantiate(weaponDataSO.Weapon, weaponPivot);
+>>>>>>> Stashed changes
         ammo = weaponDataSO.ammoCapacity;
     }
     public void shoot()
@@ -97,6 +105,7 @@ public class EnemyWeaponController : MonoBehaviour
 
     private void Shooting()
     {
+<<<<<<< Updated upstream
         animController.ShootAnim();
 
         Vector3 randomPosition = fireLocalPos + Vector3.forward + Random.insideUnitSphere * weaponDataSO.spreadAngle;
@@ -108,8 +117,30 @@ public class EnemyWeaponController : MonoBehaviour
     {
 
         RegularBullet b = PoolManager.Instance.Pop(weaponDataSO.bullet.name) as RegularBullet;
+=======
+        Vector3 pos = transform.InverseTransformPoint(weaponDataSO.gunData.firePos.position);
+
+        GameObject gameObject = Instantiate(a, pos, Quaternion.identity);
+
+        Debug.Log(pos);
+
+        Vector3 randomPosition = pos + pos * 5 + Random.insideUnitSphere * weaponDataSO.spreadAngle;
+
+        Vector3 direction = (randomPosition - pos).normalized;
+        float deree1 = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+        float deree2 = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        RegularBullet b = PoolManager.Instance.Pop(weaponDataSO.bullet.name) as RegularBullet;
+        b.Init();
+        b.SetPositionAndRotation(pos, Quaternion.Euler(0, deree1, deree2));
+
+>>>>>>> Stashed changes
         b.isEnemy = false;
     }
+    /* private void SpawnBullet(Vector3 position, Quaternion rot)
+     {
+
+     }*/
 
     public void StopShooting()
     {
