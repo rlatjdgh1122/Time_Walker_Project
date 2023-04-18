@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 using static UnityEngine.Rendering.DebugUI;
@@ -14,15 +15,20 @@ public class RegularBullet : PoolableMono
 
     private Rigidbody rigid;
     private bool isDead = false;
+
+    private TrailRenderer trailRenderer;
     private void Awake()
     {
+        trailRenderer = GetComponent<TrailRenderer>();
         rigid = GetComponent<Rigidbody>();
+
+        trailRenderer.enabled = true;
     }
     private void Update()
     {
         //  transform.rotation = rot;
         timeToLive += Time.fixedDeltaTime;
-        transform.Translate(-Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
 
         if (timeToLive >= bulletData.lifeTime)
         {
@@ -70,7 +76,9 @@ public class RegularBullet : PoolableMono
     public override void Init()
     {
         isDead = false;
+        trailRenderer.enabled = true;
         timeToLive = 0;
+
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
         rot = Quaternion.identity;

@@ -11,7 +11,7 @@ public abstract class GunWeapon : MonoBehaviour
     private EnemyWeaponController enemyWeaponController = null;
     private void Awake()
     {
-        enemyWeaponController = transform.root.GetComponent<EnemyWeaponController>(); //최상위 부모ㄴ
+        enemyWeaponController = transform.root.GetComponent<EnemyWeaponController>(); //최상위 부모
 
     }
     private void Start()
@@ -20,7 +20,8 @@ public abstract class GunWeapon : MonoBehaviour
     }
     public virtual void Shoot()
     {
-        Vector3 randomPosition = firePos.position + firePos.forward * weaponDataSO.spreadAngle + Random.insideUnitSphere;
+        Vector3 randomPosition = firePos.position + firePos.right 
+            * weaponDataSO.spreadAngle + Random.insideUnitSphere; //이부분 수정필요
 
         float degreeY = Mathf.Atan2(randomPosition.z, firePos.position.x) * Mathf.Rad2Deg;
         float degreeZ = Mathf.Atan2(randomPosition.y, firePos.position.x) * Mathf.Rad2Deg;
