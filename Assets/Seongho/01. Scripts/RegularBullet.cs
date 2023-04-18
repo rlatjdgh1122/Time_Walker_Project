@@ -22,7 +22,7 @@ public class RegularBullet : PoolableMono
     {
         //  transform.rotation = rot;
         timeToLive += Time.fixedDeltaTime;
-        transform.Translate(Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
+        transform.Translate(-Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
 
         if (timeToLive >= bulletData.lifeTime)
         {
@@ -60,10 +60,12 @@ public class RegularBullet : PoolableMono
 
         }
     }
+    private Quaternion rot;
     public void SetPositionAndRotation(Vector3 pos, Quaternion rot)
     {
         transform.position = pos;
         transform.rotation = rot;
+        //this.rot = Quaternion.Euler(rot);
     }
     public override void Init()
     {
@@ -71,5 +73,6 @@ public class RegularBullet : PoolableMono
         timeToLive = 0;
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
+        rot = Quaternion.identity;
     }
 }
