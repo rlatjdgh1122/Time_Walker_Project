@@ -14,6 +14,7 @@ public class AttackState : CommonState
         base.SetUp(agentTransform);
         _playerAttack = agentTransform.GetComponent<PlayerAttack>();
         _playerAttack.OnAnimationEnd.AddListener(() => OnNormalState());
+        _actionData.isAttacking = true;
 
     }
 
@@ -21,6 +22,7 @@ public class AttackState : CommonState
         _agentInput.OnFireButtonPress += AgentAttackHandle;
         _agentMovement.StopImmediately();
         _attackCombo = 0;
+        _actionData.isAttacking = false;
     }
 
     public override void OnExitState()

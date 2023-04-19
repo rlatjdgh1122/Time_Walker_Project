@@ -28,6 +28,7 @@ public class AgentInput : MonoBehaviour
             }
             _timer = 0f;
         }
+
     }
 
     private void InputMovementKeyPress(){

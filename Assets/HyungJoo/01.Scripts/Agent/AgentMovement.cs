@@ -11,15 +11,15 @@ public class AgentMovement : MonoBehaviour
 
 
     private Vector3 _movementVelocity;
+    private Vector3 _dashVelocity;
     private float _verticalVelocity;
     private PlayerActionData _actionData;
     public bool isMove = false;
-    private void Awake()
-    {
+
+    private void Awake(){
         _controller = GetComponent<CharacterController>();
         _playerAttack = GetComponent<PlayerAttack>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
-
     }
 
     private void FixedUpdate(){
@@ -32,18 +32,25 @@ public class AgentMovement : MonoBehaviour
         }
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
+        _controller.Move(_dashVelocity);
+    }
+
+    private void CalculateMovement(){
+        _movementVelocity.Normalize();
+        _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
     }
     public void StopImmediately(){
         _movementVelocity = Vector3.zero;
+        _dashVelocity = Vector3.zero;
+    }
+    public void SetDashVelocity(Vector3 velocity){
+        _dashVelocity = velocity;
     }
     public void SetMovementVelocity(Vector3 velocity){
         this._movementVelocity = velocity;
     }
     
-    private void CalculateMovement(){
-        _movementVelocity.Normalize();
-        _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
-    }
+
 
     public void CalculateTimeScale(){
         if(_actionData.isAttacking){

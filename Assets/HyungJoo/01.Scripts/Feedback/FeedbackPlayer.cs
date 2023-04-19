@@ -7,6 +7,7 @@ public class FeedbackPlayer : MonoBehaviour{
     public List<Feedback> feedbackList = new List<Feedback>();
 
     public void PlayFeedback(){
+                feedbackList.ForEach(f => f.CompleteFeedback());
         feedbackList.ForEach(f => f.CreateFeedback());
     }
 
