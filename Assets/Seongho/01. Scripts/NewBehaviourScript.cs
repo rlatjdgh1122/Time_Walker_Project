@@ -6,31 +6,36 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     RegularBullet regularBullet;
-    public GameObject gameObject;
+    public RegularBullet gameObject;
     public Transform firePos;
+    public float spreadAngle;
+
     private void Awake()
     {
         regularBullet = GameObject.Find("PistolBullet").GetComponent<RegularBullet>();
     }
     private void Start()
     {
-        Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
-        Vector3 direction = (randomPosition - firePos.position);
+        Vector3 randomPosition = firePos.forward
+            * 5 + Random.insideUnitSphere * spreadAngle; //이부분 수정필요
 
-        regularBullet.Init();
-        regularBullet.SetPositionAndRotation(firePos.position,
-            Quaternion.LookRotation(direction));
+        float degreeY = Mathf.Atan2(randomPosition.z, firePos.position.x) * Mathf.Rad2Deg;
+        float degreeZ = Mathf.Atan2(randomPosition.y, firePos.position.x) * Mathf.Rad2Deg;
+
+        gameObject.SetPositionAndRotation(firePos.position, Quaternion.Euler(0, degreeY, degreeZ));
+        gameObject.isEnemy = false;
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Vector3 randomPosition = firePos.position + firePos.forward + (Vector3)Random.insideUnitCircle * 1;
-            Vector3 direction = (randomPosition - firePos.position);
+            Vector3 randomPosition = firePos.forward * 10
+            + Random.insideUnitSphere * spreadAngle; //이부분 수정필요
+            float degreeY = Mathf.Atan2(randomPosition.z, firePos.position.x) * Mathf.Rad2Deg;
+            float degreeZ = Mathf.Atan2(randomPosition.y, firePos.position.x) * Mathf.Rad2Deg;
 
-            regularBullet.Init();
-            regularBullet.SetPositionAndRotation(firePos.position,
-                Quaternion.LookRotation(direction));
+            gameObject.SetPositionAndRotation(firePos.position, Quaternion.Euler(0, degreeY, degreeZ));
+            gameObject.isEnemy = false;
         }
     }
 }

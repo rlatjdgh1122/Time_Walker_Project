@@ -11,7 +11,7 @@ public class RegularBullet : PoolableMono
 
     [SerializeField]
     private BulletDataSO bulletData;
-    private float timeToLive;
+    private float timeToLive = 0;
 
     private Rigidbody rigid;
     private bool isDead = false;
@@ -27,13 +27,13 @@ public class RegularBullet : PoolableMono
     private void Update()
     {
         //  transform.rotation = rot;
-        timeToLive += Time.fixedDeltaTime;
+        timeToLive += Time.deltaTime;
         transform.Translate(Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
 
         if (timeToLive >= bulletData.lifeTime)
         {
             isDead = true;
-            PoolManager.Instance.Push(this);
+            //PoolManager.Instance.Push(this);
         }
     }
 
@@ -75,9 +75,9 @@ public class RegularBullet : PoolableMono
     }
     public override void Init()
     {
+        timeToLive = 0;
         isDead = false;
         trailRenderer.enabled = true;
-        timeToLive = 0;
 
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
