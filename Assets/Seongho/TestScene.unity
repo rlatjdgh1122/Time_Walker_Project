@@ -335,11 +335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6743872010239167383, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6743872010239167383, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.377
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6743872010239167383, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObject: {fileID: 1787920362}
   firePos: {fileID: 1042758192}
-  spreadAngle: 1
+  spreadAngle: 0
 --- !u!114 &1787920362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1084446135648771116, guid: 2584db6353aff214f9b95812881fc78b, type: 3}

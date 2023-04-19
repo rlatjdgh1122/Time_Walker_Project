@@ -20,12 +20,13 @@ public class EnemyMovement : MonoBehaviour
     {
         if (isMove)
         {
+            agent.isStopped = false;
             agent.speed = speed;
             agent.SetDestination(target.position);
         }
         else
         {
-            agent.speed = 0;
+            agent.isStopped = true;
             agent.SetDestination(Vector3.zero);
         }
         MoveAnimation(agent.speed);

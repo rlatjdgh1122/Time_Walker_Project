@@ -28,7 +28,7 @@ public class RegularBullet : PoolableMono
     {
         //  transform.rotation = rot;
         timeToLive += Time.deltaTime;
-        transform.Translate(Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
+        transform.Translate(-Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
 
         if (timeToLive >= bulletData.lifeTime)
         {
@@ -48,7 +48,7 @@ public class RegularBullet : PoolableMono
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            HitEnemy(collision);
+            HitPlayer(collision);
         }
         isDead = true;
         PoolManager.Instance.Push(this);
@@ -59,14 +59,13 @@ public class RegularBullet : PoolableMono
         {
         }
     }
-    private void HitEnemy(Collider collision)
+    private void HitPlayer(Collider collision)
     {
         if (collision != null)
         {
 
         }
     }
-    private Quaternion rot;
     public void SetPositionAndRotation(Vector3 pos, Quaternion rot)
     {
         transform.position = pos;
@@ -81,6 +80,5 @@ public class RegularBullet : PoolableMono
 
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
-        rot = Quaternion.identity;
     }
 }
