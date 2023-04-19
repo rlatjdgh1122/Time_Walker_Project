@@ -7,11 +7,14 @@ public class SwordAnimator : AgentAnimator{
     private readonly int _isAttackHash = Animator.StringToHash("IS_ATTACK");
     private PlayerAttack _playerAttack;
     private AttackState _attackState;
-
+    private AgentMovement _movement;
+    private PlayerActionData _actionData;
     protected override void Awake(){
         base.Awake();
-        _playerAttack = transform.GetComponentInParent<PlayerAttack>();
-        _attackState = _playerAttack.transform.Find("States").GetComponent<AttackState>();
+        _playerAttack = _agentTransform.GetComponentInParent<PlayerAttack>();
+        _attackState = _agentTransform.Find("States").GetComponent<AttackState>();
+        _movement = _agentTransform.GetComponent<AgentMovement>();
+        _actionData = _agentTransform.Find("ActionData").GetComponent<PlayerActionData>();
     }
     private void Update() {
     }
@@ -23,7 +26,7 @@ public class SwordAnimator : AgentAnimator{
 
     public void EndAttackAnimation(){
         _playerAttack.OnAnimationEnd?.Invoke();
-        _playerAttack.isAttacking = false;
+        _actionData.isAttacking = false;
         _animator.SetBool(_isAttackHash, false);
         _attackState.SetKeyDelay(0.5f);
         TimeController.Instance.SetTimeScale(0.1f,false);
@@ -37,6 +40,9 @@ public class SwordAnimator : AgentAnimator{
             _animator.SetTrigger(_attackHash);
             _animator.SetBool(_isAttackHash, value);
         }
+    }
+    public void AttackAnimationMove(){
+        _movement.SetMovementVelocity(Vector3.forward);
     }
 
 }

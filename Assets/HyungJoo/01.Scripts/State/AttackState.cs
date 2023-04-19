@@ -9,6 +9,7 @@ public class AttackState : CommonState
     private float _keyTimer = 0f;
 
 
+
     public override void SetUp(Transform agentTransform){
         base.SetUp(agentTransform);
         _playerAttack = agentTransform.GetComponent<PlayerAttack>();
@@ -29,7 +30,7 @@ public class AttackState : CommonState
     }
 
     public override void UpdateState(){
-        if(!_playerAttack.isAttacking && _keyTimer > 0f){
+        if(!_actionData.isAttacking && _keyTimer > 0f){
             _keyTimer -= Time.deltaTime;
             if(_keyTimer <= 0f){
                 _agentController.ChangeState(StateType.Normal);
@@ -43,9 +44,14 @@ public class AttackState : CommonState
     }
     public void AgentAttackHandle()
     {
-        if(!_playerAttack.isAttacking && _attackCombo < 3){            
+        if(!_actionData.isAttacking && _attackCombo < 3){            
             _playerAttack.TryToAttack();
             _attackCombo++;
+        }
+    }
+    public void AgentDashHandle(){
+        if(!_actionData.isAttacking){
+            _playerAttack.TryDash();
         }
     }
 
