@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Start()
     {
-        target = GameManager.Instance.taget.transform;
+        target = GameManager.Instance.target.transform;
 
         cooldown = new CooldownManager();
         cooldown.SetCooldown("EnemyAttackCoolTime", enemySoData.attackCoolTime);
