@@ -6210,6 +6210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
+  hitPos: {x: 0, y: 0, z: 0}
+  hitNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &1537162410
 GameObject:
   m_ObjectHideFlags: 0
@@ -11004,6 +11006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4226019356419439343, guid: 8200df04f92bc624baaebdf582763e85, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4226019356588042241, guid: 8200df04f92bc624baaebdf582763e85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11016,7 +11022,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4226019356419439329, guid: 8200df04f92bc624baaebdf582763e85, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8200df04f92bc624baaebdf582763e85, type: 3}
 --- !u!4 &4226019355146131604 stripped
 Transform:

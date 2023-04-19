@@ -25,11 +25,7 @@ public class AgentMovement : MonoBehaviour
     private void FixedUpdate(){
         CalculateMovement();
         CalculateTimeScale();
-        if (_controller.isGrounded == false)
-        {
-            _verticalVelocity = _gravityScale * Time.fixedDeltaTime;
-            TimeController.Instance.SetTimeScale(1f, false);
-        }
+
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);
@@ -53,21 +49,27 @@ public class AgentMovement : MonoBehaviour
 
 
     public void CalculateTimeScale(){
-        if(_actionData.isAttacking){
+        if(_actionData.isAttacking || _controller.isGrounded == false){
+            Debug.Log("IsGrounded: " + _controller.isGrounded);
             TimeController.Instance.SetTimeScale(1f,true);
+            if(_controller.isGrounded == false)
+                _verticalVelocity = _gravityScale * Time.fixedDeltaTime;
             return;
         }
-        if(_movementVelocity.magnitude < 0.05f){
-            if(TimeController.Instance.GetCurrentTime() < 0.05f){
-                TimeController.Instance.SetTimeScale(1f, false);
-                return;
-            }
-            TimeController.Instance.SetTimeScale(0.1f,false);
-            isMove  = false;
-        }
-        else{
+        if(_movementVelocity.magnitude > 0.00001f){
+            Debug.Log("Player is Moving");
             TimeController.Instance.SetTimeScale(1f,true);
             isMove = true;
+        }
+         else if(_movementVelocity.magnitude < 0.0001f){ //움직이지 않을때
+            if(TimeController.Instance.GetCurrentTime() < 0.05f){
+                TimeController.Instance.SetTimeScale(1f, false);
+            }
+
+            else{
+                TimeController.Instance.SetTimeScale(0.1f,false);
+                isMove  = false;
+            }
         }
     }
 }

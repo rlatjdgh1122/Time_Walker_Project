@@ -5,10 +5,16 @@ using UnityEngine;
 public class SwordAnimator : AgentAnimator{
     private readonly int _attackHash = Animator.StringToHash("attack");
     private readonly int _isAttackHash = Animator.StringToHash("IS_ATTACK");
+    private readonly int _dashTriggerhash = Animator.StringToHash("IS_DASH");
+    private readonly int _dashBoolHash = Animator.StringToHash("dash");
+
+
     private PlayerAttack _playerAttack;
     private AttackState _attackState;
     private AgentMovement _movement;
     private PlayerActionData _actionData;
+
+    
     protected override void Awake(){
         base.Awake();
         _playerAttack = _agentTransform.GetComponentInParent<PlayerAttack>();
@@ -31,6 +37,7 @@ public class SwordAnimator : AgentAnimator{
         _attackState.SetKeyDelay(0.5f);
         TimeController.Instance.SetTimeScale(0.1f,false);
     }
+
     public void SetTriggerAttack(bool value){
         if(!value){
             _animator.ResetTrigger(_attackHash);
