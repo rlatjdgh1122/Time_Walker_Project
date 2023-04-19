@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject Target;
     public GameObject target => Target;
+
     private void Awake()
     {
         if (Instance == null)
@@ -26,7 +28,6 @@ public class GameManager : MonoBehaviour
         PoolManager manager = new PoolManager(this.transform);
         TimeController controller = transform.AddComponent<TimeController>();
         
-        Debug.Log(manager);
         foreach(PoolClass p in _poolingList.poolingList)
         {
             manager.CreatePool(p.poolObject, p.poolCount);

@@ -10,30 +10,30 @@ using UnityEngine.Rendering;
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
-    private Animator anim;
+    private EnemyAnimationController animController;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        animController = GetComponent<EnemyAnimationController>();
     }
     public void MoveAgent(float speed, Transform target, bool isMove)
     {
         if (isMove)
         {
+            agent.isStopped = false;
             agent.speed = speed;
-
             agent.SetDestination(target.position);
         }
         else
         {
-            agent.speed = 0;
-            agent.SetDestination(this.transform.position);
+            agent.isStopped = true;
+            agent.SetDestination(Vector3.zero);
         }
         MoveAnimation(agent.speed);
     }
 
     private void MoveAnimation(float speed)
     {
-        anim.SetFloat("Move", speed);
+        animController.MoveAnim(speed);
     }
 }
