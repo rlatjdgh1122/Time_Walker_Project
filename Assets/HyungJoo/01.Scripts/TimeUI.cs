@@ -12,6 +12,6 @@ public class TimeUI : MonoBehaviour
 
     private void Update(){
         _slider.value = TimeController.Instance.GetCurrentTime();
-        Debug.Log(TimeController.Instance.GetCurrentTime());
+        //Debug.Log(TimeController.Instance.GetCurrentTime());
     }
 }
