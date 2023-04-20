@@ -7,8 +7,6 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class RegularBullet : PoolableMono
 {
-    public bool isEnemy; //ÀûÀÇ ÃÑ??
-
     [SerializeField]
     private BulletDataSO bulletData;
     private float timeToLive = 0;

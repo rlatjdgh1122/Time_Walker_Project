@@ -27,7 +27,6 @@ public abstract class GunWeapon : MonoBehaviour
 
         RegularBullet b = PoolManager.Instance.Pop(bullet.name) as RegularBullet;
         b.SetPositionAndRotation(firePos.position, Quaternion.Euler(0, degreeY, degreeZ));
-        b.isEnemy = false;
       
     }
 }
