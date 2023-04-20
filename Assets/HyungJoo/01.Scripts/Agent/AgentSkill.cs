@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentSkill : MonoBehaviour{
     protected AgentInput _agentInput;
@@ -11,6 +12,10 @@ public class AgentSkill : MonoBehaviour{
     protected PlayerActionData _actionData;
     protected SwordAnimator _animator;
     
+
+    public UnityEvent OnDashStart;
+    public UnityEvent OnDashEnd;
+
     private void Awake() {
         _agentInput  = GetComponent<AgentInput>();
         _agentMovement = GetComponent<AgentMovement>();
@@ -36,9 +41,11 @@ public class AgentSkill : MonoBehaviour{
 
     IEnumerator DashCorotuine(float power){
         _animator.DashAnimation(true);
+        OnDashStart?.Invoke();
         _agentMovement.SetDashVelocity(transform.forward * power);
         yield return new WaitForSeconds(0.15f);
         _agentMovement.StopImmediately();
+        OnDashEnd?.Invoke();
         _actionData.isAttacking = false;
         _animator.DashAnimation(false);
     }

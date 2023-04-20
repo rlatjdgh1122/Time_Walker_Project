@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.Events;
 public class AgentInput : MonoBehaviour{
     public event Action OnFireButtonPress;
     public event Action<Vector3> OnMovementKeyPress;
