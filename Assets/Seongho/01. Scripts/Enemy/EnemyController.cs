@@ -5,17 +5,19 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEditor.Build;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]
-    private EnemySoData enemySoData;
+    //public EnemySoData enemySoData;
 
+    public EnemySoData EnemySoData;
+
+    [HideInInspector]
     public bool isPause = false;
-
 
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform, bool> OnMovement;
@@ -24,12 +26,15 @@ public class EnemyController : MonoBehaviour
 
 
     private Transform target;
-    private CooldownManager cooldown;
+    private CooldownManager cooldown = new CooldownManager();
     private bool isMove = true;
     private bool isRotate = false;
     private bool inAttackDetect;
-    private bool isHit;
-    private Collider[] cols;
+    private bool isHit = false;
+    private Collider[] cols = null;
+
+    private string cooltimeName = "EnemyAttackCoolTime";
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -37,9 +42,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         target = GameManager.Instance.target.transform;
-
-        cooldown = new CooldownManager();
-        cooldown.SetCooldown("EnemyAttackCoolTime", enemySoData.attackCoolTime);
     }
     private void FixedUpdate()
     {
@@ -49,8 +51,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
-        AttackDetect(enemySoData.attackRadius);
-
+        AttackDetect(EnemySoData.weaponData.attackRadius);
         Pause();
     }
 
@@ -62,55 +63,52 @@ public class EnemyController : MonoBehaviour
     }
     public void Shooting()
     {
-        if (cooldown.IsCooldown("EnemyAttackCoolTime"))
+        if (!cooldown.IsCooldown(cooltimeName))
+        {
+            cooldown.SetCooldown(cooltimeName, EnemySoData.weaponData.attackCoolTime);
+            Debug.Log("쿨타임돎");
             OnShooting?.Invoke();
+        }
     }
-
     private void Move()
     {
-        OnMovement?.Invoke(enemySoData.speed, target, isMove);
+        OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
     }
     public void AttackDetect(float attackRadius)
     {
         AttackRaycast(attackRadius);
-
         inAttackDetect = cols.AttackDetect(attackRadius, transform.position);
-        if (inAttackDetect && isRotate) //범위 안에 들어왔다면
+        if (inAttackDetect)
         {
-            isMove = false; //움직임을 멈춤
-
-            Vector3 rot = new Vector3(target.position.x, transform.position.y, target.position.z);
-            transform.LookAt(rot); //플레이어를 계속해서 쳐다봄
+            isMove = false;
+            if (isRotate) //돌아봐야 한다면
+            {
+                Quaternion rotTarget = Quaternion.LookRotation(target.position - this.transform.position);
+                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, 150 * Time.deltaTime);
+            }
+            else if (!isRotate)
+            {
+                transform.LookAt(this.transform);
+            }
         }
         else
-        {
-            transform.LookAt(this.transform);
-            isMove = true; //움직임을 멈춤
-            Shooting();
-        }
+            isMove = true;
     }
     private void AttackRaycast(float distance)
     {
-        RaycastHit hit;
-        bool isFace = isHit.FaceDetect(distance, out hit, transform);
-        if (isFace)
+        bool isFace = isHit.FaceDetect(distance, out isRotate, this.transform);
+        if (isFace) //레이케스트가 플레이어 맞았다면
         {
-            Vector3 targetCenterPos =
-            hit.collider.bounds.center;
-            if (hit.point == targetCenterPos) //플레이어를 발견했다면 
-            {
-                isRotate = false;
-            }
-            else isRotate = true;
+            Shooting();
         }
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position + Vector3.up,
-            transform.forward * enemySoData.shootDistance);
+            transform.forward * EnemySoData.weaponData.shootDistance);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, enemySoData.attackRadius);
+        Gizmos.DrawWireSphere(transform.position, EnemySoData.weaponData.attackRadius);
     }
 }

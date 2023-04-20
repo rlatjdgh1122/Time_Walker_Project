@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/EnemySoData")]
 public class EnemySoData : ScriptableObject
 {
-    public float attackCoolTime;
-    public float shootDistance;
-    public float speed;
-    public float attackRadius => shootDistance;
-
+    public GameObject weaponObject;
+    public WeaponDataSO  weaponData => weaponObject.GetComponent<GunWeapon>().weaponDataSO;
 }

@@ -7,18 +7,26 @@ public static class ExpandMethod
 {
     public static bool AttackDetect(this Collider[] col, float attackRadius, Vector3 pos)
     {
-        col = Physics.OverlapSphere(pos, attackRadius, LayerMask.GetMask("Player"));
+        col = Physics.OverlapSphere(pos, attackRadius, 1 << LayerMask.NameToLayer("Player"));
         if (col.Length > 0)
         {
             return true;
         }
         else return false;
     }
-    public static bool FaceDetect(this bool facBool, float attackDistance, out RaycastHit hit, Transform trm)
+    public static bool FaceDetect(this bool facBool, float attackDistance, out bool isRotate, Transform trm)
     {
-        facBool = Physics.Raycast(trm.position + Vector3.up,
-           trm.forward, out hit, attackDistance, LayerMask.GetMask("Player"));
-
-        return facBool;
+        RaycastHit hit;
+        if (Physics.Raycast(trm.position + Vector3.up,
+           trm.forward, out hit, attackDistance))
+        {
+            if (hit.collider.CompareTag("Player")) //플레이어가 맞으면 로테이트를 꺼주고 트루를 반환
+            {
+                isRotate = false;
+                return true;
+            }
+        }
+        isRotate = true;
+        return false;
     }
 }
