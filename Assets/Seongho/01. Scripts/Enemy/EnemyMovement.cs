@@ -29,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = true;
             agent.SetDestination(Vector3.zero);
         }
+
         MoveAnimation(agent.speed);
     }
 

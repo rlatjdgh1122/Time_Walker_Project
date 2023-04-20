@@ -18,8 +18,8 @@ MonoBehaviour:
   speed: 3
   ammoCapacity: 100
   weaponDelay: 0
-  spreadAngle: 0
+  spreadAngle: 25.4
   reloadTime: 3
-  bulletCount: 1
+  bulletCount: 10
   animatiorController: {fileID: 22100000, guid: 40a89cbcdf408a545bac6e50268742db, type: 2}
   reloadClip: {fileID: 0}

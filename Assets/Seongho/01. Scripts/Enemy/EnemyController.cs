@@ -16,9 +16,6 @@ public class EnemyController : MonoBehaviour
 
     public EnemySoData EnemySoData;
 
-    [HideInInspector]
-    public bool isPause = false;
-
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform, bool> OnMovement;
 
@@ -27,6 +24,7 @@ public class EnemyController : MonoBehaviour
 
     private Transform target;
     private CooldownManager cooldown = new CooldownManager();
+
     private bool isMove = true;
     private bool isRotate = false;
     private bool inAttackDetect;
@@ -52,14 +50,6 @@ public class EnemyController : MonoBehaviour
     {
         Move();
         AttackDetect(EnemySoData.weaponData.attackRadius);
-        Pause();
-    }
-
-    private void Pause()
-    {
-        if (isPause)
-            Time.timeScale = 0;
-        else Time.timeScale = 1;
     }
     public void Shooting()
     {
@@ -68,6 +58,7 @@ public class EnemyController : MonoBehaviour
             cooldown.SetCooldown(cooltimeName, EnemySoData.weaponData.attackCoolTime);
             Debug.Log("ÄðÅ¸ÀÓµº");
             OnShooting?.Invoke();
+            Debug.Log("¹ß»ç");
         }
     }
     private void Move()
