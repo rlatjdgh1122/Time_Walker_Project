@@ -9,11 +9,12 @@ public class AgentInput : MonoBehaviour{
     public event Action<float> OnDashButtonPress;
 
     protected SwordAnimator _animator;
-
+    protected CameraHandler _cameraHandler;
     private float _timer = 0f;
 
     private void Awake() {
         _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>();
+        _cameraHandler = GetComponent<CameraHandler>();
     }
     
     private void Update() {
@@ -28,6 +29,7 @@ public class AgentInput : MonoBehaviour{
             _timer = Mathf.Clamp(_timer,0,2f);
             TimeController.Instance.SetTimeScale(1f,false);
             _animator.SetDashBool(true);
+            _cameraHandler.CameraZoom(_timer);
         }
 
         if(Input.GetKeyUp(KeyCode.Space)){
@@ -36,6 +38,7 @@ public class AgentInput : MonoBehaviour{
             if(_timer > 0.7f){
                 OnDashButtonPress?.Invoke(_timer);
             }
+            _cameraHandler.ResetCamera();
             _timer = 0f;
         }
     }

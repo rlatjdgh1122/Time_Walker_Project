@@ -29,6 +29,7 @@ public class AgentMovement : MonoBehaviour{
 
         if(_controller.isGrounded == false){
             _verticalVelocity = _gravityScale * Time.fixedDeltaTime;
+            TimeController.Instance.SetTimeScale(1f,false);
         }else{
             _verticalVelocity = _gravityScale * 0.2f * Time.fixedDeltaTime;
         }

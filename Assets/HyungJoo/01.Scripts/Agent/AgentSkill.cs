@@ -28,6 +28,8 @@ public class AgentSkill : MonoBehaviour{
     private void Start() {
         _agentInput.OnDashButtonPress += Dash;
     }
+    
+    
 
     public void Dash(float power){
         _actionData.isAttacking = true;
