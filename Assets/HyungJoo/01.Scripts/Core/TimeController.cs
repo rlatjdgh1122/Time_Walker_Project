@@ -18,13 +18,14 @@ public class TimeController : MonoBehaviour{
     }
 
     private void Update() {
-        _timer = Mathf.Clamp(_timer,0f,_maxValue);
+        Debug.Log("Can Plus Timer: " + canPlusTimer);
         if(canPlusTimer){
             _timer += Time.unscaledDeltaTime;
         }
         else{
             _timer -= Time.unscaledDeltaTime;
         }
+        _timer = Mathf.Clamp(_timer,0f,_maxValue);
     }
     public void SetTimeScale(float timeScale,bool canPlusTimer){
         Time.timeScale = timeScale;
