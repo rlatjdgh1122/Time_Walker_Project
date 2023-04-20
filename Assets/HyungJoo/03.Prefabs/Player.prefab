@@ -59,7 +59,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cc5910c17edd4e88ce73fe257e609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodScreen: {fileID: 0}
+--- !u!1 &1519665251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519665252}
+  - component: {fileID: 1519665253}
+  m_Layer: 6
+  m_Name: ActionData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519665252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519665251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4226019356419439332}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1519665253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519665251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29ffa9fd0ea5654f8cc6cd3870ac1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  isGrounded: 0
+  hitPos: {x: 0, y: 0, z: 0}
+  hitNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &4226019355852567723
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +318,6 @@ GameObject:
   - component: {fileID: 4226019356419439332}
   - component: {fileID: 4226019356419439331}
   - component: {fileID: 4226019356419439330}
-  - component: {fileID: 4226019356419439329}
   - component: {fileID: 4226019356419439328}
   - component: {fileID: 4226019356419439343}
   - component: {fileID: 4226019356419439333}
@@ -279,6 +325,7 @@ GameObject:
   - component: {fileID: 4226019356419439335}
   - component: {fileID: 4226019356419439352}
   - component: {fileID: 4226019355146131594}
+  - component: {fileID: 4226019355146131614}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -302,6 +349,7 @@ Transform:
   - {fileID: 4226019356405711933}
   - {fileID: 4226019355852567724}
   - {fileID: 411213041}
+  - {fileID: 1519665252}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -355,20 +403,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4226019356419439329
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4226019356419439342}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4226019356419439328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +431,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4226019356419439333
 MonoBehaviour:
@@ -413,6 +447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 8
   _gravityScale: -9.81
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
   isMove: 0
 --- !u!114 &4226019356419439334
 MonoBehaviour:
@@ -454,7 +491,15 @@ MonoBehaviour:
   OnAnimationEnd:
     m_PersistentCalls:
       m_Calls: []
-  isAttacking: 0
+  _attackRadius: 1
+  _attackRadiusPlus: 0.5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _damageSO: {fileID: 0}
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4226019355146131594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,9 +513,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpSO: {fileID: 11400000, guid: 8b8a42948d6e55c4899b2969e0a7e54f, type: 2}
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HPSlider, Assembly-CSharp
+        m_MethodName: SetSliderValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BloodScreen, Assembly-CSharp
+        m_MethodName: ShowingSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4226019355146131614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4226019356419439342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ced7a3fdb770845ba153e567ee3eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4226019356588042254
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4226019356588042254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11948323, y: 0.2700435, z: -0.35158777}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -536,7 +632,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -674,4 +770,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1623d028f4bbd40b5c52ef25cad910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPower: 0

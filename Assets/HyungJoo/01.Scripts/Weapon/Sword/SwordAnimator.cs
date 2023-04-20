@@ -5,24 +5,21 @@ using UnityEngine;
 public class SwordAnimator : AgentAnimator{
     private readonly int _attackHash = Animator.StringToHash("attack");
     private readonly int _isAttackHash = Animator.StringToHash("IS_ATTACK");
-    private readonly int _dashTriggerhash = Animator.StringToHash("IS_DASH");
-    private readonly int _dashBoolHash = Animator.StringToHash("dash");
 
+    private readonly int _dashBoolHash = Animator.StringToHash("IS_DASH");
+    private readonly int _dashTriggerhash = Animator.StringToHash("dash");
 
     private PlayerAttack _playerAttack;
     private AttackState _attackState;
     private AgentMovement _movement;
     private PlayerActionData _actionData;
 
-    
     protected override void Awake(){
         base.Awake();
         _playerAttack = _agentTransform.GetComponentInParent<PlayerAttack>();
         _attackState = _agentTransform.Find("States").GetComponent<AttackState>();
         _movement = _agentTransform.GetComponent<AgentMovement>();
         _actionData = _agentTransform.Find("ActionData").GetComponent<PlayerActionData>();
-    }
-    private void Update() {
     }
     
     public void OnAttackAnimation(){
@@ -48,6 +45,19 @@ public class SwordAnimator : AgentAnimator{
             _animator.SetBool(_isAttackHash, value);
         }
     }
+
+    public void SetDashBool(bool value){
+        _animator.SetBool(_dashBoolHash,value);
+    }
+
+    public void DashAnimation(bool value){
+        if(value){
+            _animator.SetTrigger(_dashTriggerhash);
+        }else{
+            _animator.ResetTrigger(_dashTriggerhash);
+        }
+    }
+
     public void AttackAnimationMove(){
         _movement.SetMovementVelocity(Vector3.forward);
     }

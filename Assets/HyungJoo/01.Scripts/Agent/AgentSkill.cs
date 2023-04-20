@@ -9,12 +9,14 @@ public class AgentSkill : MonoBehaviour{
     protected AgentAttack _agentAttack;
     protected AgentController _agentController;
     protected PlayerActionData _actionData;
+    protected SwordAnimator _animator;
     
     private void Awake() {
         _agentInput  = GetComponent<AgentInput>();
         _agentMovement = GetComponent<AgentMovement>();
         _agentAttack = GetComponent<AgentAttack>();
         _agentController = GetComponent<AgentController>();
+        _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>(); 
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 
@@ -25,7 +27,6 @@ public class AgentSkill : MonoBehaviour{
     public void Dash(float power){
         _actionData.isAttacking = true;
         StartCoroutine(DashCorotuine(power));
-        
         RaycastHit hit;
         bool isHit = Physics.BoxCast(transform.position,transform.lossyScale,transform.forward,out hit,Quaternion.identity,5f);
         if(isHit){
@@ -34,9 +35,11 @@ public class AgentSkill : MonoBehaviour{
     }
 
     IEnumerator DashCorotuine(float power){
+        _animator.DashAnimation(true);
         _agentMovement.SetDashVelocity(transform.forward * power);
         yield return new WaitForSeconds(0.15f);
         _agentMovement.StopImmediately();
         _actionData.isAttacking = false;
+        _animator.DashAnimation(false);
     }
 }

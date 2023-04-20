@@ -51,7 +51,7 @@ public class AgentMovement : MonoBehaviour{
     public void SetDashVelocity(Vector3 velocity){
         _dashVelocity = velocity;
     }
-
+    
     public void SetMovementVelocity(Vector3 velocity){
         this._movementVelocity = velocity;
     }
