@@ -19,7 +19,6 @@ public class NewBehaviourScript : MonoBehaviour
             float degreeZ = Mathf.Atan2(randomPosition.y, firePos.position.x) * Mathf.Rad2Deg;
 
             gameObject.SetPositionAndRotation(firePos.position, Quaternion.Euler(0, degreeY, degreeZ));
-            gameObject.isEnemy = false;
         }
     }
 }
