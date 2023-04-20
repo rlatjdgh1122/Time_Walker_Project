@@ -9,17 +9,15 @@ public class MouseHandler : MonoBehaviour
     [SerializeField] private float _lookSpeed = 3f;
     private Camera _camera;
     private float _verticalLookRotation;
-    protected PlayerActionData _actionData;
 
     private void Awake()
     {
         _camera = MainCam;
-        _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    private void Update(){
-        if(_actionData.isAttacking) return;
+    private void Update()
+    {
         float mouseX = Input.GetAxis("Mouse X") * _lookSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * _lookSpeed;
         _verticalLookRotation -= mouseY;

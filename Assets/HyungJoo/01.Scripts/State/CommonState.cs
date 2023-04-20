@@ -22,5 +22,8 @@ public abstract class CommonState : MonoBehaviour, IState
         _agentController = agentTransform.GetComponent<AgentController>();
         _agentInput = agentTransform.GetComponent<AgentInput>();
         _actionData = agentTransform.Find("ActionData").GetComponent<PlayerActionData>();
+        
     }
+
+
 }

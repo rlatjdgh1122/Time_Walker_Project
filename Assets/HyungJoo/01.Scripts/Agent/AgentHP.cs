@@ -26,9 +26,7 @@ public class AgentHP : MonoBehaviour{
     public void Damaged(int damage){
         _currentHP -= damage;
         _currentHP = Mathf.Clamp(_currentHP,0 ,_hpSO.maxHP);
-        Debug.Log(_currentHP);
         OnDamaged?.Invoke((float)_currentHP / _hpSO.maxHP);
-        
         if(_currentHP == 0){
             DestroyProcess();
         }
