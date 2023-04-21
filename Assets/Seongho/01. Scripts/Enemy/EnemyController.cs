@@ -40,7 +40,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         target = GameManager.Instance.target.transform;
-        direction = (target.position - transform.position).normalized;
     }
     private void FixedUpdate()
     {
@@ -49,17 +48,18 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
+        direction = (target.position - transform.position).normalized;
         Move();
-        AttackRaycast(EnemySoData.weaponData.attackRadius);
-
+        AttackRaycast(EnemySoData.weaponData.shootDistance);
         Debug.Log("움직이는가 : " + isMove);
     }
 
     private void Move()
     {
         float distance = Vector3.Distance(target.position, transform.position);
+
         if (distance < EnemySoData.weaponData.attackRadius
-          )
+         && HideInWalk())
         {
             isMove = false;
         }
@@ -102,6 +102,7 @@ public class EnemyController : MonoBehaviour
             cooldown.SetCooldown(cooltimeName, EnemySoData.weaponData.attackCoolTime);
             Debug.Log("쿨타임돎");
             OnShooting?.Invoke();
+            Debug.Log("발사");
         }
     }
     private void OnDrawGizmos()

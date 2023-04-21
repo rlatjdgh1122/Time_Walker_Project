@@ -307,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042758188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7086, y: 0.377, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.6666666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObject: {fileID: 1787920362}
   firePos: {fileID: 1042758192}
-  spreadAngle: 0
+  spreadAngle: 1
 --- !u!114 &1787920362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1084446135648771116, guid: 2584db6353aff214f9b95812881fc78b, type: 3}

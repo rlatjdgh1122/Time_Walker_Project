@@ -99,7 +99,8 @@ public class EnemyWeaponController : MonoBehaviour
     {
         animController.ShootAnim();
         Debug.Log(OnShoot);
-        OnShoot?.Invoke();
+        for (int i = 0; i < enemySoData.weaponData.bulletCount; i++)
+            OnShoot?.Invoke();
     }
     public void StopShooting()
     {

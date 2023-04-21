@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c1b54c930344847b68640fd0ab3f9a, type: 3}
-  m_Name: PistolData
+  m_Script: {fileID: 11500000, guid: a3ec8cdc759d8d048871b4fd7645fab9, type: 3}
+  m_Name: RifleBullet
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6259118857423753517, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
-  ammoCapacity: 999
-  liveBulletTime: 1.5
+  damage: 1
+  bulletSpeed: 3
+  impactObstaclePrefab: {fileID: 0}
+  impactEnemyPrefab: {fileID: 0}
+  lifeTime: 5

@@ -7,8 +7,6 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class RegularBullet : PoolableMono
 {
-    public bool isEnemy; //ÀûÀÇ ÃÑ??
-
     [SerializeField]
     private BulletDataSO bulletData;
     private float timeToLive = 0;
@@ -28,7 +26,7 @@ public class RegularBullet : PoolableMono
     {
         //  transform.rotation = rot;
         timeToLive += Time.deltaTime;
-        transform.Translate(-Vector3.right * bulletData.bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward  * bulletData.bulletSpeed * Time.deltaTime);
 
         if (timeToLive >= bulletData.lifeTime)
         {
@@ -70,7 +68,6 @@ public class RegularBullet : PoolableMono
     {
         transform.position = pos;
         transform.rotation = rot;
-        //this.rot = Quaternion.Euler(rot);
     }
     public override void Init()
     {

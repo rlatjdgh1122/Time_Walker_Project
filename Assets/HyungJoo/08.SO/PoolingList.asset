@@ -18,4 +18,6 @@ MonoBehaviour:
   - poolObject: {fileID: 2757639265608168494, guid: c6a3e1f27ead2484aa09626d4694305a, type: 3}
     poolCount: 10
   - poolObject: {fileID: 1084446135648771116, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
-    poolCount: 10
+    poolCount: 50
+  - poolObject: {fileID: 3173342771682988571, guid: 1dbdc24ff67061e40ae9704eef7bf709, type: 3}
+    poolCount: 50
