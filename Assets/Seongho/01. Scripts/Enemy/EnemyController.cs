@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
@@ -12,12 +13,7 @@ using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    //public EnemySoData enemySoData;
-
     public EnemySoData EnemySoData;
-
-    [HideInInspector]
-    public bool isPause = false;
 
     public UnityEvent OnShooting;
     public UnityEvent<float, Transform, bool> OnMovement;
@@ -27,13 +23,15 @@ public class EnemyController : MonoBehaviour
 
     private Transform target;
     private CooldownManager cooldown = new CooldownManager();
+
     private bool isMove = true;
-    private bool isRotate = false;
+
     private bool inAttackDetect;
-    private bool isHit = false;
     private Collider[] cols = null;
 
     private string cooltimeName = "EnemyAttackCoolTime";
+
+    private Vector3 direction = Vector3.zero;
 
     private void Awake()
     {
@@ -42,6 +40,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         target = GameManager.Instance.target.transform;
+        direction = (target.position - transform.position).normalized;
     }
     private void FixedUpdate()
     {
@@ -51,15 +50,50 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
-        AttackDetect(EnemySoData.weaponData.attackRadius);
-        Pause();
+        AttackRaycast(EnemySoData.weaponData.attackRadius);
+
+        Debug.Log("움직이는가 : " + isMove);
     }
 
-    private void Pause()
+    private void Move()
     {
-        if (isPause)
-            Time.timeScale = 0;
-        else Time.timeScale = 1;
+        float distance = Vector3.Distance(target.position, transform.position);
+        if (distance < EnemySoData.weaponData.attackRadius
+          )
+        {
+            isMove = false;
+        }
+        else isMove = true;
+
+        OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
+    }
+    private void AttackRaycast(float distance)
+    {
+        RaycastHit hit;
+        bool isAttackHit = Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, distance);
+
+        if (isAttackHit)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Shooting();
+            }
+        }
+    }
+    private bool HideInWalk()
+    {
+        RaycastHit hit;
+        bool isHideInWalk = Physics.Raycast(transform.position + Vector3.up, direction, out hit, 1000);
+
+        if (isHideInWalk)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("플레이어 맞음");
+                return false;
+            }
+        }
+        return true;
     }
     public void Shooting()
     {
@@ -70,43 +104,13 @@ public class EnemyController : MonoBehaviour
             OnShooting?.Invoke();
         }
     }
-    private void Move()
-    {
-        OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
-    }
-    public void AttackDetect(float attackRadius)
-    {
-        AttackRaycast(attackRadius);
-        inAttackDetect = cols.AttackDetect(attackRadius, transform.position);
-        if (inAttackDetect)
-        {
-            isMove = false;
-            if (isRotate) //돌아봐야 한다면
-            {
-                Quaternion rotTarget = Quaternion.LookRotation(target.position - this.transform.position);
-                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, rotTarget, 150 * Time.deltaTime);
-            }
-            else if (!isRotate)
-            {
-                transform.LookAt(this.transform);
-            }
-        }
-        else
-            isMove = true;
-    }
-    private void AttackRaycast(float distance)
-    {
-        bool isFace = isHit.FaceDetect(distance, out isRotate, this.transform);
-        if (isFace) //레이케스트가 플레이어 맞았다면
-        {
-            Shooting();
-        }
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position + Vector3.up,
             transform.forward * EnemySoData.weaponData.shootDistance);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position + Vector3.up, direction * 1000);
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, EnemySoData.weaponData.attackRadius);

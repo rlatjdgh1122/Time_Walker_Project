@@ -1,39 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : EnemyAnimationController
 {
     private NavMeshAgent agent;
-    private EnemyAnimationController animController;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         agent = GetComponent<NavMeshAgent>();
-        animController = GetComponent<EnemyAnimationController>();
     }
     public void MoveAgent(float speed, Transform target, bool isMove)
     {
+        agent.speed = speed;
         if (isMove)
         {
             agent.isStopped = false;
-            agent.speed = speed;
-            agent.SetDestination(target.position);
         }
         else
         {
             agent.isStopped = true;
-            agent.SetDestination(Vector3.zero);
         }
-        MoveAnimation(agent.speed);
-    }
-
-    private void MoveAnimation(float speed)
-    {
-        animController.MoveAnim(speed);
+        agent.SetDestination(target.position);
+        MoveAnim(transform.hasChanged); //tranform에 변경여부
     }
 }

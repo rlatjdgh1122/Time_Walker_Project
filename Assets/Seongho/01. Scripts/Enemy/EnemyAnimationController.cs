@@ -7,6 +7,9 @@ public class EnemyAnimationController : MonoBehaviour
 {
     private Animator anim;
     private EnemySoData enemySoData;
+
+    private readonly int HashMove = Animator.StringToHash("Move");
+    private readonly int HashShootting = Animator.StringToHash("Shooting");
     protected virtual void Awake()
     {
         enemySoData = GetComponent<EnemyController>().EnemySoData;
@@ -18,12 +21,15 @@ public class EnemyAnimationController : MonoBehaviour
     {
         anim.runtimeAnimatorController = animator;
     }
-    public void MoveAnim(float speed)
+    public void MoveAnim(bool moving)
     {
-        anim.SetFloat("Move", speed);
+        if (moving)
+            anim.SetFloat(HashMove, 1);
+        else
+            anim.SetFloat(HashMove, 0);
     }
     public void ShootAnim()
     {
-        anim.SetTrigger("Shooting");
+        anim.SetTrigger(HashShootting);
     }
 }
