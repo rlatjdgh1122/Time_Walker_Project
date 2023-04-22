@@ -171,7 +171,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 12
   m_IsActive: 1
 --- !u!65 &95126355
 BoxCollider:
@@ -408,7 +408,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 12
   m_IsActive: 1
 --- !u!65 &1791296858
 BoxCollider:
@@ -1161,6 +1161,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1940612140126290313, guid: c4313b070b1c9b0478aca32d0076d88a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940612140126290313, guid: c4313b070b1c9b0478aca32d0076d88a, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 40a89cbcdf408a545bac6e50268742db, type: 2}
@@ -1175,6 +1179,10 @@ PrefabInstance:
     - target: {fileID: 5135664940581142857, guid: c4313b070b1c9b0478aca32d0076d88a, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135664940581142857, guid: c4313b070b1c9b0478aca32d0076d88a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5480419643895323635, guid: c4313b070b1c9b0478aca32d0076d88a, type: 3}
       propertyPath: m_RootOrder

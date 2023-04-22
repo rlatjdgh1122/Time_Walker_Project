@@ -20,7 +20,6 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody rigid;
 
-
     private Transform target;
     private CooldownManager cooldown = new CooldownManager();
 
@@ -49,9 +48,21 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         direction = (target.position - transform.position).normalized;
+
+        Rotation();
         Move();
         AttackRaycast(EnemySoData.weaponData.shootDistance);
         Debug.Log("움직이는가 : " + isMove);
+    }
+
+    private void Rotation()
+    {
+        Vector3 direction = target.position - transform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        float lerpAmount = 3 * Time.deltaTime;
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpAmount);
     }
 
     private void Move()
@@ -59,7 +70,7 @@ public class EnemyController : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
 
         if (distance < EnemySoData.weaponData.attackRadius
-         && HideInWalk())
+         && HideInWalk() == false)
         {
             isMove = false;
         }
