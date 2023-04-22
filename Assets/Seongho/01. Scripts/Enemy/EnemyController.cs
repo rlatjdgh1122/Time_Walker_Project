@@ -51,17 +51,20 @@ public class EnemyController : MonoBehaviour
 
         Rotation();
         Move();
-        AttackRaycast(EnemySoData.weaponData.shootDistance);
+        //AttackRaycast(EnemySoData.weaponData.shootDistance);
         Debug.Log("움직이는가 : " + isMove);
     }
 
     private void Rotation()
     {
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = target.position
+             - transform.position;
+
+        direction.y = 0;
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        float lerpAmount = 3 * Time.deltaTime;
+        float lerpAmount = 3 /*회전속도 정해주기*/ * Time.deltaTime;
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpAmount);
     }
 
@@ -72,6 +75,10 @@ public class EnemyController : MonoBehaviour
         if (distance < EnemySoData.weaponData.attackRadius
          && HideInWalk() == false)
         {
+            float attackDistance = Vector3.Distance(target.position, transform.position);
+            if (attackDistance < EnemySoData.weaponData.shootDistance)
+                Shooting();
+
             isMove = false;
         }
         else isMove = true;
@@ -124,7 +131,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position + Vector3.up, direction * 1000);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, EnemySoData.weaponData.attackRadius);
+        /* Gizmos.color = Color.green;
+         Gizmos.DrawWireSphere(transform.position, EnemySoData.weaponData.attackRadius);*/
     }
 }
