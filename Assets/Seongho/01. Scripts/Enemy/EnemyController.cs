@@ -57,15 +57,15 @@ public class EnemyController : MonoBehaviour
 
     private void Rotation()
     {
-        Vector3 direction = target.position
-             - transform.position;
+        Vector3 direction = target.localPosition
+             - transform.localPosition;
 
         direction.y = 0;
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        float lerpAmount = 3 /*회전속도 정해주기*/ * Time.deltaTime;
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpAmount);
+         float lerpAmount = 3 /*회전속도 정해주기*/ * Time.deltaTime;
+         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpAmount);
     }
 
     private void Move()
