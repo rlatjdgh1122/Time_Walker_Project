@@ -20,13 +20,12 @@ public abstract class GunWeapon : MonoBehaviour
     }
     public virtual void Shoot()
     {
-        Vector3 randomPosition = -firePos.right
-           + Random.insideUnitSphere * weaponDataSO.spreadAngle; //이부분 수정필요
+/*        Vector3 randomPosition = firePos.forward  * 10+ Random.insideUnitSphere * weaponDataSO.spreadAngle; //이부분 수정필요
         float degreeY = Mathf.Atan2(randomPosition.z, firePos.position.x) * Mathf.Rad2Deg;
         float degreeZ = Mathf.Atan2(randomPosition.y, firePos.position.x) * Mathf.Rad2Deg;
-
+*/
         RegularBullet b = PoolManager.Instance.Pop(bullet.name) as RegularBullet;
-        b.SetPositionAndRotation(firePos.position, Quaternion.Euler(0, degreeY, degreeZ));
+        b.SetPositionAndRotation(firePos.position, Quaternion.identity);
       
     }
 }
