@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-         float lerpAmount = 3 /*회전속도 정해주기*/ * Time.deltaTime;
+         float lerpAmount = EnemySoData.weaponData.rotateSpeed /*회전속도 정해주기*/ * Time.deltaTime;
          transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpAmount);
     }
 
