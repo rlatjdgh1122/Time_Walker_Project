@@ -16,9 +16,8 @@ public class NormalState : CommonState{
         _agentInput.OnFireButtonPress -= OnAttackHandle;
     }
 
-    public override void UpdateState()
-    {
-
+    public override void UpdateState(){
+        Debug.Log("normalState");
     }
 
     public void OnMovementHandle(Vector3 dir)
@@ -26,8 +25,7 @@ public class NormalState : CommonState{
         _agentMovement.SetMovementVelocity(dir);
     }
 
-    public void OnAttackHandle()
-    {
+    public void OnAttackHandle(){
         _agentController.ChangeState(StateType.Attack);
     }
 }

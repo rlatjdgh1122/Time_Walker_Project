@@ -24,7 +24,6 @@ public class PlayerAttack : AgentAttack{
 
     private void SwordAttack(){
         _actionData.isAttacking = true;
-        TimeController.Instance.SetTimeScale(1f,true);
         _swordAnimator.OnAttackAnimation();
     }
 

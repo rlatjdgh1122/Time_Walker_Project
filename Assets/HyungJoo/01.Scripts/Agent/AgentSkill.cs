@@ -15,7 +15,6 @@ public class AgentSkill : MonoBehaviour{
 
     [SerializeField]
     private SkillDelaySO _skillDelay;
-    private bool _canDash = true;
 
     public UnityEvent OnDashStart;
     public UnityEvent OnDashEnd;
@@ -32,7 +31,6 @@ public class AgentSkill : MonoBehaviour{
     }
 
     private void Update() {
-        Debug.Log($"Timer: {GetTimer()}");
     }
 
     private void Start() {
@@ -65,12 +63,12 @@ public class AgentSkill : MonoBehaviour{
     }
 
     IEnumerator DelayCor(float timer){
-        _canDash = false;
+        _actionData.canDash = false;
         while(_timer < timer){
             _timer += Time.unscaledDeltaTime;
             yield return null;
         }
-        _canDash =  true;
+        _actionData.canDash =  true;
         _timer = 0f;
     }
 

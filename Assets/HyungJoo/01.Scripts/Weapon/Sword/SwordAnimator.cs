@@ -32,7 +32,6 @@ public class SwordAnimator : AgentAnimator{
         _actionData.isAttacking = false;
         _animator.SetBool(_isAttackHash, false);
         _attackState.SetKeyDelay(0.5f);
-        TimeController.Instance.SetTimeScale(0.1f,false);
     }
 
     public void SetTriggerAttack(bool value){

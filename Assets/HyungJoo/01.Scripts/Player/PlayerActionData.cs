@@ -9,6 +9,8 @@ public class PlayerActionData : MonoBehaviour{
     public bool isDashing;
     public bool chargingDash;
 
+    public bool canDash;
+
     public Vector3 hitPos;
     public Vector3 hitNormal;
 }

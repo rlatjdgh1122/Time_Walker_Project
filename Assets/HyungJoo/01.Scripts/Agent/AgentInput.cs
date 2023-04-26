@@ -26,6 +26,7 @@ public class AgentInput : MonoBehaviour{
     }
 
     private void InputDashPress(){
+        if(_actionData.canDash == false) return;
         if(Input.GetKey(KeyCode.Space)){
             _timer += Time.fixedDeltaTime;
             _timer = Mathf.Clamp(_timer,0,2f);
