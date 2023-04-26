@@ -35,6 +35,7 @@ public class AgentInput : MonoBehaviour{
         if(Input.GetKeyUp(KeyCode.Space)){
             Debug.Log(_timer);
             _animator.SetDashBool(false);
+            TimeController.Instance.SetTimeScale(1f,true);
             if(_timer > 0.7f){
                 OnDashButtonPress?.Invoke(_timer);
             }

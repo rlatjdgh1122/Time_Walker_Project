@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Core.Define;
 using UnityEngine.Events;
 
 public class AgentSkill : MonoBehaviour{
@@ -11,7 +12,6 @@ public class AgentSkill : MonoBehaviour{
     protected AgentController _agentController;
     protected PlayerActionData _actionData;
     protected SwordAnimator _animator;
-    
 
     public UnityEvent OnDashStart;
     public UnityEvent OnDashEnd;
@@ -35,9 +35,11 @@ public class AgentSkill : MonoBehaviour{
         _actionData.isAttacking = true;
         StartCoroutine(DashCorotuine(power));
         RaycastHit hit;
-        bool isHit = Physics.BoxCast(transform.position,transform.lossyScale,transform.forward,out hit,Quaternion.identity,5f);
+        bool isHit = Physics.BoxCast(transform.position,transform.lossyScale,transform.forward,out hit,Quaternion.identity,5f, whatIsEnemy);
         if(isHit){
-            hit.collider.GetComponent<AgentHP>().Damaged(5);
+            if(hit.collider.gameObject.TryGetComponent<AgentHP>(out AgentHP hp)){
+                hp.Damaged(5);
+            }
         }
     }
 

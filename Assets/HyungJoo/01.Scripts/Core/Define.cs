@@ -21,8 +21,19 @@ namespace Core{
                 _mainCam = value;
             }
         }
-
+        public static LayerMask whatIsEnemy = LayerMask.NameToLayer("ENEMY");
         private static Camera _mainCam;
+
+        private static Transform _player;
+        public static Transform Player{
+            get{
+                if(_player == null){
+                    _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+                }
+                return _player;
+            }
+        }
+        
     }
 }
 
