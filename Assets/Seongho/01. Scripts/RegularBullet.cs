@@ -26,7 +26,7 @@ public class RegularBullet : PoolableMono
     {
         //  transform.rotation = rot;
         timeToLive += Time.deltaTime;
-        transform.Translate(transform.forward * bulletData.bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * bulletData.bulletSpeed * Time.deltaTime);
 
         if (timeToLive >= bulletData.lifeTime)
         {
