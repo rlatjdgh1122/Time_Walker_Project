@@ -16,6 +16,7 @@ MonoBehaviour:
   attackCoolTime: 3
   shootDistance: 5
   speed: 3
+  rotateSpeed: 1.5
   ammoCapacity: 26
   weaponDelay: 1
   spreadAngle: 0

@@ -10,13 +10,14 @@ public class WeaponDataSO : ScriptableObject
     public float attackCoolTime;
     public float shootDistance;
     public float speed;
+    public float rotateSpeed;
     public float attackRadius => shootDistance;
 
     [Range(5, 100f)]
     public int ammoCapacity;
     [Range(1, 5f)]
     public float weaponDelay;
-    [Range(0, 100f)]
+    [Range(0, 1f)]
     public float spreadAngle;
     [Range(1, 3f)]
     public float reloadTime;

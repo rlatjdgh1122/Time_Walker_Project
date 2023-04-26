@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e756d19c7d6029f4db705eeb9466ab97, type: 3}
+  m_Name: Bennelli_M4 Weapon Data SO
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 7642103089271034795, guid: 88ccd98e4c77f5e4a8f8c1a72b2761ab, type: 3}
+  attackCoolTime: 2
+  shootDistance: 10
+  speed: 3
+  rotateSpeed: 3
+  ammoCapacity: 100
+  weaponDelay: 0
+  spreadAngle: 0
+  reloadTime: 3
+  bulletCount: 1
+  animatiorController: {fileID: 22100000, guid: 40a89cbcdf408a545bac6e50268742db, type: 2}
+  reloadClip: {fileID: 0}

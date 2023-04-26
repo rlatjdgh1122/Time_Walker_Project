@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GunWeapon : MonoBehaviour
+public class GunWeapon : MonoBehaviour
 {
     public WeaponDataSO weaponDataSO;
     public Transform firePos;
@@ -20,14 +20,17 @@ public abstract class GunWeapon : MonoBehaviour
     }
     public virtual void Shoot()
     {
-        Vector3 randomPosition = -firePos.right
-           + Random.insideUnitSphere * weaponDataSO.spreadAngle; //이부분 수정필요
-        float degreeY = Mathf.Atan2(randomPosition.z, firePos.position.x) * Mathf.Rad2Deg;
-        float degreeZ = Mathf.Atan2(randomPosition.y, firePos.position.x) * Mathf.Rad2Deg;
+
+        Vector3 randomPosition = Random.insideUnitSphere; //이부분 수정필요
+
+        Debug.Log(randomPosition);
+        Debug.Log(firePos.position);
+        Debug.Log(firePos.forward);
+
+        Vector3 resultPos = randomPosition * weaponDataSO.spreadAngle + transform.forward;
 
         RegularBullet b = PoolManager.Instance.Pop(bullet.name) as RegularBullet;
-        b.SetPositionAndRotation(firePos.position, Quaternion.Euler(0, degreeY, degreeZ));
-        b.isEnemy = false;
+        b.SetPositionAndRotation(firePos.position,Quaternion.LookRotation(resultPos));
       
     }
 }
