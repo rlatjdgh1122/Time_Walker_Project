@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ced7a3fdb770845ba153e567ee3eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillDelay: {fileID: 0}
   OnDashStart:
     m_PersistentCalls:
       m_Calls: []
@@ -698,6 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ced7a3fdb770845ba153e567ee3eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillDelay: {fileID: 11400000, guid: 5d9a41df62ca58b40ba8ac0979884f81, type: 2}
   OnDashStart:
     m_PersistentCalls:
       m_Calls: []
@@ -15782,6 +15784,8 @@ MonoBehaviour:
   isAttacking: 0
   isGrounded: 0
   isMoving: 0
+  isDashing: 0
+  chargingDash: 0
   hitPos: {x: 0, y: 0, z: 0}
   hitNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &1526655683
@@ -20952,6 +20956,8 @@ MonoBehaviour:
   isAttacking: 0
   isGrounded: 0
   isMoving: 0
+  isDashing: 0
+  chargingDash: 0
   hitPos: {x: 0, y: 0, z: 0}
   hitNormal: {x: 0, y: 0, z: 0}
 --- !u!4 &6487057634479688056

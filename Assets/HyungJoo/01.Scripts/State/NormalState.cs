@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Core.Define;
 
-public class NormalState : CommonState
-{
+public class NormalState : CommonState{
     public override void OnEnterState()
     {
         _agentInput.OnMovementKeyPress += OnMovementHandle;

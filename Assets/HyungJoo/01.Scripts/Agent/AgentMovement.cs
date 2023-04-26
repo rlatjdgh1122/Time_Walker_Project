@@ -34,7 +34,7 @@ public class AgentMovement : MonoBehaviour{
 
     private void FixedUpdate(){
         CalculateMovement();
-
+        
         if(_controller.isGrounded == false){
             _verticalVelocity = _gravityScale * Time.fixedDeltaTime;
         }else{

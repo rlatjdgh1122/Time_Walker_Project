@@ -13,8 +13,14 @@ public class AgentSkill : MonoBehaviour{
     protected PlayerActionData _actionData;
     protected SwordAnimator _animator;
 
+    [SerializeField]
+    private SkillDelaySO _skillDelay;
+    private bool _canDash = true;
+
     public UnityEvent OnDashStart;
     public UnityEvent OnDashEnd;
+
+    private float _timer = 0f;
 
     private void Awake() {
         _agentInput  = GetComponent<AgentInput>();
@@ -25,12 +31,14 @@ public class AgentSkill : MonoBehaviour{
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 
+    private void Update() {
+        Debug.Log($"Timer: {GetTimer()}");
+    }
+
     private void Start() {
         _agentInput.OnDashButtonPress += Dash;
     }
     
-    
-
     public void Dash(float power){
         _actionData.isAttacking = true;
         StartCoroutine(DashCorotuine(power));
@@ -52,5 +60,21 @@ public class AgentSkill : MonoBehaviour{
         OnDashEnd?.Invoke();
         _actionData.isAttacking = false;
         _animator.DashAnimation(false);
+        _actionData.isDashing = false;
+        StartCoroutine(DelayCor(_skillDelay.dashDelay));
+    }
+
+    IEnumerator DelayCor(float timer){
+        _canDash = false;
+        while(_timer < timer){
+            _timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        _canDash =  true;
+        _timer = 0f;
+    }
+
+    public float GetTimer(){
+        return _timer / _skillDelay.dashDelay;
     }
 }

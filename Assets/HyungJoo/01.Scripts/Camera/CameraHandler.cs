@@ -15,7 +15,7 @@ public class CameraHandler : MonoBehaviour{
             MainCam.fieldOfView = _normalValue;
             return;
         }
-        Debug.Log(MainCam.fieldOfView);
+        //Debug.Log(MainCam.fieldOfView);
         MainCam.fieldOfView = _normalValue + value * 7f;
     }
 

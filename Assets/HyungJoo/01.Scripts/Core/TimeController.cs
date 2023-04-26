@@ -31,8 +31,15 @@ public class TimeController : MonoBehaviour{
     }
     private void FixedUpdate(){
         if(_actionData.isAttacking){
-            SetTimeScale(1f,true);
-            return;
+            if(_actionData.chargingDash){
+                SetTimeScale(0.1f,false);
+                Debug.Log("CharingDash");
+                return;
+            }
+            else{
+                SetTimeScale(1f,true);
+                return;
+            }
         }
         else if(_actionData.isMoving){
             SetTimeScale(1f,true);

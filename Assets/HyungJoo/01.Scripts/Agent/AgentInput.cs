@@ -10,10 +10,12 @@ public class AgentInput : MonoBehaviour{
 
     protected SwordAnimator _animator;
     protected CameraHandler _cameraHandler;
+    protected PlayerActionData _actionData;
     private float _timer = 0f;
 
     private void Awake() {
         _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>();
+        _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
         _cameraHandler = GetComponent<CameraHandler>();
     }
     
@@ -27,20 +29,22 @@ public class AgentInput : MonoBehaviour{
         if(Input.GetKey(KeyCode.Space)){
             _timer += Time.fixedDeltaTime;
             _timer = Mathf.Clamp(_timer,0,2f);
-            TimeController.Instance.SetTimeScale(1f,false);
             _animator.SetDashBool(true);
             _cameraHandler.CameraZoom(_timer);
+            _actionData.isAttacking = true;
+            _actionData.chargingDash = true;
         }
 
         if(Input.GetKeyUp(KeyCode.Space)){
             Debug.Log(_timer);
             _animator.SetDashBool(false);
-            TimeController.Instance.SetTimeScale(1f,true);
             if(_timer > 0.7f){
                 OnDashButtonPress?.Invoke(_timer);
+                _actionData.isDashing = true;
             }
             _cameraHandler.ResetCamera();
             _timer = 0f;
+            _actionData.chargingDash = false;
         }
     }
 
