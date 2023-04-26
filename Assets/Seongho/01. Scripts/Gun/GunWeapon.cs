@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GunWeapon : MonoBehaviour
+public class GunWeapon : MonoBehaviour
 {
     public WeaponDataSO weaponDataSO;
     public Transform firePos;
