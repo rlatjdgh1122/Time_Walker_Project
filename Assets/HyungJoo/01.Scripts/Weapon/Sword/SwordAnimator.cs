@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static Core.Define;
 public class SwordAnimator : AgentAnimator{
     private readonly int _attackHash = Animator.StringToHash("attack");
     private readonly int _isAttackHash = Animator.StringToHash("IS_ATTACK");

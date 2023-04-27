@@ -10,4 +10,4 @@ public class AgentAnimator : MonoBehaviour{
         _animator = transform.GetComponent<Animator>();
         _agentTransform = GetComponentInParent<AgentMovement>().transform;
     }
-}
+}                

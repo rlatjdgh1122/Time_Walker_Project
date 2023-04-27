@@ -18,7 +18,7 @@ public class AgentInput : MonoBehaviour{
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
         _cameraHandler = GetComponent<CameraHandler>();
     }
-    
+
     private void Update() {
         InputFireButton();
         InputMovementKeyPress();
