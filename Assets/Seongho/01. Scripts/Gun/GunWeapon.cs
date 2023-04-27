@@ -23,10 +23,6 @@ public class GunWeapon : MonoBehaviour
 
         Vector3 randomPosition = Random.insideUnitSphere; //이부분 수정필요
 
-        Debug.Log(randomPosition);
-        Debug.Log(firePos.position);
-        Debug.Log(firePos.forward);
-
         Vector3 resultPos = randomPosition * weaponDataSO.spreadAngle + transform.forward;
 
         RegularBullet b = PoolManager.Instance.Pop(bullet.name) as RegularBullet;

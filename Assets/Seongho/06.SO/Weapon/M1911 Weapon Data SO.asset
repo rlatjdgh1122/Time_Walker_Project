@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e756d19c7d6029f4db705eeb9466ab97, type: 3}
   m_Name: M1911 Weapon Data SO
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 7642103089271034795, guid: 88ccd98e4c77f5e4a8f8c1a72b2761ab, type: 3}
+  Weapon: {fileID: 8248862131649652963, guid: c1032de23b6751340bbf5707dd19042d, type: 3}
   attackCoolTime: 2
   shootDistance: 10
   speed: 3
@@ -22,5 +22,5 @@ MonoBehaviour:
   spreadAngle: 0
   reloadTime: 3
   bulletCount: 1
-  animatiorController: {fileID: 22100000, guid: 40a89cbcdf408a545bac6e50268742db, type: 2}
+  animatiorController: {fileID: 22100000, guid: 75726160c56fc3b41be5fcf1ec6b9309, type: 2}
   reloadClip: {fileID: 0}

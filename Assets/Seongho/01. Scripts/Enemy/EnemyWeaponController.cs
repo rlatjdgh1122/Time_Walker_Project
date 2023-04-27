@@ -51,7 +51,6 @@ public class EnemyWeaponController : MonoBehaviour
         {
             if (ammo > 0)
             {
-                Debug.Log("발사 가능");
                 ammo--;
                 //OnFeedbackShoot?.Invoke();
                 Shooting();
@@ -98,7 +97,10 @@ public class EnemyWeaponController : MonoBehaviour
     private void Shooting()
     {
         animController.ShootAnim();
-        Debug.Log(OnShoot);
+    }
+
+    public void EventShootting()
+    {
         for (int i = 0; i < enemySoData.weaponData.bulletCount; i++)
             OnShoot?.Invoke();
     }

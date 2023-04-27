@@ -472,8 +472,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4735167654516779077}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.4166788, y: -0.47621942, z: 0.51233214, w: 0.58061147}
+  m_LocalPosition: {x: -0.068309195, y: 0.12680689, z: 0.035807602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -485,7 +485,7 @@ Transform:
   - {fileID: 4734771444816085312}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 76.366, y: -32.325, z: 57.171}
 --- !u!33 &4738614426978306579
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -550,4 +550,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataSO: {fileID: 11400000, guid: b49a1255d235d11499d057e200ca82e7, type: 2}
   firePos: {fileID: 4734771444816085312}
-  bullet: {fileID: 4734771444816085319}
+  bullet: {fileID: 4867254784015677778, guid: 1dbdc24ff67061e40ae9704eef7bf709, type: 3}
