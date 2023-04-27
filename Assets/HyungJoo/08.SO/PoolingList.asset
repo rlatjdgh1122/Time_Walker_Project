@@ -17,7 +17,9 @@ MonoBehaviour:
     poolCount: 10
   - poolObject: {fileID: 2757639265608168494, guid: c6a3e1f27ead2484aa09626d4694305a, type: 3}
     poolCount: 10
-  - poolObject: {fileID: 1084446135648771116, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
-    poolCount: 50
-  - poolObject: {fileID: 3173342771682988571, guid: 1dbdc24ff67061e40ae9704eef7bf709, type: 3}
-    poolCount: 50
+  - poolObject: {fileID: -4027732739412577623, guid: 7a692d13585b53a4db3720d302b07c7a, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: 9170571082766210585, guid: da45df0ef9a22934dae18c3abe17776d, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: -7857904882979607930, guid: 646f06ad5cb0301458018184ef51daf5, type: 3}
+    poolCount: 10

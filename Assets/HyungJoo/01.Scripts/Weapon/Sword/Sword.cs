@@ -11,8 +11,7 @@ public class Sword : MonoBehaviour
         if(other.collider.CompareTag("WALL")){
             
         }
-        PoolableMono obj = PoolManager.Instance.Pop("EnemyHItParticle");
-
+        PoolableMono obj = PoolManager.Instance.Pop("EnemyHitParticle");
         obj.GetComponent<HitParticle>().SpawnParticle(other.collider.transform.position);
     }
 }

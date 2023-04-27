@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Core.Define;
 
-public class NormalState : CommonState
-{
+public class NormalState : CommonState{
     public override void OnEnterState()
     {
         _agentInput.OnMovementKeyPress += OnMovementHandle;
@@ -17,9 +16,8 @@ public class NormalState : CommonState
         _agentInput.OnFireButtonPress -= OnAttackHandle;
     }
 
-    public override void UpdateState()
-    {
-
+    public override void UpdateState(){
+        Debug.Log("normalState");
     }
 
     public void OnMovementHandle(Vector3 dir)
@@ -27,8 +25,7 @@ public class NormalState : CommonState
         _agentMovement.SetMovementVelocity(dir);
     }
 
-    public void OnAttackHandle()
-    {
+    public void OnAttackHandle(){
         _agentController.ChangeState(StateType.Attack);
     }
 }

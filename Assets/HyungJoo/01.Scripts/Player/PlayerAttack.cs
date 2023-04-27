@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static Core.Define;
 
 public class PlayerAttack : AgentAttack{
     private SwordAnimator _swordAnimator;
-
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         _swordAnimator = GetComponentInChildren<SwordAnimator>();
-        isAttacking = false;
+        _actionData.isAttacking = false;
     }
 
     public void TryToAttack(){
-        if(!isAttacking){
+        if(!_actionData.isAttacking){
             SwordAttack();
         }
     }
 
+    public void TryDash(){
+        
+    }
+
     private void SwordAttack(){
-        TimeController.Instance.SetTimeScale(1f,true);
-        isAttacking = true;
+        _actionData.isAttacking = true;
         _swordAnimator.OnAttackAnimation();
 
     }
+
 }
