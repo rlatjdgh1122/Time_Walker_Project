@@ -23,3 +23,5 @@ MonoBehaviour:
     poolCount: 10
   - poolObject: {fileID: -7857904882979607930, guid: 646f06ad5cb0301458018184ef51daf5, type: 3}
     poolCount: 10
+  - poolObject: {fileID: 2125358121866797594, guid: f9951ecb519049649ba3f082fc122188, type: 3}
+    poolCount: 5

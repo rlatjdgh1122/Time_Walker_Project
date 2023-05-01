@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundSlash : MonoBehaviour
+public class GroundSlash : PoolableMono
 {
     public float speed = 30;
     public float slowDownRate = 0.01f;
     public float detectingDistance = 0.1f;
     public float destroyDelay = 5;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private bool stopped;
 
     void Start()
@@ -56,5 +56,9 @@ public class GroundSlash : MonoBehaviour
         }
 
         stopped = true;
+    }
+
+    public override void Init() {
+
     }
 }

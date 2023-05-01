@@ -48,7 +48,12 @@ public class AgentSkill : MonoBehaviour{
             }
         }
     }
-
+    [ContextMenu("Slash")]
+    public void Slash() {
+        GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
+        gs.transform.position = transform.position;
+        gs.rb.AddForce(MainCam.transform.forward * 100f);
+    }
     IEnumerator DashCorotuine(float power){
         _animator.DashAnimation(true);
         OnDashStart?.Invoke();
