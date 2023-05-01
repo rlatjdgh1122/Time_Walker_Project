@@ -14,7 +14,7 @@ public class AttackState : CommonState {
     public override void SetUp(Transform agentTransform){
         base.SetUp(agentTransform);
         _playerAttack = agentTransform.GetComponent<PlayerAttack>();
-        _playerAttack.OnAnimationEnd.AddListener(() => OnNormalState());
+        //_playerAttack.OnAnimationEnd.AddListener(() => OnNormalState());
         _actionData.isAttacking = true;
     }
 
@@ -23,18 +23,17 @@ public class AttackState : CommonState {
         OnAttackAnimation += PlayParticle;
         _agentMovement.StopImmediately();
         _actionData.isAttacking = false;
-        Debug.Log("OnEnterState");
+        //Debug.Log("OnEnterState");
+        _attackCombo = 0;
     }
-
     public override void OnExitState() {
         _agentInput.OnFireButtonPress -= AgentAttackHandle;
         OnAttackAnimation -= PlayParticle;
-        Debug.Log("OnExitState");
-
+        //Debug.Log("OnExitState");
     }
 
     public override void UpdateState(){
-        if(!_actionData.isAttacking && _keyTimer > 0f){
+        if(_actionData.isAttacking == false && _keyTimer > 0f){
             _keyTimer -= Time.deltaTime;
             if(_keyTimer <= 0f){
                 _agentController.ChangeState(StateType.Normal);
@@ -43,16 +42,30 @@ public class AttackState : CommonState {
                 _attackCombo = 0;
             }
         }
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        if (x > 0 || y > 0) {
+            OnNormalState();
+        }
+
     }
-    
+
+
     public void SetKeyDelay(float value){
         _keyTimer = value;
     }
 
     public void AgentAttackHandle() {
-        if(!_actionData.isAttacking && _attackCombo < 3){            
+        if(_actionData.isAttacking == false){
+            if (_attackCombo >= 3) {
+                _attackCombo = 0;
+                SwordAnimator swordAnimator = _agentAnimator as SwordAnimator; 
+                swordAnimator.EndAttackAnimation();
+                 return;
+            }
             _playerAttack.TryToAttack();
-            OnAttackAnimation.Invoke(_attackCombo);
+            OnAttackAnimation?.Invoke(_attackCombo);
             Debug.Log($"AttackCombo {_attackCombo}");
             _attackCombo++;
             if(_attackCombo >=3 ){
@@ -70,10 +83,9 @@ public class AttackState : CommonState {
     public void OnNormalState() {
         _agentController.ChangeState(StateType.Normal);
     }
-
      public void PlayParticle(int count){
         PoolableMono pm = PoolManager.Instance.Pop($"Particle{count}");
         pm.transform.position = MainCam.transform.position;
-        pm.transform.rotation = MainCam.transform.rotation * pm.transform.rotation;
+        pm.transform.rotation = MainCam.transform.rotation;
     }
 }

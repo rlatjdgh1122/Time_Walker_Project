@@ -33,7 +33,6 @@ public class SwordAnimator : AgentAnimator{
         _animator.SetBool(_isAttackHash, false);
         _attackState.SetKeyDelay(0.5f);
     }
-
     public void SetTriggerAttack(bool value){
         if(!value){
             _animator.ResetTrigger(_attackHash);

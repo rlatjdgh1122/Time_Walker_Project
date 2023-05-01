@@ -15,8 +15,7 @@ public class AgentAttack : MonoBehaviour{
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 
-    public void AnimationEnd()
-    {
+    public void AnimationEnd(){
         OnAnimationEnd?.Invoke();
     }
 }

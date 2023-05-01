@@ -10,8 +10,7 @@ public class NormalState : CommonState{
         _agentInput.OnFireButtonPress += OnAttackHandle;
     }
 
-    public override void OnExitState()
-    {
+    public override void OnExitState(){
         _agentInput.OnMovementKeyPress -= OnMovementHandle;
         _agentInput.OnFireButtonPress -= OnAttackHandle;
     }
