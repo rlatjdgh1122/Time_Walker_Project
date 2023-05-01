@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2181549735130845978
+--- !u!1 &2389321514915550832
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2181549735130845969}
-  - component: {fileID: 2181549735130845974}
-  - component: {fileID: 2181549735130845975}
-  - component: {fileID: 2181549735130845972}
-  - component: {fileID: 2181549735130845973}
-  - component: {fileID: 2181549735130845968}
+  - component: {fileID: 2389321514915550843}
+  - component: {fileID: 2389321514915550844}
+  - component: {fileID: 2389321514915550845}
+  - component: {fileID: 2389321514915550846}
+  - component: {fileID: 2389321514915550847}
+  - component: {fileID: 2389321514915550842}
   m_Layer: 0
-  m_Name: RifleBullet
+  m_Name: ShotgunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2181549735130845969
+--- !u!4 &2389321514915550843
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2181549735130845978}
+  m_GameObject: {fileID: 2389321514915550832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6215, y: 1.6314384, z: 5.8147}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
+  m_LocalPosition: {x: 0.542, y: 1.6314384, z: 5.8147}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2181549735130845974
+--- !u!33 &2389321514915550844
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2181549735130845978}
+  m_GameObject: {fileID: 2389321514915550832}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2181549735130845975
+--- !u!23 &2389321514915550845
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2181549735130845978}
+  m_GameObject: {fileID: 2389321514915550832}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,40 +86,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2181549735130845972
+--- !u!135 &2389321514915550846
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2181549735130845978}
+  m_GameObject: {fileID: 2389321514915550832}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2181549735130845973
+--- !u!114 &2389321514915550847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2181549735130845978}
+  m_GameObject: {fileID: 2389321514915550832}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26f9e78a2bd280f49ae2082b214963d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletData: {fileID: 11400000, guid: 9047a55ad25e539498a701e354059615, type: 2}
---- !u!96 &2181549735130845968
+--- !u!96 &2389321514915550842
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2181549735130845978}
+  m_GameObject: {fileID: 2389321514915550832}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -163,7 +163,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.14875793
+        value: 0.038589478
         inSlope: 0.6536897
         outSlope: 0.6536897
         tangentMode: 0
@@ -171,8 +171,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.50303215
       - serializedVersion: 3
-        time: 0.3810851
-        value: 0.15490487
+        time: 0.3774535
+        value: 0.053212672
         inSlope: -0.49325687
         outSlope: -0.49325687
         tangentMode: 0

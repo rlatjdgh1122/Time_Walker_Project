@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataSO: {fileID: 11400000, guid: a5ea5ff712171ec4981d183382c60101, type: 2}
   firePos: {fileID: 7570655939306982227}
-  bullet: {fileID: 6259118857423753517, guid: 2584db6353aff214f9b95812881fc78b, type: 3}
+  bullet: {fileID: 2389321514915550832, guid: 88c2f0ca00ff0ac4eabaeeef37817da9, type: 3}
 --- !u!1 &7571933577893656874
 GameObject:
   m_ObjectHideFlags: 0
