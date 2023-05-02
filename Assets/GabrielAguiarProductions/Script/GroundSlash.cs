@@ -11,6 +11,7 @@ public class GroundSlash : PoolableMono
 
     public Rigidbody rb;
     private bool stopped;
+    public PlayerActionData actionData;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class GroundSlash : PoolableMono
         }
 
         stopped = true;
+        actionData.isAttacking = false;
     }
 
     public override void Init() {

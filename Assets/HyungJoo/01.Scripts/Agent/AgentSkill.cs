@@ -13,6 +13,7 @@ public class AgentSkill : MonoBehaviour{
     protected PlayerActionData _actionData;
     protected SwordAnimator _animator;
 
+
     [SerializeField]
     private SkillDelaySO _skillDelay;
 
@@ -31,6 +32,9 @@ public class AgentSkill : MonoBehaviour{
     }
 
     private void Update() {
+        if (Input.GetMouseButtonDown(1)) {
+            Slash();
+        }
     }
 
     private void Start() {
@@ -52,8 +56,11 @@ public class AgentSkill : MonoBehaviour{
     public void Slash() {
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position;
-        gs.rb.AddForce(MainCam.transform.forward * 100f);
+        gs.rb.AddForce(MainCam.transform.forward * 1000f + transform.position);
+        gs.actionData = _actionData;
+        _actionData.isAttacking = true;
     }
+
     IEnumerator DashCorotuine(float power){
         _animator.DashAnimation(true);
         OnDashStart?.Invoke();
