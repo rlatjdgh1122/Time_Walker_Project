@@ -21,12 +21,10 @@ public class SwordAnimator : AgentAnimator{
         _movement = _agentTransform.GetComponent<AgentMovement>();
         _actionData = _agentTransform.Find("ActionData").GetComponent<PlayerActionData>();
     }
-    
     public void OnAttackAnimation(){
         _animator.SetTrigger(_attackHash);
         _animator.SetBool(_isAttackHash, true);
     }
-
     public void EndAttackAnimation(){
         _playerAttack.OnAnimationEnd?.Invoke();
         _actionData.isAttacking = false;
@@ -43,7 +41,6 @@ public class SwordAnimator : AgentAnimator{
             _animator.SetBool(_isAttackHash, value);
         }
     }
-
     public void SetDashBool(bool value){
         _animator.SetBool(_dashBoolHash,value);
     }
@@ -55,7 +52,6 @@ public class SwordAnimator : AgentAnimator{
             _animator.ResetTrigger(_dashTriggerhash);
         }
     }
-
     public void AttackAnimationMove(){
         _movement.SetMovementVelocity(Vector3.forward);
     }

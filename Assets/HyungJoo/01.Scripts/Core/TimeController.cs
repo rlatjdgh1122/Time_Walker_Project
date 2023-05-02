@@ -37,7 +37,7 @@ public class TimeController : MonoBehaviour{
                 return;
             }
             else{
-                SetTimeScale(1f,true);
+                SetTimeScale(1f,false);
                 return;
             }
         }

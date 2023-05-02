@@ -48,7 +48,6 @@ public class AttackState : CommonState {
         if (x > 0 || y > 0) {
             OnNormalState();
         }
-
     }
 
 

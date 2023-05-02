@@ -6666,6 +6666,7 @@ MonoBehaviour:
   OnAnimationEnd:
     m_PersistentCalls:
       m_Calls: []
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1427496116
 GameObject:
   m_ObjectHideFlags: 0
@@ -11878,6 +11879,10 @@ PrefabInstance:
       propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1537162414}
+    - target: {fileID: 8177721322950902039, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
+      propertyPath: _offset.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8177721322981109740, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
       propertyPath: canDash
       value: 1
