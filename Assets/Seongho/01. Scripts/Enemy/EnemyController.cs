@@ -1,12 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
-using UnityEditor.Build;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
