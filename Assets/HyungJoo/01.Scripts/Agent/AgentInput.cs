@@ -7,11 +7,13 @@ public class AgentInput : MonoBehaviour{
     public event Action OnFireButtonPress;
     public event Action<Vector3> OnMovementKeyPress;
     public event Action<float> OnDashButtonPress;
+    public event Action<float> OnSlashButtonPress;
 
     protected SwordAnimator _animator;
     protected CameraHandler _cameraHandler;
     protected PlayerActionData _actionData;
-    private float _timer = 0f;
+    private float _dashTimer = 0f;
+    private float _slashTimer = 0f;
 
     private void Awake() {
         _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>();
@@ -23,28 +25,46 @@ public class AgentInput : MonoBehaviour{
         InputFireButton();
         InputMovementKeyPress();
         InputDashPress();
+        InputSlashPress();
+    }
+
+    private void InputSlashPress() {
+        if (_actionData.isAttacking == true) return;
+        if (Input.GetMouseButton(1)) {
+            _slashTimer += Time.fixedDeltaTime;
+            _slashTimer= Mathf.Clamp(_slashTimer, 0,2f);
+            Debug.Log(_slashTimer);
+            _actionData.chargingSlash = true;
+        }
+        if (Input.GetMouseButtonUp(1)) {
+            if(_slashTimer > 1f) {
+                OnSlashButtonPress?.Invoke(_slashTimer);
+                _actionData.chargingSlash = false;
+            }
+            _slashTimer = 0f;
+        }
     }
 
     private void InputDashPress(){
         if(_actionData.canDash == false) return;
         if(Input.GetKey(KeyCode.Space)){
-            _timer += Time.fixedDeltaTime;
-            _timer = Mathf.Clamp(_timer,0,2f);
+            _dashTimer += Time.fixedDeltaTime;
+            _dashTimer = Mathf.Clamp(_dashTimer,0,2f);
             _animator.SetDashBool(true);
-            _cameraHandler.CameraZoom(_timer);
+            _cameraHandler.CameraZoom(_dashTimer);
             _actionData.isAttacking = true;
             _actionData.chargingDash = true;
         }
 
         if(Input.GetKeyUp(KeyCode.Space)){
-            Debug.Log(_timer);
+            Debug.Log(_dashTimer);
             _animator.SetDashBool(false);
-            if(_timer > 0.7f){
-                OnDashButtonPress?.Invoke(_timer);
+            if(_dashTimer > 0.7f){
+                OnDashButtonPress?.Invoke(_dashTimer);
                 _actionData.isDashing = true;
             }
             _cameraHandler.ResetCamera();
-            _timer = 0f;
+            _dashTimer = 0f;
             _actionData.chargingDash = false;
         }
     }

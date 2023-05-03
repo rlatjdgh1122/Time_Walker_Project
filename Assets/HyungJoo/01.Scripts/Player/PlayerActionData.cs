@@ -8,6 +8,7 @@ public class PlayerActionData : MonoBehaviour{
     public bool isMoving;
     public bool isDashing;
     public bool chargingDash;
+    public bool chargingSlash;
 
     public bool canDash;
 

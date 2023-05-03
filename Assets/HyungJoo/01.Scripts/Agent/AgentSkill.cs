@@ -31,14 +31,10 @@ public class AgentSkill : MonoBehaviour{
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 
-    private void Update() {
-        if (Input.GetMouseButtonDown(1)) {
-            Slash();
-        }
-    }
 
     private void Start() {
         _agentInput.OnDashButtonPress += Dash;
+        _agentInput.OnSlashButtonPress += Slash;
     }
     
     public void Dash(float power){
@@ -53,10 +49,10 @@ public class AgentSkill : MonoBehaviour{
         }
     }
     [ContextMenu("Slash")]
-    public void Slash() {
+    public void Slash(float power) {
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position;
-        gs.rb.AddForce(MainCam.transform.forward * 1000f + transform.position);
+        gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
         gs.actionData = _actionData;
         _actionData.isAttacking = true;
     }
