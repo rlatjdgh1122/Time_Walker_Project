@@ -29,3 +29,5 @@ MonoBehaviour:
     poolCount: 30
   - poolObject: {fileID: 2389321514915550847, guid: 88c2f0ca00ff0ac4eabaeeef37817da9, type: 3}
     poolCount: 50
+  - poolObject: {fileID: 2125358121866797594, guid: f9951ecb519049649ba3f082fc122188, type: 3}
+    poolCount: 50

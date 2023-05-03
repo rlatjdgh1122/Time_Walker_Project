@@ -20,7 +20,8 @@ public class AgentSkill : MonoBehaviour{
     public UnityEvent OnDashStart;
     public UnityEvent OnDashEnd;
 
-    private float _timer = 0f;
+    private float _dashTimer = 0f;
+    private float _slashTimer = 0f;
 
     private void Awake() {
         _agentInput  = GetComponent<AgentInput>();
@@ -55,6 +56,7 @@ public class AgentSkill : MonoBehaviour{
         gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
         gs.actionData = _actionData;
         _actionData.isAttacking = true;
+        SlashDelayCor(5f);
     }
 
     IEnumerator DashCorotuine(float power){
@@ -72,15 +74,24 @@ public class AgentSkill : MonoBehaviour{
 
     IEnumerator DelayCor(float timer){
         _actionData.canDash = false;
-        while(_timer < timer){
-            _timer += Time.unscaledDeltaTime;
+        while(_dashTimer < timer){
+            _dashTimer += Time.deltaTime;
             yield return null;
         }
         _actionData.canDash =  true;
-        _timer = 0f;
+        _dashTimer = 0f;
+    }
+    IEnumerator SlashDelayCor(float timer) {
+        _actionData.canSlash = false;
+        while(_slashTimer < timer) {
+            _dashTimer += Time.deltaTime;
+            yield return null;
+        }
+        _actionData.canSlash = true;
+        _slashTimer = 0f;
     }
 
     public float GetTimer(){
-        return _timer / _skillDelay.dashDelay;
+        return _dashTimer / _skillDelay.dashDelay;
     }
 }

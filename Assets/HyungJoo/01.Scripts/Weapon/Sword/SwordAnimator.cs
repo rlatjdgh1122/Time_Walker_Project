@@ -9,6 +9,9 @@ public class SwordAnimator : AgentAnimator{
     private readonly int _dashBoolHash = Animator.StringToHash("IS_DASH");
     private readonly int _dashTriggerhash = Animator.StringToHash("dash");
 
+    private readonly int _slashBoolHash = Animator.StringToHash("IS_SLASH");
+    private readonly int _slashTriggerHash = Animator.StringToHash("slash");
+
     private PlayerAttack _playerAttack;
     private AttackState _attackState;
     private AgentMovement _movement;
@@ -31,6 +34,9 @@ public class SwordAnimator : AgentAnimator{
         _animator.SetBool(_isAttackHash, false);
         _attackState.SetKeyDelay(0.5f);
     }
+    public void EndSlashAnimation() {
+        SlashAnimation(false);
+    }
     public void SetTriggerAttack(bool value){
         if(!value){
             _animator.ResetTrigger(_attackHash);
@@ -44,7 +50,17 @@ public class SwordAnimator : AgentAnimator{
     public void SetDashBool(bool value){
         _animator.SetBool(_dashBoolHash,value);
     }
-
+    public void SetSlashBool(bool value) {
+        _animator.SetBool(_slashBoolHash,value);
+    }
+    public void SlashAnimation(bool value) {
+        if (value) {
+            _animator.SetTrigger(_slashTriggerHash);
+        }
+        else {
+            _animator.ResetTrigger(_slashTriggerHash);
+        }
+    }
     public void DashAnimation(bool value){
         if(value){
             _animator.SetTrigger(_dashTriggerhash);

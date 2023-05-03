@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DashDelay
   m_EditorClassIdentifier: 
   dashDelay: 3
+  slashDelay: 5

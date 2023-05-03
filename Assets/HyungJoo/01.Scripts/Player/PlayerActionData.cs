@@ -11,6 +11,7 @@ public class PlayerActionData : MonoBehaviour{
     public bool chargingSlash;
 
     public bool canDash;
+    public bool canSlash;
 
     public Vector3 hitPos;
     public Vector3 hitNormal;
