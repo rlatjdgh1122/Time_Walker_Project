@@ -12,7 +12,6 @@ public class GunWeapon : MonoBehaviour
     private void Awake()
     {
         enemyWeaponController = transform.root.GetComponent<EnemyWeaponController>(); //최상위 부모
-
     }
     private void Start()
     {
@@ -20,7 +19,6 @@ public class GunWeapon : MonoBehaviour
     }
     public virtual void Shoot()
     {
-
         Vector3 randomPosition = Random.insideUnitSphere; //이부분 수정필요
 
         Vector3 resultPos = randomPosition * weaponDataSO.spreadAngle + transform.forward;
