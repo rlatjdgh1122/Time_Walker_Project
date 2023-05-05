@@ -1311,6 +1311,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3998fa5348b5046bd3c37c086afc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Separation: 0.02
+  DestroyTargets: 1
+  UseAsync: 1
+  VertexCreationThreshold: 0
+  DefaultMaterial: {fileID: 0}
+  DebugPlaneLength: 2
   OnDead:
     m_PersistentCalls:
       m_Calls:
@@ -3296,7 +3302,7 @@ MonoBehaviour:
   OverrideFaceMaterial: {fileID: 2100000, guid: 30d3bdcd8e9e6a947b19338f628af5b5, type: 2}
   SeparateMeshes: 1
   ApplyTranslation: 1
-  DefaultBehaviour: 0100000001000000
+  DefaultBehaviour: 0000000000000000
   DynamicRagdoll: {fileID: 4422068004507077002}
   Animator: {fileID: 7797070994413417517}
   GroupBehaviours: []

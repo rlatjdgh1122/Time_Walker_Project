@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5729815776893992775}
   - component: {fileID: 5739589907311856549}
   - component: {fileID: 5761188387703252399}
+  - component: {fileID: -7512390244409252641}
   m_Layer: 0
   m_Name: AK74
   m_TagString: Untagged
@@ -217,6 +218,20 @@ MonoBehaviour:
   weaponDataSO: {fileID: 11400000, guid: be86b4962a02f0f499906e591c7b8d38, type: 2}
   firePos: {fileID: 5761188389137119371}
   bullet: {fileID: 8295673042786580483, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}
+--- !u!64 &-7512390244409252641
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761954744847592219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
 --- !u!1 &5762059600861007109
 GameObject:
   m_ObjectHideFlags: 0

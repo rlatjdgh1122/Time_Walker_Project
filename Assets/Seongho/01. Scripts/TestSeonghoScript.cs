@@ -1,16 +1,17 @@
+using DynamicMeshCutter;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class TestSeonghoScript : MonoBehaviour
 {
-    public GunWeapon gun;
+    public EnemyHit gun;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            gun?.Shoot();
+            gun?.OnHit();
         }
     }
 }
