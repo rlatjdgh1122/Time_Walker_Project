@@ -57,8 +57,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7571741924607910606}
-  m_LocalRotation: {x: -0.2256115, y: -0.24503985, z: 0.55136746, w: 0.7648848}
-  m_LocalPosition: {x: -0.06586823, y: -0.051563807, z: -0.10395021}
+  m_LocalRotation: {x: 0.65642625, y: -0.18866703, z: -0.29676867, w: 0.6674112}
+  m_LocalPosition: {x: -0.17417954, y: -0.09263082, z: 0.08385281}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -67,7 +67,7 @@ Transform:
   - {fileID: 7570655939306982227}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -4.297, y: -38.712, z: 73.082}
+  m_LocalEulerAnglesHint: {x: 49.839, y: -84.035, z: -93.372}
 --- !u!33 &7595374723897911896
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataSO: {fileID: 11400000, guid: a5ea5ff712171ec4981d183382c60101, type: 2}
   firePos: {fileID: 7570655939306982227}
-  bullet: {fileID: 2389321514915550832, guid: 88c2f0ca00ff0ac4eabaeeef37817da9, type: 3}
+  bullet: {fileID: 3440798832336181039, guid: 88c2f0ca00ff0ac4eabaeeef37817da9, type: 3}
 --- !u!1 &7571933577893656874
 GameObject:
   m_ObjectHideFlags: 0

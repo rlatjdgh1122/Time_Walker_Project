@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1be2cd1f9a32f241882dffb54990c38, type: 3}
   m_Name: PistolEnemyData 1
   m_EditorClassIdentifier: 
-  weaponObject: {fileID: 7571741924607910606, guid: ec9e9a241611f2142a4261408b2396ca, type: 3}
+  weaponObject: {fileID: 8248862131649652963, guid: c1032de23b6751340bbf5707dd19042d, type: 3}
