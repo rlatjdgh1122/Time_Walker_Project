@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 2688344129122970947}
   - component: {fileID: 2695374717239295751}
   - component: {fileID: 2681375499759391203}
+  - component: {fileID: 1078927278996492835}
   m_Layer: 0
   m_Name: M249
   m_TagString: Untagged
@@ -269,7 +270,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataSO: {fileID: 11400000, guid: b5cdd4d2b79a06c4b97fdbd1afcb9aa1, type: 2}
   firePos: {fileID: 2681375498114853522}
-  bullet: {fileID: 2181549735130845978, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}
+  bullet: {fileID: 8295673042786580483, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}
+--- !u!64 &1078927278996492835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2680296274172584185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 01890195b95a26f4fa4aa4f8f5a0cc5e, type: 3}
 --- !u!1 &2680669013174611063
 GameObject:
   m_ObjectHideFlags: 0

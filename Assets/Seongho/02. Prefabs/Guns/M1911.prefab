@@ -190,16 +190,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8248862131649652963}
-  m_LocalRotation: {x: 0.46087977, y: -0.62639594, z: 0.4640169, w: 0.42415357}
-  m_LocalPosition: {x: -0.0575, y: 0.128, z: 0.0284}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.23391451, y: 0.43825644, z: -0.6120076, w: 0.61535525}
+  m_LocalPosition: {x: 0.06094686, y: 0.1532999, z: -0.1950098}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8245804932923416489}
   - {fileID: 8250556515763900441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 76.479, y: -153.68, z: -51.809}
+  m_LocalEulerAnglesHint: {x: 55.519, y: 26.55, z: -75.53}
 --- !u!114 &8250556516824266683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataSO: {fileID: 11400000, guid: ba5743de9fb1f634ab0f4e8cfe7ba37f, type: 2}
   firePos: {fileID: 8250556515763900441}
-  bullet: {fileID: 5738084462125606051, guid: be0d8e75ab23c5f459f5bba6c54c90c9, type: 3}
+  bullet: {fileID: 1483073867984910181, guid: be0d8e75ab23c5f459f5bba6c54c90c9, type: 3}
 --- !u!1 &8248883114570559997
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 8245804932923416489}
   - component: {fileID: 8217290540072056105}
   - component: {fileID: 8226861970733192781}
+  - component: {fileID: 2758426425040376203}
   m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
@@ -302,6 +303,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2758426425040376203
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248883114570559997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
 --- !u!1 &8248915488348052375
 GameObject:
   m_ObjectHideFlags: 0
