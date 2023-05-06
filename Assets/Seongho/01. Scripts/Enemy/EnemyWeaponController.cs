@@ -42,7 +42,7 @@ public class EnemyWeaponController : MonoBehaviour
     {
         weaponObj.transform.SetParent(null);
         Rigidbody rigid = weaponObj.AddComponent<Rigidbody>();
-        rigid.AddForce(-Vector3.forward * 30);
+        rigid.AddForce(Vector3.forward * Random.Range(1,3),ForceMode.Impulse);
     }
     public void shoot()
     {
@@ -106,7 +106,7 @@ public class EnemyWeaponController : MonoBehaviour
         animController.ShootAnim();
     }
 
-    public void EventShootting()
+    public void EventShooting()
     {
         for (int i = 0; i < enemySoData.weaponData.bulletCount; i++)
             OnShoot?.Invoke();
