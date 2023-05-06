@@ -91,7 +91,10 @@ public class AgentSkill : MonoBehaviour{
         _slashTimer = 0f;
     }
 
-    public float GetTimer(){
+    public float GetDashTimer(){
         return _dashTimer / _skillDelay.dashDelay;
+    }
+    public float GetSlashTimer() {
+        return _dashTimer / _skillDelay.slashDelay;
     }
 }

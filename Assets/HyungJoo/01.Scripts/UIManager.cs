@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour{
 
     [SerializeField]
     private Image _coolImage;
+    [SerializeField]
+    private Image _slashImage;
 
     private void Awake() {
         Instance = this;
@@ -18,11 +20,15 @@ public class UIManager : MonoBehaviour{
 
     void Update(){
         FillSizeCoolTime();
+        FillSizeSlashCoolTime();
     }
 
 
     public void FillSizeCoolTime(){
-        _coolImage.fillAmount = 1f - agentSkill.GetTimer();
+        _coolImage.fillAmount = 1f - agentSkill.GetDashTimer();
+    }
+    public void FillSizeSlashCoolTime() {
+        _slashImage.fillAmount = 1f - agentSkill.GetSlahTimer();
     }
 
 }
