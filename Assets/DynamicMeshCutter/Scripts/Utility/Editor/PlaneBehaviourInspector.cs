@@ -12,15 +12,14 @@ namespace DynamicMeshCutter
         {
             _pb = (PlaneBehaviour)target;
         }
-
-        public override void OnInspectorGUI()
+     /*   public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             if (GUILayout.Button("Cut"))
             {
                 _pb.Cut();
             }
-        }
+        }*/
 
         void OnSceneGUI()
         {

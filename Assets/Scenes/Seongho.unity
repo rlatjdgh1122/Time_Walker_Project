@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: weaponPivot
       value: 
       objectReference: {fileID: 1161027909}
+    - target: {fileID: 4422068004507076994, guid: 26162ebe665656e4d8314bc144418b8d, type: 3}
+      propertyPath: EnemySoData
+      value: 
+      objectReference: {fileID: 11400000, guid: 80c69ed3ed3be2243802a203732fc944, type: 2}
     - target: {fileID: 4422068004507077020, guid: 26162ebe665656e4d8314bc144418b8d, type: 3}
       propertyPath: m_UseGravity
       value: 1

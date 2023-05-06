@@ -9,12 +9,11 @@ namespace DynamicMeshCutter
     public class PlaneBehaviour : CutterBehaviour
     {
         public float DebugPlaneLength = 2;
-        public void Cut()
+        public void Cut(Vector3 to, Vector3 from)
         {
-            UnityEngine.Debug.Log("Â©¸²");
             var target = this.gameObject.transform.Find("DSC_Man").GetComponent<MeshTarget>();
 
-            Cut(target, transform.position, transform.forward, null, OnCreated);
+            Cut(target, to ,from, null, OnCreated);
         }
         void OnCreated(Info info, MeshCreationData cData)
         {

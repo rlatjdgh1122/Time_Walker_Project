@@ -9,9 +9,13 @@ public class TestSeonghoScript : MonoBehaviour
     public EnemyHit gun;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            gun?.OnHit();
+            gun?.OnCut_Ver();
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            gun?.OnCut_Hor();
         }
     }
 }
