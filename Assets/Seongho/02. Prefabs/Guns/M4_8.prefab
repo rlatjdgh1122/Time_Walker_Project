@@ -458,6 +458,7 @@ GameObject:
   - component: {fileID: 4738614426978306579}
   - component: {fileID: 4749042493309777725}
   - component: {fileID: 4734771445754604623}
+  - component: {fileID: -4294479807875812216}
   m_Layer: 0
   m_Name: M4_8
   m_TagString: Untagged
@@ -472,8 +473,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4735167654516779077}
-  m_LocalRotation: {x: 0.4166788, y: -0.47621942, z: 0.51233214, w: 0.58061147}
-  m_LocalPosition: {x: -0.068309195, y: 0.12680689, z: 0.035807602}
+  m_LocalRotation: {x: 0.26173702, y: 0.17518598, z: -0.36484113, w: 0.87618184}
+  m_LocalPosition: {x: 0.023, y: -0.1248, z: 0.243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -485,7 +486,7 @@ Transform:
   - {fileID: 4734771444816085312}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 76.366, y: -32.325, z: 57.171}
+  m_LocalEulerAnglesHint: {x: 35.908, y: 8.234, z: -42.541}
 --- !u!33 &4738614426978306579
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -550,4 +551,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataSO: {fileID: 11400000, guid: b49a1255d235d11499d057e200ca82e7, type: 2}
   firePos: {fileID: 4734771444816085312}
-  bullet: {fileID: 2181549735130845978, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}
+  bullet: {fileID: 8295673042786580483, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}
+--- !u!64 &-4294479807875812216
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735167654516779077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c7741850eebe1df4ea75a80275b16311, type: 3}
