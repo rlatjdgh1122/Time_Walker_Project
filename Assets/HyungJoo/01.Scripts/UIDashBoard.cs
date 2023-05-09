@@ -28,7 +28,6 @@ public class UIDashBoard : MonoBehaviour{
         _coolImage.fillAmount = 1f - agentSkill.GetTimer();
     }
     public void FillSizeDashCoolTime(){
-        Debug.Log(1f - agentSkill.GetSlashTimer());
         _dashImage.fillAmount = 1f - agentSkill.GetSlashTimer();
     }
 }

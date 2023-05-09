@@ -7,6 +7,8 @@ using static Core.Define;
 public class PlayerAttack : AgentAttack {
     private SwordAnimator _swordAnimator;
     [SerializeField]
+    private LayerMask _mask;
+    [SerializeField]
     private Vector3 _offset;
     protected override void Awake() {
         base.Awake();
@@ -25,11 +27,10 @@ public class PlayerAttack : AgentAttack {
         _actionData.isAttacking = true;
         _swordAnimator.OnAttackAnimation();
         RaycastHit hit;
-        bool result = Physics.SphereCast(transform.position + _offset, 5f,MainCam.transform.forward,out hit, 10f);
+        bool result = Physics.SphereCast(transform.position + _offset, 1f, MainCam.transform.forward ,out hit, 1f,_mask);
+        Debug.Log("Result :: " + result);
         if (result) {
-            if(hit.collider.transform.root.TryGetComponent<EnemyHit>(out EnemyHit eh)){
-                eh.OnCut_Hor();
-            }
+            hit.collider.transform.root.GetComponent<EnemyHit>().OnCut_Hor();
             Debug.Log($"{hit.collider.gameObject.name} - ColliderName");
         }
     }
