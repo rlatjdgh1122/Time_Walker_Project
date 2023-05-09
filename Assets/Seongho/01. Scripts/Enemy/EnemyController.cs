@@ -72,19 +72,6 @@ public class EnemyController : MonoBehaviour
 
         OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
     }
-    /*  private void AttackRaycast(float distance)
-      {
-          RaycastHit hit;
-          bool isAttackHit = Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, distance);
-
-          if (isAttackHit)
-          {
-              if (hit.collider.CompareTag("Player"))
-              {
-                  Shooting();
-              }
-          }
-      }*/
     private bool HideInWalk()
     {
         RaycastHit hit;
