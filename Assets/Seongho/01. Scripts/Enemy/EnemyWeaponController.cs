@@ -33,9 +33,16 @@ public class EnemyWeaponController : MonoBehaviour
         Init();
         ammo = enemySoData.weaponData.ammoCapacity;
     }
+    private GameObject weaponObj;
     public void Init()
     {
-        Instantiate(enemySoData.weaponObject, weaponPivot);
+        weaponObj = Instantiate(enemySoData.weaponObject, weaponPivot);
+    }
+    public void WeaponThrow()
+    {
+        weaponObj.transform.SetParent(null);
+        Rigidbody rigid = weaponObj.AddComponent<Rigidbody>();
+        rigid.AddForce(-Vector3.forward * 30);
     }
     public void shoot()
     {

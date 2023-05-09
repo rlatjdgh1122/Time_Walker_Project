@@ -1,12 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
-using UnityEditor.Build;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -51,8 +42,6 @@ public class EnemyController : MonoBehaviour
 
         Rotation();
         Move();
-        //AttackRaycast(EnemySoData.weaponData.shootDistance);
-        Debug.Log("움직이는가 : " + isMove);
     }
 
     private void Rotation()
@@ -107,7 +96,6 @@ public class EnemyController : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("플레이어 맞음");
                 return false;
             }
         }
@@ -118,9 +106,7 @@ public class EnemyController : MonoBehaviour
         if (!cooldown.IsCooldown(cooltimeName))
         {
             cooldown.SetCooldown(cooltimeName, EnemySoData.weaponData.attackCoolTime);
-            Debug.Log("쿨타임돎");
             OnShooting?.Invoke();
-            Debug.Log("발사");
         }
     }
     private void OnDrawGizmos()
@@ -130,8 +116,5 @@ public class EnemyController : MonoBehaviour
             transform.forward * EnemySoData.weaponData.shootDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position + Vector3.up, direction * 1000);
-
-        /* Gizmos.color = Color.green;
-         Gizmos.DrawWireSphere(transform.position, EnemySoData.weaponData.attackRadius);*/
     }
 }

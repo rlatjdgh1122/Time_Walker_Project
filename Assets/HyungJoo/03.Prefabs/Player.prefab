@@ -6184,9 +6184,9 @@ GameObject:
   - component: {fileID: 8177721322950902033}
   - component: {fileID: 8177721322950902032}
   - component: {fileID: 8177721322950902034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9167,6 +9167,7 @@ MonoBehaviour:
   isMoving: 0
   isDashing: 0
   chargingDash: 0
+  canDash: 0
   hitPos: {x: 0, y: 0, z: 0}
   hitNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &8177721323384085732
