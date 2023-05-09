@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebba9a5c72ab9c4b9792f700b1939ee, type: 3}
+  m_Name: Weapon List
+  m_EditorClassIdentifier: 
+  Weapons:
+  - WeaponObject: {fileID: 5761188387703252399, guid: 171a81364af51ba44b95211725036788, type: 3}
+    Weight: 0.364
+  - WeaponObject: {fileID: 7570655939679429030, guid: ec9e9a241611f2142a4261408b2396ca, type: 3}
+    Weight: 0.487
+  - WeaponObject: {fileID: 4734771445754604623, guid: ca44d7e0a3b97684d99534f660a3ec97, type: 3}
+    Weight: 0.424
+  - WeaponObject: {fileID: 8366379119389573656, guid: ee6ce9a2c6dd38443a88cef1a33ad11f, type: 3}
+    Weight: 0.569
+  - WeaponObject: {fileID: 2681375499759391203, guid: 38ded6486c84ec4479b8237411f306b7, type: 3}
+    Weight: 0.248
+  - WeaponObject: {fileID: 8250556516824266683, guid: c1032de23b6751340bbf5707dd19042d, type: 3}
+    Weight: 1
+  - WeaponObject: {fileID: 8719934989322897651, guid: fe5530a4571969340b39f808ddd92c46, type: 3}
+    Weight: 0.604

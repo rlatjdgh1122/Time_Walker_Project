@@ -16,9 +16,6 @@ public class EnemyController : MonoBehaviour
 
     private bool isMove = true;
 
-    private bool inAttackDetect;
-    private Collider[] cols = null;
-
     private string cooltimeName = "EnemyAttackCoolTime";
 
     private Vector3 direction = Vector3.zero;
@@ -53,7 +50,7 @@ public class EnemyController : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        float lerpAmount = EnemySoData.weaponData.rotateSpeed * Time.deltaTime;
+        float lerpAmount = EnemySoData.weaponData.rotateSpeed * .02f;
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpAmount);
     }
 
@@ -65,7 +62,8 @@ public class EnemyController : MonoBehaviour
          && HideInWalk() == false)
         {
             float attackDistance = Vector3.Distance(target.position, transform.position);
-            if (attackDistance < EnemySoData.weaponData.shootDistance)
+            if (attackDistance < EnemySoData.weaponData.shootDistance
+                && HideInWalk() == false)
                 Shooting();
 
             isMove = false;
@@ -73,19 +71,6 @@ public class EnemyController : MonoBehaviour
         else isMove = true;
 
         OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
-    }
-    private void AttackRaycast(float distance)
-    {
-        RaycastHit hit;
-        bool isAttackHit = Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, distance);
-
-        if (isAttackHit)
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                Shooting();
-            }
-        }
     }
     private bool HideInWalk()
     {
@@ -105,6 +90,8 @@ public class EnemyController : MonoBehaviour
     {
         if (!cooldown.IsCooldown(cooltimeName))
         {
+            Debug.Log("½¸!!");
+
             cooldown.SetCooldown(cooltimeName, EnemySoData.weaponData.attackCoolTime);
             OnShooting?.Invoke();
         }

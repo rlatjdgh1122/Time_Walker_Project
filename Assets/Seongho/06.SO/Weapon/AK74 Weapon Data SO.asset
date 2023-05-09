@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e756d19c7d6029f4db705eeb9466ab97, type: 3}
   m_Name: AK74 Weapon Data SO
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 7642103089271034795, guid: 88ccd98e4c77f5e4a8f8c1a72b2761ab, type: 3}
   attackCoolTime: 2
   shootDistance: 10
   speed: 3
   rotateSpeed: 3
   ammoCapacity: 100
-  weaponDelay: 0
+  weaponDelay: 1.5
   spreadAngle: 0
   reloadTime: 3
   bulletCount: 1

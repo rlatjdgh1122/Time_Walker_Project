@@ -14,8 +14,10 @@ public class EnemyAnimationController : MonoBehaviour
     {
         enemySoData = GetComponent<EnemyController>().EnemySoData;
         anim = GetComponent<Animator>();
-
-        anim.runtimeAnimatorController = enemySoData.weaponData.animatiorController;
+    }
+    private void Start()
+    {
+        SetAnimatorController(enemySoData.weaponData.animatiorController);
     }
     public void SetAnimatorController(AnimatorOverrideController animator)
     {

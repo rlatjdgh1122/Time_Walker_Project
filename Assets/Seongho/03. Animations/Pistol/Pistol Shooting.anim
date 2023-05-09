@@ -15733,7 +15733,7 @@ AnimationClip:
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 2.3333333
-    m_OrientationOffsetY: -15
+    m_OrientationOffsetY: -10
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
@@ -30544,7 +30544,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.4
-    functionName: EventShootting
+    functionName: EventShooting
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
