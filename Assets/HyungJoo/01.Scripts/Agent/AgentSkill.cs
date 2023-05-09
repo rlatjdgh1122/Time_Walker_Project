@@ -42,10 +42,10 @@ public class AgentSkill : MonoBehaviour{
         _actionData.isAttacking = true;
         StartCoroutine(DashCorotuine(power));
         RaycastHit hit;
-        bool isHit = Physics.BoxCast(transform.position,transform.lossyScale,transform.forward,out hit,Quaternion.identity,5f, whatIsEnemy);
+        bool isHit = Physics.BoxCast(transform.position,transform.lossyScale * 2f,transform.forward,out hit,Quaternion.identity,5f * power, whatIsEnemy);
         if(isHit){
-            if(hit.collider.gameObject.TryGetComponent<AgentHP>(out AgentHP hp)){
-                hp.Damaged(5);
+            if(hit.collider.transform.root.gameObject.TryGetComponent<EnemyHit>(out EnemyHit hp)){
+                hp.OnCut_Hor();
             }
         }
     }
@@ -54,6 +54,13 @@ public class AgentSkill : MonoBehaviour{
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position;
         StartCoroutine(SlashDelayCor(5f));
+        RaycastHit[] cols = Physics.BoxCastAll(transform.position,transform.lossyScale * 2f,transform.forward,Quaternion.identity,5f * power, whatIsEnemy);
+        foreach(var hit in cols){
+            if(hit.collider.transform.root.gameObject.TryGetComponent<EnemyHit>(out EnemyHit hp)){
+                hp.OnCut_Ver();
+            }
+        }
+
         gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
         gs.actionData = _actionData;
         _actionData.isAttacking = true;

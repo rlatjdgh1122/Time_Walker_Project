@@ -33,6 +33,16 @@ namespace Core{
                 return _player;
             }
         }
+        public static PlayerActionData PlayerActionDataCompo{
+            get{
+                if(_playerActionData == null){
+                    _playerActionData = Player.Find("ActionData").GetComponent<PlayerActionData>();
+                }
+                return _playerActionData;
+            }
+        }
+        private static PlayerActionData _playerActionData;
+
         
     }
 }

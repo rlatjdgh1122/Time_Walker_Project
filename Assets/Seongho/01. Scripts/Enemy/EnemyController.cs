@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour
         }
         else isMove = true;
 
-        OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
+         OnMovement?.Invoke(EnemySoData.weaponData.speed, target, isMove);
     }
     private bool HideInWalk()
     {

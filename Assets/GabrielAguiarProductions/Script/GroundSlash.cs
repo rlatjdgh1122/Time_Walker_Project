@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static Core.Define;
 public class GroundSlash : PoolableMono
 {
     public float speed = 30;
@@ -45,7 +45,6 @@ public class GroundSlash : PoolableMono
             Debug.DrawRay(distance, transform.TransformDirection(-Vector3.up * detectingDistance), Color.red);
         }
     }
-
     IEnumerator SlowDown ()
     {
         float t = 1;
@@ -57,7 +56,7 @@ public class GroundSlash : PoolableMono
         }
 
         stopped = true;
-        actionData.isAttacking = false;
+        PlayerActionDataCompo.isAttacking = false;
     }
 
     public override void Init() {
