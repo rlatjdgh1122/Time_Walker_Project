@@ -1,21 +1,26 @@
 using DynamicMeshCutter;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestSeonghoScript : MonoBehaviour
 {
-    public EnemyHit gun;
+    private List<EnemyHit> gun;
+    private void Awake()
+    {
+        gun = FindObjectsOfType<EnemyHit>().ToList();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            gun?.OnCut_Ver();
+            gun.ForEach(p => p.OnCut_Ver());
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            gun?.OnCut_Hor();
+            gun.ForEach(p => p.OnCut_Hor());
         }
     }
 }
