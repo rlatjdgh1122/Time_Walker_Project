@@ -10,7 +10,7 @@ public class EnemyHit : PlaneBehaviour
     private UnityEvent OnDead;
     public void OnCut_Hor() //가로로 자름
     {
-        Cut(transform.position + Vector3.up, transform.up);
+        Cut(transform.position + Vector3.up * Random.Range(.85f, 1.15f), transform.up * Random.Range(.85f, 1.15f));
         OnDead?.Invoke();
     }
     public void OnCut_Ver() //세로로 자름

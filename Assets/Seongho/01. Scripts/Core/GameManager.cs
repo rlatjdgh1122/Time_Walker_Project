@@ -3,18 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [SerializeField]
     private PoolingList _poolingList;
-    public static GameManager Instance;
+    [SerializeField]
+    private WeaponList weaponList;
     [SerializeField]
     private GameObject Target;
     public GameObject target => Target;
 
-    public AgentHP PlayerHP{
-        get{
+    public AgentHP PlayerHP
+    {
+        get
+        {
             _playerHP ??= GameObject.FindGameObjectWithTag("Player").GetComponent<AgentHP>();
             return _playerHP;
         }
@@ -35,10 +41,30 @@ public class GameManager : MonoBehaviour
     {
         PoolManager manager = new PoolManager(this.transform);
         TimeController controller = transform.AddComponent<TimeController>();
-        
-        foreach(PoolClass p in _poolingList.poolingList)
+
+        foreach (PoolClass p in _poolingList.poolingList)
         {
             manager.CreatePool(p.poolObject, p.poolCount);
         }
+    }
+    public GunWeapon GetRandomWeightWeapon()
+    {
+        return weaponList.Weapons[GetRandomWeightWeaponIndex()].WeaponObject;
+    }
+    private int GetRandomWeightWeaponIndex()
+    {
+        float sum = 0;
+        for (int i = 0; i < weaponList.Weapons.Count; i++)
+        {
+            sum += weaponList.Weapons[i].Weight;
+        }
+        float randomValue = Random.Range(0, sum);
+        float tempSum = 0;
+        for (int i = 0; i < weaponList.Weapons.Count; i++)
+        {
+            if (randomValue >= tempSum && randomValue < tempSum + weaponList.Weapons[i].Weight) return i;
+            else tempSum += weaponList.Weapons[i].Weight;
+        }
+        return 0;
     }
 }

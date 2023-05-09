@@ -29,7 +29,6 @@ public class EnemyWeaponController : MonoBehaviour
     }
     private void Start()
     {
-
         Init();
         ammo = enemySoData.weaponData.ammoCapacity;
     }
