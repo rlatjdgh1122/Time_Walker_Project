@@ -10,6 +10,7 @@ public class TimeUI : MonoBehaviour{
         _slider = GetComponent<Slider>();
         _timerImage = transform.Find("TimerImage").GetComponent<Image>();
     }
+    
     private void Update(){
         if(Time.timeScale == 0.1f){
             _timerImage.enabled = true;
