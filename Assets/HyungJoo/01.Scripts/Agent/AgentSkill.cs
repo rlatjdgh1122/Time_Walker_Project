@@ -53,12 +53,12 @@ public class AgentSkill : MonoBehaviour{
     public void Slash(float power) {
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position;
+        StartCoroutine(SlashDelayCor(5f));
         gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
         gs.actionData = _actionData;
         _actionData.isAttacking = true;
-        SlashDelayCor(5f);
     }
-
+    
     IEnumerator DashCorotuine(float power){
         _animator.DashAnimation(true);
         OnDashStart?.Invoke();
@@ -81,10 +81,11 @@ public class AgentSkill : MonoBehaviour{
         _actionData.canDash =  true;
         _dashTimer = 0f;
     }
+
     IEnumerator SlashDelayCor(float timer) {
         _actionData.canSlash = false;
         while(_slashTimer < timer) {
-            _dashTimer += Time.deltaTime;
+            _slashTimer += Time.deltaTime;
             yield return null;
         }
         _actionData.canSlash = true;
@@ -93,5 +94,8 @@ public class AgentSkill : MonoBehaviour{
 
     public float GetTimer(){
         return _dashTimer / _skillDelay.dashDelay;
+    }
+    public float GetSlashTimer(){
+        return _slashTimer / _skillDelay.slashDelay;
     }
 }

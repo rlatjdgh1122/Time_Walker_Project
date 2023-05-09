@@ -30,6 +30,7 @@ public class TimeController : MonoBehaviour{
         _timer = Mathf.Clamp(_timer,0f,_maxValue);
     }
     private void FixedUpdate(){
+
         if(_actionData.isAttacking){
             if(_actionData.chargingDash){
                 SetTimeScale(0.1f,false);
@@ -45,6 +46,10 @@ public class TimeController : MonoBehaviour{
             SetTimeScale(1f,true);
         }
         else if(_actionData.isMoving == false){
+            if(_timer <= 0.005f){
+                SetTimeScale(1f,false);
+                return;
+            }
             SetTimeScale(0.1f,false);
         }
     }
