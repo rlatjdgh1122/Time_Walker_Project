@@ -99,9 +99,8 @@ public class EnemyController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position + Vector3.up,
-            transform.forward * EnemySoData.weaponData.shootDistance);
+        //Gizmos.DrawRay(transform.position + Vector3.up,transform.forward * EnemySoData.weaponData.shootDistance);
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position + Vector3.up, direction * 1000);
+        //Gizmos.DrawRay(transform.position + Vector3.up, direction * 1000);
     }
 }
