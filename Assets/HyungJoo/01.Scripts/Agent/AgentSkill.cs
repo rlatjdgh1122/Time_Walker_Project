@@ -54,7 +54,7 @@ public class AgentSkill : MonoBehaviour{
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position + new Vector3(0,0,0.5f);
         StartCoroutine(SlashDelayCor(5f));
-        RaycastHit[] cols = Physics.BoxCastAll(transform.position,transform.lossyScale * 2f,transform.forward,Quaternion.identity,5f * power, whatIsEnemy);
+        RaycastHit[] cols = Physics.BoxCastAll(transform.position,transform.lossyScale * 2f,transform.forward,Quaternion.identity,5f * 2f, whatIsEnemy);
         foreach(var hit in cols){
             if(hit.collider.transform.root.gameObject.TryGetComponent<EnemyHit>(out EnemyHit hp)){
                 hp.OnCut_Ver();
@@ -62,9 +62,9 @@ public class AgentSkill : MonoBehaviour{
         }
         gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
         gs.actionData = _actionData;
+
         _actionData.isAttacking = true;
     }
-    
     IEnumerator DashCorotuine(float power){
         _animator.DashAnimation(true);
         OnDashStart?.Invoke();
