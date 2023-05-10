@@ -12,12 +12,14 @@ public class AgentInput : MonoBehaviour{
     protected SwordAnimator _animator;
     protected CameraHandler _cameraHandler;
     protected PlayerActionData _actionData;
+    protected AgentMovement _agentMovement;
     private float _dashTimer = 0f;
     private float _slashTimer = 0f;
 
     private void Awake() {
         _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
+        _agentMovement = GetComponent<AgentMovement>();
         _cameraHandler = GetComponent<CameraHandler>();
     }
 
@@ -37,6 +39,8 @@ public class AgentInput : MonoBehaviour{
             _animator.SetSlashBool(true);
             _actionData.chargingSlash = true;
             _actionData.isAttacking = true;
+            _agentMovement.StopImmediately();
+            
         }
         if (Input.GetMouseButtonUp(1)) {
             if(_slashTimer > 1f) {
@@ -59,6 +63,7 @@ public class AgentInput : MonoBehaviour{
             _cameraHandler.CameraZoom(_dashTimer);
             _actionData.isAttacking = true;
             _actionData.chargingDash = true;
+            _agentMovement.StopImmediately();
         }
 
         if(Input.GetKeyUp(KeyCode.Space)){
