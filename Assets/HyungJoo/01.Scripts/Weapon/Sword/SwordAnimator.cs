@@ -31,7 +31,7 @@ public class SwordAnimator : AgentAnimator{
     }
 
     public void EndAttackAnimation(){
-        Debug.LogError("EndAttackAnimation");
+        //Debug.LogError("EndAttackAnimation");
         _playerAttack.OnAnimationEnd?.Invoke();
         _actionData.isAttacking = false;
         _animator.SetBool(_isAttackHash, false);
