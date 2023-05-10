@@ -24,8 +24,8 @@ public class RideAirplane : MonoBehaviour
     public void FowardAirplane()
     {
         sword.transform.DOLocalMove(new Vector3(-0.31f, -1.81f, -0.26f), 0.1f);
-        cameraObj.transform.DOLocalMove(new Vector3(-0.119f, 1.05f, -3.4f), 2f);
-        plane.transform.DOMove(new Vector3(97f, -0.13f, -165.5f), 50f);
+        cameraObj.transform.DOLocalMove(new Vector3(-0.119f, 2f, -3.4f), 2f);
+        plane.transform.DOMove(new Vector3(101.3f, -0.13f, -173f), 35f);
     }
 
     //private void OnTriggerEnter(Collider other)
