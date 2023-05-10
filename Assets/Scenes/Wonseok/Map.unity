@@ -71628,7 +71628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d075e443ddc624db302098f7826153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameobjectRoot: {fileID: 5593238237945975805}
+  GameobjectRoot: {fileID: 5593238239600540665}
   OverrideFaceMaterial: {fileID: 2100000, guid: 30d3bdcd8e9e6a947b19338f628af5b5, type: 2}
   SeparateMeshes: 0
   ApplyTranslation: 1
@@ -72296,7 +72296,7 @@ MonoBehaviour:
   Rigidbody: {fileID: 5593238239028924803}
   Joint: {fileID: 5593238239028924801}
   Colliders:
-  - {fileID: 5593238239028924802}
+  - {fileID: 0}
   Vertices:
   - {x: 0.52939093, y: 0.06916952, z: 2.4567633}
   - {x: 0.39080977, y: 0.024143621, z: 2.285248}
@@ -72363,20 +72363,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!136 &5593238239028924802
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5593238239028924814}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.45041308
-  m_Direction: 1
-  m_Center: {x: 0.000000048428774, y: 0.22520654, z: 0.00000013783574}
 --- !u!54 &5593238239028924803
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72403,7 +72389,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5593238239028924815}
   - component: {fileID: 5593238239028924803}
-  - component: {fileID: 5593238239028924802}
   - component: {fileID: 5593238239028924801}
   - component: {fileID: 5593238239028924800}
   m_Layer: 7
