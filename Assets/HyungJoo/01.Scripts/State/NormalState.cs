@@ -19,8 +19,8 @@ public class NormalState : CommonState{
         Debug.Log("normalState");
     }
 
-    public void OnMovementHandle(Vector3 dir)
-    {
+    public void OnMovementHandle(Vector3 dir){
+        if(_actionData.isAttacking == true) return;
         _agentMovement.SetMovementVelocity(dir);
     }
 

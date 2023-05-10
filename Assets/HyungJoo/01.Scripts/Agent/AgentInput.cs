@@ -29,13 +29,14 @@ public class AgentInput : MonoBehaviour{
     }
 
     private void InputSlashPress() {
-        if (_actionData.isAttacking == true) return;
+        if (_actionData.canSlash == false) return;
         if (Input.GetMouseButton(1)) {
-            _slashTimer += Time.fixedDeltaTime;
+            _slashTimer += Time.unscaledDeltaTime;
             _slashTimer= Mathf.Clamp(_slashTimer, 0,2f);
             Debug.Log(_slashTimer);
             _animator.SetSlashBool(true);
             _actionData.chargingSlash = true;
+            _actionData.isAttacking = true;
         }
         if (Input.GetMouseButtonUp(1)) {
             if(_slashTimer > 1f) {
@@ -44,6 +45,7 @@ public class AgentInput : MonoBehaviour{
                 _animator.SlashAnimation(true);
             }
             _animator.SetSlashBool(false);
+            _actionData.isAttacking = false;
             _slashTimer = 0f;
         }
     }
@@ -51,7 +53,7 @@ public class AgentInput : MonoBehaviour{
     private void InputDashPress(){
         if(_actionData.canDash == false) return;
         if(Input.GetKey(KeyCode.Space)){
-            _dashTimer += Time.fixedDeltaTime;
+            _dashTimer += Time.unscaledDeltaTime;
             _dashTimer = Mathf.Clamp(_dashTimer,0,2f);
             _animator.SetDashBool(true);
             _cameraHandler.CameraZoom(_dashTimer);

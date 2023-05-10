@@ -84,7 +84,7 @@ public class AttackState : CommonState {
     }
      public void PlayParticle(int count){
         PoolableMono pm = PoolManager.Instance.Pop($"Particle{count}");
-        pm.transform.position = MainCam.transform.position;
+        pm.transform.position = MainCam.transform.position + MainCam.transform.forward;
         pm.transform.rotation = MainCam.transform.rotation;
     }
 }
