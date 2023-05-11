@@ -75,7 +75,6 @@ public class AgentInput : MonoBehaviour{
             }
             _cameraHandler.ResetCamera();
             _dashTimer = 0f;
-            _actionData.isAttacking  = false;
             _actionData.chargingDash = false;
         }
     }
