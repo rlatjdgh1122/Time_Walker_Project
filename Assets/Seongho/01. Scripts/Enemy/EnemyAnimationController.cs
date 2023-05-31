@@ -3,35 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimationController : MonoBehaviour
+public enum MoveState
 {
-    private Animator anim;
-    private EnemySoData enemySoData;
+    Idle,
+    Move,
+    Move_Back,
+}
+public class EnemyAnimationController : AnimatorHash
+{
+    public void SetMove(MoveState value)
+    {
+        if (value == MoveState.Move_Back)
+            _anim.SetFloat(MOVE_HASH, -1);
 
-    private readonly int HashMove = Animator.StringToHash("Move");
-    private readonly int HashShootting = Animator.StringToHash("Shooting");
-    protected virtual void Awake()
-    {
-        enemySoData = GetComponent<EnemyController>().EnemySoData;
-        anim = GetComponent<Animator>();
+        if (value == MoveState.Idle)
+            _anim.SetFloat(MOVE_HASH, 0);
+
+        if (value == MoveState.Move)
+            _anim.SetFloat(MOVE_HASH, 1);
+
     }
-    private void Start()
+    public void SetShooting()
     {
-        SetAnimatorController(enemySoData.weaponData.animatiorController);
+        _anim.SetTrigger(SHOOTING_HASH);
     }
-    public void SetAnimatorController(AnimatorOverrideController animator)
+    public void SetReloading(bool value)
     {
-        anim.runtimeAnimatorController = animator;
-    }
-    public void MoveAnim(bool moving)
-    {
-        if (moving)
-            anim.SetFloat(HashMove, 1);
-        else
-            anim.SetFloat(HashMove, 0);
-    }
-    public void ShootAnim()
-    {
-        anim.SetTrigger(HashShootting);
+        if (value == true)
+            _anim.SetBool(RELOAD_HASH, true);
+
+        if (value == false)
+            _anim.SetBool(RELOAD_HASH, false);
     }
 }

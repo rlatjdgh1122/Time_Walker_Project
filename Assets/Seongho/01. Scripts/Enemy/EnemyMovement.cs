@@ -10,36 +10,18 @@ using UnityEngine.Rendering;
 
 public class EnemyMovement : EnemyAnimationController
 {
-    private NavMeshAgent agent;
+    private EnemyController _enemyController;
+    private NavMeshAgent _agent;
     private Vector3 lastPosition; // 마지막 위치 저장
     protected override void Awake()
     {
         base.Awake();
-        agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
+        _enemyController = GetComponent<EnemyController>();
     }
     private void Start()
     {
         lastPosition = transform.position;
     }
-    public void MoveAgent(float speed, Transform target, bool isMove)
-    {
-        agent.speed = speed;
-        agent.SetDestination(target.position);
-        if (isMove)
-        {
-            agent.isStopped = false;
-        }
-        else if (!isMove)
-        {
-            agent.isStopped = true;
-        }
-
-        if (transform.position != lastPosition)
-        {
-            MoveAnim(true); //tranform에 변경여부
-            lastPosition = transform.position;
-        }
-        else
-            MoveAnim(false); //tranform에 변경여부
-    }
+   
 }
