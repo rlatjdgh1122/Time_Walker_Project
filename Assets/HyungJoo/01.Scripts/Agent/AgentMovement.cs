@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AgentMovement : MonoBehaviour{
     private CharacterController _controller;
+    protected AgentAnimator _agentAnimator;
     private PlayerAttack _playerAttack;
 
     [SerializeField] private float _moveSpeed = 8f, _gravityScale = -9.81f;
@@ -20,6 +21,7 @@ public class AgentMovement : MonoBehaviour{
     private void Awake(){
         _controller = GetComponent<CharacterController>();
         _playerAttack = GetComponent<PlayerAttack>();
+        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 
@@ -41,12 +43,15 @@ public class AgentMovement : MonoBehaviour{
             _verticalVelocity = _gravityScale * 0.2f * Time.fixedDeltaTime;
         }
 
+
+        Debug.Log($"Speed: {_movementVelocity.magnitude}");
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);
     }
 
     private void CalculateMovement(){
+        _agentAnimator.SetSpeed(_movementVelocity.sqrMagnitude);
         _movementVelocity.Normalize();
         _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
     }

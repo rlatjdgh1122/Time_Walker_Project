@@ -11,7 +11,7 @@ public class AgentSkill : MonoBehaviour{
     protected AgentAttack _agentAttack;
     protected AgentController _agentController;
     protected PlayerActionData _actionData;
-    protected SwordAnimator _animator;
+    protected AgentAnimator _agentAnimator;
 
 
     [SerializeField]
@@ -28,7 +28,7 @@ public class AgentSkill : MonoBehaviour{
         _agentMovement = GetComponent<AgentMovement>();
         _agentAttack = GetComponent<AgentAttack>();
         _agentController = GetComponent<AgentController>();
-        _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>(); 
+        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>(); 
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 
@@ -67,14 +67,14 @@ public class AgentSkill : MonoBehaviour{
     }
 
     IEnumerator DashCorotuine(float power){
-        _animator.DashAnimation(true);
+        //_animator.DashAnimation(true);
         OnDashStart?.Invoke();
         _agentMovement.SetDashVelocity(transform.forward * power);
         yield return new WaitForSeconds(0.15f);
         _agentMovement.StopImmediately();
         OnDashEnd?.Invoke();
         _actionData.isAttacking = false;
-        _animator.DashAnimation(false);
+        //_animator.DashAnimation(false);
         _actionData.isDashing = false;
         StartCoroutine(DelayCor(_skillDelay.dashDelay));
     }

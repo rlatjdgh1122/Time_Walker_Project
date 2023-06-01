@@ -9,7 +9,7 @@ public class AgentInput : MonoBehaviour{
     public event Action<float> OnDashButtonPress;
     public event Action<float> OnSlashButtonPress;
 
-    protected SwordAnimator _animator;
+    protected AgentAnimator _agentAnimator;
     protected CameraHandler _cameraHandler;
     protected PlayerActionData _actionData;
     protected AgentMovement _agentMovement;
@@ -17,7 +17,7 @@ public class AgentInput : MonoBehaviour{
     private float _slashTimer = 0f;
 
     private void Awake() {
-        _animator = transform.Find("MainCam").Find("WeaponParent").Find("Weapon").GetComponent<SwordAnimator>();
+        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
         _agentMovement = GetComponent<AgentMovement>();
         _cameraHandler = GetComponent<CameraHandler>();
@@ -36,7 +36,7 @@ public class AgentInput : MonoBehaviour{
             _slashTimer += Time.unscaledDeltaTime;
             _slashTimer= Mathf.Clamp(_slashTimer, 0,2f);
             Debug.Log(_slashTimer);
-            _animator.SetSlashBool(true);
+            //_animator.SetSlashBool(true);
             _actionData.chargingSlash = true;
             _actionData.isAttacking = true;
             _agentMovement.StopImmediately();
@@ -46,9 +46,9 @@ public class AgentInput : MonoBehaviour{
             if(_slashTimer > 1f) {
                 OnSlashButtonPress?.Invoke(_slashTimer);
                 _actionData.chargingSlash = false;
-                _animator.SlashAnimation(true);
+                //_animator.SlashAnimation(true);
             }
-            _animator.SetSlashBool(false);
+            //_animator.SetSlashBool(false);
             _actionData.isAttacking = false;
             _slashTimer = 0f;
         }
@@ -59,7 +59,7 @@ public class AgentInput : MonoBehaviour{
         if(Input.GetKey(KeyCode.Space)){
             _dashTimer += Time.unscaledDeltaTime;
             _dashTimer = Mathf.Clamp(_dashTimer,0,2f);
-            _animator.SetDashBool(true);
+            //_animator.SetDashBool(true);
             _cameraHandler.CameraZoom(_dashTimer);
             _actionData.isAttacking = true;
             _actionData.chargingDash = true;
@@ -68,7 +68,7 @@ public class AgentInput : MonoBehaviour{
 
         if(Input.GetKeyUp(KeyCode.Space)){
             Debug.Log(_dashTimer);
-            _animator.SetDashBool(false);
+            //_animator.SetDashBool(false);
             if(_dashTimer > 0.7f){
                 OnDashButtonPress?.Invoke(_dashTimer);
                 _actionData.isDashing = true;
