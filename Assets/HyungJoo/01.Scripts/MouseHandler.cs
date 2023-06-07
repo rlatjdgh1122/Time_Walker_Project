@@ -25,5 +25,4 @@ public class MouseHandler : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
         _camera.transform.localRotation = Quaternion.Euler(_verticalLookRotation, 0f, 0f);
     }
-
 }
