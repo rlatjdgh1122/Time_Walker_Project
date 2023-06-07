@@ -9,6 +9,7 @@ public class WeaponDataSO : ScriptableObject
     public float shootDistance;
     public float speed;
     public float rotateSpeed;
+    public float motionDelay;
     public float attackRadius => shootDistance;
 
     [Range(5, 100f)]

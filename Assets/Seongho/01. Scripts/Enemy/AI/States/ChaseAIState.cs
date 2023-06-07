@@ -7,16 +7,15 @@ public class ChaseAIState : CommonAIState
 {
     public override void OnEnterState()
     {
-        _enemyMovement.StartMove();
-        _enemyMovement.StartRotate();
-        _enemyAnimationController.SetMove(MoveState.Move);
+        _enemyMovement.IsRotate = true;
+        _enemyMovement.StartImmediately();
+        _enemyAnimationController.SetMove(MOVE_STATE.Move);
     }
     public override void OnExitState()
     {
-        Debug.Log("ChaseAIState : OnExitState");
-        _enemyMovement.StopMove();
-        _enemyMovement.StopRotate();
-        _enemyAnimationController.SetMove(MoveState.Idle);
+        _enemyMovement.IsRotate = false;
+        _enemyMovement.StopImmediately();
+        _enemyAnimationController.SetMove(MOVE_STATE.Idle);
     }
     public override bool UpdateState()
     {

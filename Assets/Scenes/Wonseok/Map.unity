@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: -7564471727412966210, guid: b9f8e7afdb61396439e846122be21924, type: 3}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7994,6 +7994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfac667cfa571349868ec24de4e9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decisions: []
   _nextState: {fileID: 1026173289}
 --- !u!1 &204811773
 GameObject:
@@ -8874,6 +8875,8 @@ GameObject:
   m_Component:
   - component: {fileID: 226061688}
   - component: {fileID: 226061689}
+  - component: {fileID: 226061691}
+  - component: {fileID: 226061690}
   m_Layer: 7
   m_Name: TransitionChase
   m_TagString: Untagged
@@ -8908,7 +8911,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfac667cfa571349868ec24de4e9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decisions: []
   _nextState: {fileID: 195575501}
+--- !u!114 &226061690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226061687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16645b9a19fe7d94582817696b379633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsReverse: 0
+--- !u!114 &226061691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226061687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee60c2f4b029da84bbcadcf21a5d8ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsReverse: 1
+  _distance: 5
 --- !u!1001 &226267544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33424,6 +33455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfac667cfa571349868ec24de4e9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decisions: []
   _nextState: {fileID: 195575501}
 --- !u!114 &873489053
 MonoBehaviour:
@@ -34148,6 +34180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902447082}
   - component: {fileID: 902447083}
+  - component: {fileID: 902447084}
   m_Layer: 7
   m_Name: TransitionAttack
   m_TagString: Untagged
@@ -34182,7 +34215,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfac667cfa571349868ec24de4e9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decisions:
+  - {fileID: 902447084}
   _nextState: {fileID: 1026173289}
+--- !u!114 &902447084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902447081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee60c2f4b029da84bbcadcf21a5d8ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsReverse: 0
+  _distance: 5
 --- !u!4 &904660231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
@@ -35014,6 +35063,10 @@ PrefabInstance:
     - target: {fileID: 4903037834726542669, guid: 58d641b5c848e2c49ac9fd96a30a090a, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903037834726542669, guid: 58d641b5c848e2c49ac9fd96a30a090a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4903037834735943557, guid: 58d641b5c848e2c49ac9fd96a30a090a, type: 3}
       propertyPath: m_Avatar
@@ -47471,6 +47524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfac667cfa571349868ec24de4e9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decisions:
+  - {fileID: 1246536845}
   _nextState: {fileID: 2008942193}
 --- !u!114 &1246536845
 MonoBehaviour:
@@ -47684,6 +47739,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9733a670235b8843b295ed03098d334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetSpotted: 0
+  HitPoint: {x: 0, y: 0, z: 0}
+  HitNormal: {x: 0, y: 0, z: 0}
+  LastSpotPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
+  IsAttacking: 0
+  <IsHit>k__BackingField: 0
 --- !u!1 &1251193866
 GameObject:
   m_ObjectHideFlags: 0
@@ -56264,6 +56326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ff4e21bc1f4174f8e99886e3849e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackState: {fileID: 1026173289}
 --- !u!1 &1416162787
 GameObject:
   m_ObjectHideFlags: 0
@@ -87979,7 +88042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c088849e10baf74eb7ffa85c5a30dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentState: {fileID: 0}
+  _currentState: {fileID: 2008942193}
   EnemySoData: {fileID: 11400000, guid: 80c69ed3ed3be2243802a203732fc944, type: 2}
 --- !u!114 &8124911407060025232
 MonoBehaviour:
@@ -88005,8 +88068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a23eab446075b24187ee9b6928a6360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: 0, y: 0, z: 0}
-  isSetActive: 1
 --- !u!114 &8124911407060025241
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public abstract class CommonAIState : MonoBehaviour, IAIState
     protected EnemyMovement _enemyMovement;
     protected AIActionData _aiActionData;
     protected EnemyAnimationController _enemyAnimationController;
+    protected EnemyWeaponController _enemyWeaponController;
 
     public abstract void OnEnterState();
     public abstract void OnExitState();
@@ -19,6 +20,7 @@ public abstract class CommonAIState : MonoBehaviour, IAIState
         _enemyController = agentRoot.GetComponent<EnemyController>();
         _enemyMovement = agentRoot.GetComponent<EnemyMovement>();
         _enemyAnimationController = agentRoot.GetComponent<EnemyAnimationController>();
+        _enemyWeaponController = agentRoot.GetComponent<EnemyWeaponController>();
 
         _aiActionData = agentRoot.Find("AI").GetComponent<AIActionData>();
 
