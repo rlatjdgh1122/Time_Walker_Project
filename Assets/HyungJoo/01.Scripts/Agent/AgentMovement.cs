@@ -24,7 +24,6 @@ public class AgentMovement : MonoBehaviour{
         _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
-
     private void Update() {
         if(_movementVelocity.magnitude > 0.0001f){
             _actionData.isMoving = true;
@@ -33,7 +32,6 @@ public class AgentMovement : MonoBehaviour{
             _actionData.isMoving = false;
         }
     }
-
     private void FixedUpdate(){
         CalculateMovement();
         
@@ -49,7 +47,6 @@ public class AgentMovement : MonoBehaviour{
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);
     }
-
     private void CalculateMovement(){
         _agentAnimator.SetSpeed(_movementVelocity.sqrMagnitude);
         _movementVelocity.Normalize();
