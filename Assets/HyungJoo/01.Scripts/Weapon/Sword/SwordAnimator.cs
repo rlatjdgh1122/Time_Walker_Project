@@ -16,7 +16,7 @@ public class SwordAnimator : AgentAnimator{
     private AttackState _attackState;
     private AgentMovement _movement;
     private PlayerActionData _actionData;
-
+    
     protected override void Awake(){
         base.Awake();
         _playerAttack = _agentTransform.GetComponentInParent<PlayerAttack>();

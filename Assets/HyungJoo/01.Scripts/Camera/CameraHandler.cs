@@ -20,6 +20,6 @@ public class CameraHandler : MonoBehaviour{
     }
 
     public void ResetCamera(){
-                    MainCam.fieldOfView = _normalValue;
+        MainCam.fieldOfView = _normalValue;
     }
 }
