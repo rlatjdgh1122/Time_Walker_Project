@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private WeaponList weaponList;
     [SerializeField]
-    private GameObject Target;
-    public GameObject target => Target;
+    private Transform _playerTrm;
+    public Transform PlayerTrm => _playerTrm;
 
     public AgentHP PlayerHP
     {

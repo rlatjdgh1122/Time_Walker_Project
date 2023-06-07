@@ -37,6 +37,9 @@ public class TimeController : MonoBehaviour{
                 Debug.Log("CharingDash");
                 return;
             }
+            else if (_actionData.isDashing){
+                SetTimeScale(1f,true);
+            }
             else{
                 SetTimeScale(1f,false);
                 return;

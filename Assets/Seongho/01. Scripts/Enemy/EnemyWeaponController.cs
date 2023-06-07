@@ -102,7 +102,7 @@ public class EnemyWeaponController : MonoBehaviour
     }
     private void Shooting()
     {
-        animController.ShootAnim();
+        //animController.ShootAnim();
     }
 
     public void EventShooting()
