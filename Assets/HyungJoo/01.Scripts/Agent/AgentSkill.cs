@@ -61,6 +61,7 @@ public class AgentSkill : MonoBehaviour{
                 hp.OnCut_Ver();
             }
         }
+
         gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
         gs.actionData = _actionData;
         _actionData.isAttacking = true;

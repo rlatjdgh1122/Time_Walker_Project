@@ -20,7 +20,7 @@ public class AttackState : CommonState {
 
     public override void OnEnterState(){
         _agentInput.OnFireButtonPress += AgentAttackHandle;
-        OnAttackAnimation += PlayParticle;
+        //OnAttackAnimation += PlayParticle;
         _agentMovement.StopImmediately();
         _actionData.isAttacking = false;
         //Debug.Log("OnEnterState");
@@ -28,7 +28,7 @@ public class AttackState : CommonState {
     }
     public override void OnExitState() {
         _agentInput.OnFireButtonPress -= AgentAttackHandle;
-        OnAttackAnimation -= PlayParticle;
+        //OnAttackAnimation -= PlayParticle;
         //Debug.Log("OnExitState");
     }
 
@@ -37,9 +37,8 @@ public class AttackState : CommonState {
             _keyTimer -= Time.deltaTime;
             if(_keyTimer <= 0f){
                 _agentController.ChangeState(StateType.Normal);
-                SwordAnimator animator = _agentAnimator as SwordAnimator;
-                animator.SetTriggerAttack(false);
-                _attackCombo = 0;
+                _agentAnimator.SetAttackTrigger(false);
+                //_attackCombo = 0;
             }
         }
         float x = Input.GetAxisRaw("Horizontal");
@@ -59,8 +58,7 @@ public class AttackState : CommonState {
         if(_actionData.isAttacking == false){
             if (_attackCombo >= 3) {
                 _attackCombo = 0;
-                SwordAnimator swordAnimator = _agentAnimator as SwordAnimator; 
-                swordAnimator.EndAttackAnimation();
+                _agentAnimator.OnAttackAnimationEnd();
                  return;
             }
             _playerAttack.TryToAttack();
@@ -82,9 +80,9 @@ public class AttackState : CommonState {
     public void OnNormalState() {
         _agentController.ChangeState(StateType.Normal);
     }
-     public void PlayParticle(int count){
-        PoolableMono pm = PoolManager.Instance.Pop($"Particle{count}");
-        pm.transform.position = MainCam.transform.position + MainCam.transform.forward;
-        pm.transform.rotation = MainCam.transform.rotation;
-    }
+    // public void PlayParticle(int count){
+    //    PoolableMono pm = PoolManager.Instance.Pop($"Particle{count}");
+    //    pm.transform.position = MainCam.transform.position + MainCam.transform.forward;
+    //    pm.transform.rotation = MainCam.transform.rotation;
+    //}
 }
