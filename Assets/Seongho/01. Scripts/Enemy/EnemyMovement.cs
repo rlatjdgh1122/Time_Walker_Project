@@ -16,9 +16,6 @@ public class EnemyMovement : EnemyAnimationController
 
     private void Start()
     {
-        _agent.isStopped = true;
-        _agent.updateRotation = false;
-
         SetSpeed(_enemyController.EnemySoData.weaponData.speed);
     }
     private void Update()
@@ -28,6 +25,7 @@ public class EnemyMovement : EnemyAnimationController
     public void StartImmediately()
     {
         _agent.SetDestination(GameManager.Instance.PlayerTrm.position);
+        Debug.Log("¿òÁ÷ÀÓ");
     }
     public void SetSpeed(float speed)
     {
@@ -36,6 +34,7 @@ public class EnemyMovement : EnemyAnimationController
     public void StopImmediately()
     {
         _agent.SetDestination(transform.position);
+        Debug.Log("¸ØÃã");
     }
     public bool CheckIsArrived()
     {
@@ -46,6 +45,7 @@ public class EnemyMovement : EnemyAnimationController
     {
         if (IsRotate)
         {
+            Debug.Log("°í°³µ¹¸®´Â µä");
             Quaternion rot = Quaternion.LookRotation(GameManager.Instance.PlayerTrm.position, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, _enemyController.EnemySoData.weaponData.rotateSpeed * Time.deltaTime);
         }

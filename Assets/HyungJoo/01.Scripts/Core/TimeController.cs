@@ -20,7 +20,6 @@ public class TimeController : MonoBehaviour{
     }
 
     private void Update() {
-        Debug.Log("Can Plus Timer: " + canPlusTimer);
         if(canPlusTimer){
             _timer += Time.unscaledDeltaTime;
         }
