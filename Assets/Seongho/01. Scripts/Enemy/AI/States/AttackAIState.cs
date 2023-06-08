@@ -19,6 +19,7 @@ public class AttackAIState : CommonAIState
         _enemyMovement.StopImmediately();
         _enemyAnimationController.OnEndEventTrigger += AttackAnimationEndHandle;
         _enemyAnimationController.OnPreEventTrigger += AttackAnimationPreHandle;
+        _isActive = true;
     }
 
     private void AttackAnimationPreHandle()
@@ -34,7 +35,7 @@ public class AttackAIState : CommonAIState
     }
 
     private IEnumerator DelayCoroutine(Action Callback, float time)
-    {
+    {   
         yield return new WaitForSeconds(time);
         Callback?.Invoke();
     }
@@ -43,6 +44,7 @@ public class AttackAIState : CommonAIState
 
         _enemyAnimationController.OnEndEventTrigger -= AttackAnimationEndHandle;
         _enemyAnimationController.OnPreEventTrigger -= AttackAnimationPreHandle;
+
         _aiActionData.IsAttacking = false;
         _isActive = false;
     }
@@ -53,7 +55,6 @@ public class AttackAIState : CommonAIState
         {
             return true;
         }
-
         if (_aiActionData.IsAttacking == false && _isActive)  //액티브
         {
             Vector3 currentFrontVector = transform.forward;
@@ -63,8 +64,9 @@ public class AttackAIState : CommonAIState
             {
                 _enemyMovement.IsRotate = true;
             }
-            else if (_enemyController.EnemySoData.weaponData.attackCoolTime < Time.time) //쿨타임도 찼고 각도도 10도로 들어왔다면
-            {
+            if (_lastAtkTime + _enemyController.EnemySoData.weaponData.attackCoolTime < Time.time) //쿨타임도 찼고 각도도 10도로 들어왔다면
+            {   
+                _enemyMovement.IsRotate = false;
                 _aiActionData.IsAttacking = true;
                 _enemyAnimationController.SetShooting(true);
             }
