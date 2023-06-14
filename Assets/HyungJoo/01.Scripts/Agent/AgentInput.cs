@@ -36,19 +36,18 @@ public class AgentInput : MonoBehaviour{
             _slashTimer += Time.unscaledDeltaTime;
             _slashTimer= Mathf.Clamp(_slashTimer, 0,2f);
             Debug.Log(_slashTimer);
-            //_animator.SetSlashBool(true);
+            _agentAnimator.SetSlashBool(true);
             _actionData.chargingSlash = true;
             _actionData.isAttacking = true;
             _agentMovement.StopImmediately();
-            
         }
         if (Input.GetMouseButtonUp(1)) {
             if(_slashTimer > 1f) {
                 OnSlashButtonPress?.Invoke(_slashTimer);
                 _actionData.chargingSlash = false;
-                //_animator.SlashAnimation(true);
+                _agentAnimator.SlashAnimation(true);
             }
-            //_animator.SetSlashBool(false);
+            _agentAnimator.SetSlashBool(false);
             _actionData.isAttacking = false;
             _slashTimer = 0f;
         }

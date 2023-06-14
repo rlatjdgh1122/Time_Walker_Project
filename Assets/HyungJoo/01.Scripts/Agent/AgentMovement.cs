@@ -42,7 +42,6 @@ public class AgentMovement : MonoBehaviour{
         }
 
 
-        Debug.Log($"Speed: {_movementVelocity.magnitude}");
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);

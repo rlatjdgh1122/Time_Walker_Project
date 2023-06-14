@@ -52,8 +52,11 @@ public class AgentSkill : MonoBehaviour{
 
     [ContextMenu("Slash")]
     public void Slash(float power) {
+        Debug.Log($"Power: {power}");
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
-        gs.transform.position = transform.position + new Vector3(0,0,0.5f);
+        gs.transform.position = transform.position + new Vector3(0,0f,0.5f);
+        Debug.Log(gs.transform.position);
+
         StartCoroutine(SlashDelayCor(5f));
         RaycastHit[] cols = Physics.BoxCastAll(transform.position,transform.lossyScale * 2f,transform.forward,Quaternion.identity,5f * 2f, whatIsEnemy);
         foreach(var hit in cols){
@@ -62,7 +65,7 @@ public class AgentSkill : MonoBehaviour{
             }
         }
 
-        gs.rb.AddForce(MainCam.transform.forward * 1000f * power + transform.position);
+        gs.rb.AddForce(MainCam.transform.forward * 500f * power + transform.position);
         gs.actionData = _actionData;
         _actionData.isAttacking = true;
     }

@@ -12,6 +12,8 @@ public class AgentAnimator : MonoBehaviour{
     protected readonly int _attackHash = Animator.StringToHash("ATTACK");
     protected readonly int _speedHash = Animator.StringToHash("SPEED");
     protected readonly int _attackBoolHash = Animator.StringToHash("IS_ATTACK");
+    protected readonly int _slashBoolHash = Animator.StringToHash("IS_SLASH");
+    protected readonly int _slashHash = Animator.StringToHash("SLASH");
 
     protected virtual void Awake(){
         _animator = transform.GetComponent<Animator>();
@@ -22,10 +24,13 @@ public class AgentAnimator : MonoBehaviour{
         _animator.SetFloat(_speedHash, value);
     }
     public void OnAttackAnimation() {
+        _animator.speed = 2f;
         _animator.SetTrigger(_attackHash);
         _animator.SetBool(_attackBoolHash, true);
     }
     public void OnAttackAnimationEnd() {
+        _animator.speed = 1f;
+
         OnAttackAnimationEndTrigger?.Invoke();
         _actionData.isAttacking = false;
         _animator.SetBool(_attackBoolHash, false);
@@ -38,6 +43,18 @@ public class AgentAnimator : MonoBehaviour{
         }
         else {
             _animator.ResetTrigger(_attackHash);
+        }
+    }
+
+    public void SetSlashBool(bool result){
+        _animator.SetBool(_slashBoolHash,result);
+    }
+    public void SlashAnimation(bool result){
+        if(result){
+            _animator.SetTrigger(_slashHash);
+        }
+        else{
+            _animator.ResetTrigger(_slashHash);
         }
     }
 }                

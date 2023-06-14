@@ -65,7 +65,7 @@ public class AttackState : CommonState {
             OnAttackAnimation?.Invoke(_attackCombo);
             Debug.Log($"AttackCombo {_attackCombo}");
             _attackCombo++;
-            if(_attackCombo >=3 ){
+            if(_attackCombo >= 3){
                 _attackCombo = 0;
             }
         }
