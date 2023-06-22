@@ -21,7 +21,7 @@ namespace DynamicMeshCutter
     {
         static float _ragdoll_vertex_threshold = 0.75f;
 
-     
+
         public static MeshCreationData CreateObjects(Info info, Material defaultMaterial, int vertexCreationThreshold)
         {
             if (info.MeshTarget == null)
@@ -68,7 +68,7 @@ namespace DynamicMeshCutter
                 {
                     int[] keys = new int[vMesh.DynamicGroups.Keys.Count];
                     int index = 0;
-                    foreach(var key in vMesh.DynamicGroups.Keys)
+                    foreach (var key in vMesh.DynamicGroups.Keys)
                     {
                         keys[index++] = key;
                     }
@@ -174,6 +174,15 @@ namespace DynamicMeshCutter
             root.transform.rotation = target.transform.rotation;
             root.gameObject.tag = target.transform.tag;
 
+
+            //내가 추가한 코드라이기쁨
+            parent.gameObject.isStatic = true;
+            root.isStatic = true;
+
+            MonoBehaviour.Destroy(parent.gameObject, 5f);
+            MonoBehaviour.Destroy(root.gameObject, 5f);
+            //
+
             var filter = root.AddComponent<MeshFilter>();
             var renderer = root.AddComponent<MeshRenderer>();
 
@@ -212,7 +221,7 @@ namespace DynamicMeshCutter
         /// <returns></returns>
         static bool WillBeValidRagdoll(DynamicRagdoll ragdoll, VirtualMesh vMesh)
         {
-            foreach(int key in ragdoll.Parts.Keys)
+            foreach (int key in ragdoll.Parts.Keys)
             {
                 if (vMesh.DynamicGroups.ContainsKey(key))
                 {
@@ -236,7 +245,7 @@ namespace DynamicMeshCutter
                 keys[index++] = key;
             }
 
-            for(int i =0;i<keys.Length;i++)
+            for (int i = 0; i < keys.Length; i++)
             {
                 int key = keys[i];
                 DynamicRagdollPart part = ragdoll.Parts[key];
@@ -320,7 +329,7 @@ namespace DynamicMeshCutter
             //move all roots to top, aka. make them direct children of the parent. 
             var allKids = rootBone.transform.GetComponentsInChildren<Transform>(true);
             List<Transform> childrenToMove = new List<Transform>();
-            for(int i = 0; i < allKids.Length; i++)
+            for (int i = 0; i < allKids.Length; i++)
             {
                 childrenToMove.Add(allKids[i]);
             }
@@ -419,6 +428,8 @@ namespace DynamicMeshCutter
                 //parent.transform.rotation = tAnimator.transform.rotation;
 
                 parent = GameObject.Instantiate(target.Animator.gameObject).transform;
+                parent.gameObject.isStatic = true;
+
                 //parent.name = target.Animator.gameObject.name.Replace("(Clone)", "");
                 root = parent.GetComponentInChildren<MeshTarget>().gameObject;
 

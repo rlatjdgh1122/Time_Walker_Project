@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunWeapon : MonoBehaviour
+public class GunWeapon : MonoBehaviour , IWeaponable
 {
     public WeaponDataSO weaponDataSO;
     public Transform firePos;
@@ -15,9 +15,9 @@ public class GunWeapon : MonoBehaviour
     }
     private void Start()
     {
-        enemyWeaponController.OnShoot += Shoot;
+        enemyWeaponController.OnShoot += Shooting;
     }
-    public virtual void Shoot()
+    public virtual void Shooting()
     {
         Vector3 randomPosition = Random.insideUnitSphere; //이부분 수정필요
 
@@ -26,5 +26,10 @@ public class GunWeapon : MonoBehaviour
         RegularBullet b = PoolManager.Instance.Pop(bullet.name) as RegularBullet;
         b.SetPositionAndRotation(firePos.position,Quaternion.LookRotation(resultPos));
       
+    }
+
+    public void Reloading()
+    {
+        
     }
 }

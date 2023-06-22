@@ -16,6 +16,7 @@ MonoBehaviour:
   shootDistance: 10
   speed: 3
   rotateSpeed: 3
+  motionDelay: 0.5
   ammoCapacity: 100
   weaponDelay: 1.5
   spreadAngle: 0

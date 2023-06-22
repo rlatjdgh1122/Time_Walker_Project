@@ -1,45 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using Unity.VisualScripting;
+using Core;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.Rendering;
-
 public class EnemyMovement : EnemyAnimationController
 {
-    private NavMeshAgent agent;
-    private Vector3 lastPosition; // 마지막 위치 저장
+    private EnemyController _enemyController;
+    private NavMeshAgent _agent;
+    private bool _isRotate;
+    public bool IsRotate { get { return _isRotate; } set { _isRotate = value; } }
     protected override void Awake()
     {
         base.Awake();
-        agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
+        _enemyController = GetComponent<EnemyController>();
     }
+
     private void Start()
     {
-        lastPosition = transform.position;
-    }
-    public void MoveAgent(float speed, Transform target, bool isMove)
-    {
-        agent.speed = speed;
-        agent.SetDestination(target.position);
-        if (isMove)
-        {
-            agent.isStopped = false;
-        }
-        else if (!isMove)
-        {
-            agent.isStopped = true;
-        }
+        _agent.isStopped = true;
+        _agent.updateRotation = false;
 
-        if (transform.position != lastPosition)
+        SetSpeed(_enemyController.EnemySoData.weaponData.speed);
+    }
+    private void Update()
+    {
+        RotateState();
+    }
+    public void StartImmediately()
+    {
+        _agent.SetDestination(GameManager.Instance.PlayerTrm.position);
+    }
+    public void SetSpeed(float speed)
+    {
+        _agent.speed = speed;
+    }
+    public void StopImmediately()
+    {
+        _agent.SetDestination(transform.position);
+    }
+    public bool CheckIsArrived()
+    {
+        return (_agent.pathPending == false && _agent.remainingDistance <= _agent.stoppingDistance);
+    }
+
+    public void RotateState()
+    {
+        if (IsRotate)
         {
-            MoveAnim(true); //tranform에 변경여부
-            lastPosition = transform.position;
+            Quaternion rot = Quaternion.LookRotation(GameManager.Instance.PlayerTrm.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, _enemyController.EnemySoData.weaponData.rotateSpeed * Time.deltaTime);
         }
-        else
-            MoveAnim(false); //tranform에 변경여부
     }
 }
