@@ -13,16 +13,6 @@ MonoBehaviour:
   m_Name: PoolingList
   m_EditorClassIdentifier: 
   poolingList:
-  - poolObject: {fileID: 8132043854236849012, guid: d7c951a0f1834f34b83009155355deee, type: 3}
-    poolCount: 10
-  - poolObject: {fileID: 2757639265608168494, guid: c6a3e1f27ead2484aa09626d4694305a, type: 3}
-    poolCount: 10
-  - poolObject: {fileID: -4027732739412577623, guid: 7a692d13585b53a4db3720d302b07c7a, type: 3}
-    poolCount: 10
-  - poolObject: {fileID: 9170571082766210585, guid: da45df0ef9a22934dae18c3abe17776d, type: 3}
-    poolCount: 10
-  - poolObject: {fileID: -7857904882979607930, guid: 646f06ad5cb0301458018184ef51daf5, type: 3}
-    poolCount: 10
   - poolObject: {fileID: 8572283089476722426, guid: be0d8e75ab23c5f459f5bba6c54c90c9, type: 3}
     poolCount: 30
   - poolObject: {fileID: 7073350053095190969, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}

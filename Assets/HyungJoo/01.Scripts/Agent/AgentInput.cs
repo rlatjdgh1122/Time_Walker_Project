@@ -9,6 +9,7 @@ public class AgentInput : MonoBehaviour{
     public event Action<float> OnDashButtonPress;
     public event Action<float> OnSlashButtonPress;
 
+
     protected AgentAnimator _agentAnimator;
     protected CameraHandler _cameraHandler;
     protected PlayerActionData _actionData;
@@ -43,13 +44,11 @@ public class AgentInput : MonoBehaviour{
         }
         if (Input.GetMouseButtonUp(1)) {
             if(_slashTimer > 1f) {
-                OnSlashButtonPress?.Invoke(_slashTimer);
                 _actionData.chargingSlash = false;
                 _agentAnimator.SlashAnimation(true);
             }
             _agentAnimator.SetSlashBool(false);
             _actionData.isAttacking = false;
-            _slashTimer = 0f;
         }
     }
 
@@ -90,5 +89,10 @@ public class AgentInput : MonoBehaviour{
         if (Input.GetMouseButton(0)){ 
             OnFireButtonPress?.Invoke();
         }
+    }
+    public void OnSlashStarted(){
+        OnSlashButtonPress?.Invoke(_slashTimer);
+        _slashTimer = 0f;
+
     }
 }
