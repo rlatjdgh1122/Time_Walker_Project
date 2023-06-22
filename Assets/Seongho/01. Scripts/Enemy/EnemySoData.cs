@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/EnemySoData")]
-public class EnemySoData : ScriptableObject
+public class EnemySOData : ScriptableObject
 {
-    public GameObject weaponObject => GameManager.Instance?.GetRandomWeightWeapon().gameObject;
-
-    public WeaponDataSO  weaponData => weaponObject?.GetComponent<GunWeapon>().weaponDataSO;
+    public float Speed;
+    public float RotateSpeed;
+    public float PlayerDistance;
+    public float AttackDelay;
 }
