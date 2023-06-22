@@ -47,6 +47,9 @@ public class AttackState : CommonState {
         if (x > 0 || y > 0) {
             OnNormalState();
         }
+
+        //_agentController.transform.position = _agentController.transform.position + _agentAnimator.transform.position;
+        //_agentAnimator.transform.position = Vector3.zero;
     }
 
 

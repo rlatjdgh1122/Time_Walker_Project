@@ -17,7 +17,7 @@ public class TimeController : MonoBehaviour{
     }
 
     private void FixedUpdate(){
-
+        return;
         if(_actionData.isAttacking){
             if(_actionData.chargingDash){
                 SetTimeScale(0.1f);

@@ -7,18 +7,21 @@ public class AgentAnimator : MonoBehaviour{
     protected Animator _animator;
     protected PlayerActionData _actionData;
     protected Transform _agentTransform;
+    
     public event Action OnAttackAnimationEndTrigger;
 
     protected readonly int _attackHash = Animator.StringToHash("ATTACK");
-    protected readonly int _speedHash = Animator.StringToHash("SPEED");
     protected readonly int _attackBoolHash = Animator.StringToHash("IS_ATTACK");
+
+    protected readonly int _speedHash = Animator.StringToHash("SPEED");
+
     protected readonly int _slashBoolHash = Animator.StringToHash("IS_SLASH");
-    protected readonly int _slashHash = Animator.StringToHash("SLASH");
+    protected readonly int _slashTriggerHash = Animator.StringToHash("SLASH");
 
     protected virtual void Awake(){
         _animator = transform.GetComponent<Animator>();
-        _agentTransform = GetComponentInParent<AgentMovement>().transform;
-        _actionData = transform.parent.Find("ActionData").GetComponent<PlayerActionData>();
+        _agentTransform = transform.root.GetComponent<AgentMovement>().transform;
+        _actionData = transform.root.Find("ActionData").GetComponent<PlayerActionData>();
     }
     public void SetSpeed(float value) {
         _animator.SetFloat(_speedHash, value);
@@ -49,12 +52,13 @@ public class AgentAnimator : MonoBehaviour{
     public void SetSlashBool(bool result){
         _animator.SetBool(_slashBoolHash,result);
     }
+    
     public void SlashAnimation(bool result){
         if(result){
-            _animator.SetTrigger(_slashHash);
+            _animator.SetTrigger(_slashTriggerHash);
         }
         else{
-            _animator.ResetTrigger(_slashHash);
+            _animator.ResetTrigger(_slashTriggerHash);
         }
     }
 }                

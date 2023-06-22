@@ -21,7 +21,7 @@ public class AgentMovement : MonoBehaviour{
     private void Awake(){
         _controller = GetComponent<CharacterController>();
         _playerAttack = GetComponent<PlayerAttack>();
-        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
+        _agentAnimator = GetComponent<AgentAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
     private void Update() {

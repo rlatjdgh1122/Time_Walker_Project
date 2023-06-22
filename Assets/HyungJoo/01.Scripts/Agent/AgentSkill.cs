@@ -28,7 +28,7 @@ public class AgentSkill : MonoBehaviour{
         _agentMovement = GetComponent<AgentMovement>();
         _agentAttack = GetComponent<AgentAttack>();
         _agentController = GetComponent<AgentController>();
-        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>(); 
+        _agentAnimator = GetComponent<AgentAnimator>(); 
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
 

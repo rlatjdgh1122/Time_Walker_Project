@@ -8,8 +8,7 @@ public class AgentController : MonoBehaviour
     private Dictionary<StateType, IState> _stateDictionary;
     private IState _currentState;
 
-    private void Awake()
-    {
+    private void Awake(){
         _stateDictionary = new Dictionary<StateType, IState>();
         Transform stateTransform = transform.Find("States");
         foreach(StateType state in Enum.GetValues(typeof(StateType)))
@@ -23,7 +22,7 @@ public class AgentController : MonoBehaviour
             _stateDictionary.Add(state,stateScript);
         }
     }
-
+    
     private void Start(){
         ChangeState(StateType.Normal);
     }

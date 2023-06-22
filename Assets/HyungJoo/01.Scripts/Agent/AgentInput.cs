@@ -17,7 +17,7 @@ public class AgentInput : MonoBehaviour{
     private float _slashTimer = 0f;
 
     private void Awake() {
-        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
+        _agentAnimator = GetComponent<AgentAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
         _agentMovement = GetComponent<AgentMovement>();
         _cameraHandler = GetComponent<CameraHandler>();
