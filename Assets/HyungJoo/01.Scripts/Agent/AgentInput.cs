@@ -76,6 +76,7 @@ public class AgentInput : MonoBehaviour{
         _actionData.canSlash = true;
         _slashTimer = 0f;
     }
+
     IEnumerator DashDelayCor(float timer) {
         _actionData.canDash = false;
         yield return new WaitForSeconds(timer);
@@ -93,7 +94,6 @@ public class AgentInput : MonoBehaviour{
             _dashTimer = Mathf.Clamp(_dashTimer,0,2f);
             _agentAnimator.SetDashBool(true);
             _cameraHandler.CameraZoom(_dashTimer);
-            //_actionData.isAttacking = true;
             _actionData.chargingDash = true;
             _agentMovement.StopImmediately();
         }
@@ -120,13 +120,9 @@ public class AgentInput : MonoBehaviour{
         OnMovementKeyPress?.Invoke(direction);
     }
 
-
     private void InputFireButton(){
-        if (_actionData.isAttacking == true) return;
-        if(_actionData.chargingDash) return;
-        if(_actionData.chargingSlash) return;
-        if(_actionData.isSlashing) return;
-        if(_actionData.isDashing) return;
+        PlayerActionData a = _actionData;
+        if (a.isAttacking || a.chargingDash || a.chargingSlash || a.isSlashing || a.isDashing) return;
         
         if (Input.GetMouseButton(0)){ 
             OnFireButtonPress?.Invoke();
