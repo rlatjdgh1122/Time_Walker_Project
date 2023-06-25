@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,6 +390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2962725982107084296, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
+      propertyPath: _skillDelay
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d9a41df62ca58b40ba8ac0979884f81, type: 2}
     - target: {fileID: 2962725982548729955, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -437,6 +441,18 @@ PrefabInstance:
     - target: {fileID: 2962725982548835395, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095878181693064266, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095878181693064266, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095878181693064266, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0deaeadccb74f54c9e57c8acbacc5dc, type: 3}

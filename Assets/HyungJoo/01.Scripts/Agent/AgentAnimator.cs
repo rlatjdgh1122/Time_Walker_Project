@@ -9,6 +9,7 @@ public class AgentAnimator : MonoBehaviour{
     protected Transform _agentTransform;
     
     public event Action OnAttackAnimationEndTrigger;
+    public event Action OnSlashEndTrigger;
 
     protected readonly int _attackHash = Animator.StringToHash("ATTACK");
     protected readonly int _attackBoolHash = Animator.StringToHash("IS_ATTACK");
@@ -35,9 +36,22 @@ public class AgentAnimator : MonoBehaviour{
         _animator.speed = 1f;
 
         OnAttackAnimationEndTrigger?.Invoke();
+        //SetAllParameters(false);
         _actionData.isAttacking = false;
         _animator.SetBool(_attackBoolHash, false);
         _animator.ResetTrigger(_attackHash);
+    }
+
+    public void OnSlashEnd() {
+        OnSlashEndTrigger?.Invoke();
+        //_actionData.isSlashing = false;
+        Debug.Log("OnSlashEnd");
+    }
+
+    private void SetAllParameters(bool result) {
+        _actionData.isAttacking = result;
+        _actionData.isDashing = result;
+        _actionData.isSlashing = result;
     }
 
     public void SetAttackTrigger(bool result) {

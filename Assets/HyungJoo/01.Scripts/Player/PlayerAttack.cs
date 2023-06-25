@@ -16,7 +16,7 @@ public class PlayerAttack : AgentAttack {
         _actionData.isAttacking = false;
     }
     public void TryToAttack(){
-        if(!_actionData.isAttacking){
+        if(!_actionData.isAttacking && !_actionData.chargingSlash && !_actionData.chargingDash){
             SwordAttack();
         }
     }

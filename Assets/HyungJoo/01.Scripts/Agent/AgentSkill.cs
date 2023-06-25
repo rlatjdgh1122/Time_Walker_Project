@@ -52,12 +52,10 @@ public class AgentSkill : MonoBehaviour{
 
     [ContextMenu("Slash")]
     public void Slash(float power) {
-        Debug.Log($"Power: {power}");
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position + new Vector3(0,0f,0.5f);
         Debug.Log(gs.transform.position);
 
-        StartCoroutine(SlashDelayCor(5f));
         RaycastHit[] cols = Physics.BoxCastAll(transform.position,transform.lossyScale * 2f,transform.forward,Quaternion.identity,5f * 2f, whatIsEnemy);
         foreach(var hit in cols){
             if(hit.collider.transform.root.gameObject.TryGetComponent<EnemyHit>(out EnemyHit hp)){
@@ -67,7 +65,7 @@ public class AgentSkill : MonoBehaviour{
 
         gs.rb.AddForce(MainCam.transform.forward * 500f * power + transform.position);
         gs.actionData = _actionData;
-        _actionData.isAttacking = true;
+        _actionData.isSlashing = true;
     }
 
     IEnumerator DashCorotuine(float power){
@@ -80,28 +78,10 @@ public class AgentSkill : MonoBehaviour{
         _actionData.isAttacking = false;
         //_animator.DashAnimation(false);
         _actionData.isDashing = false;
-        StartCoroutine(DelayCor(_skillDelay.dashDelay));
     }
 
-    IEnumerator DelayCor(float timer){
-        _actionData.canDash = false;
-        while(_dashTimer < timer){
-            _dashTimer += Time.deltaTime;
-            yield return null;
-        }
-        _actionData.canDash =  true;
-        _dashTimer = 0f;
-    }
 
-    IEnumerator SlashDelayCor(float timer) {
-        _actionData.canSlash = false;
-        while(_slashTimer < timer) {
-            _slashTimer += Time.deltaTime;
-            yield return null;
-        }
-        _actionData.canSlash = true;
-        _slashTimer = 0f;
-    }
+
 
     public float GetTimer(){
         return _dashTimer / _skillDelay.dashDelay;

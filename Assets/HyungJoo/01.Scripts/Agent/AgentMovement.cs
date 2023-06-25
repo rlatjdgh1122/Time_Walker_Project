@@ -40,7 +40,9 @@ public class AgentMovement : MonoBehaviour{
         }else{
             _verticalVelocity = _gravityScale * 0.2f * Time.fixedDeltaTime;
         }
-
+        if(_actionData.isAttacking || _actionData.isDashing || _actionData.isSlashing){
+            return;
+        }
 
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
