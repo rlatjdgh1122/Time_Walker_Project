@@ -43,7 +43,6 @@ public class AgentInput : MonoBehaviour{
             _agentAnimator.SlashAnimation(true);
             _agentAnimator.SetSlashBool(false);
             _actionData.chargingSlash = false;
-            _slashTimer = 0f;
             StartCoroutine(SlashDelayCor(_skillDelay.slashDelay));
         };
 
@@ -66,7 +65,6 @@ public class AgentInput : MonoBehaviour{
             }
             _agentAnimator.SetSlashBool(false);
             _actionData.chargingSlash = false;
-            _slashTimer = 0f;
             StartCoroutine(SlashDelayCor(_skillDelay.slashDelay));
         }
     }
@@ -88,10 +86,12 @@ public class AgentInput : MonoBehaviour{
     private void InputDashPress(){
         if(_actionData.canDash == false) return;
         if (_actionData.isAttacking) return;
+        if(_actionData.chargingSlash) return;
+
         if(Input.GetKey(KeyCode.Space)){
             _dashTimer += Time.unscaledDeltaTime;
             _dashTimer = Mathf.Clamp(_dashTimer,0,2f);
-            //_animator.SetDashBool(true);
+            _agentAnimator.SetDashBool(true);
             _cameraHandler.CameraZoom(_dashTimer);
             //_actionData.isAttacking = true;
             _actionData.chargingDash = true;
@@ -100,14 +100,15 @@ public class AgentInput : MonoBehaviour{
 
         if(Input.GetKeyUp(KeyCode.Space)){
             Debug.Log(_dashTimer);
-            //_animator.SetDashBool(false);
             if(_dashTimer > 0.7f){
+                _agentAnimator.SetDashBool(false);
+
                 OnDashButtonPress?.Invoke(_dashTimer);
                 _actionData.isDashing = true;
                 StartCoroutine(DashDelayCor(_skillDelay.dashDelay));
+                _agentAnimator.DashAnimation(true);
             }
             _cameraHandler.ResetCamera();
-            _dashTimer = 0f;
             _actionData.chargingDash = false;
         }
     }
@@ -122,6 +123,11 @@ public class AgentInput : MonoBehaviour{
 
     private void InputFireButton(){
         if (_actionData.isAttacking == true) return;
+        if(_actionData.chargingDash) return;
+        if(_actionData.chargingSlash) return;
+        if(_actionData.isSlashing) return;
+        if(_actionData.isDashing) return;
+        
         if (Input.GetMouseButton(0)){ 
             OnFireButtonPress?.Invoke();
         }
@@ -129,6 +135,9 @@ public class AgentInput : MonoBehaviour{
     public void OnSlashStarted(){
         OnSlashButtonPress?.Invoke(_slashTimer);
         _slashTimer = 0f;
-
+    }
+    public void OnDashStarted(){
+        OnDashButtonPress?.Invoke(_dashTimer);
+        _dashTimer = 0f;
     }
 }

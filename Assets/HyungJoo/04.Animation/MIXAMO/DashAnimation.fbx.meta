@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: f63ee896d9531e145ae3ce71126af158
+guid: 61e72028441178546bda8f35756b65ac
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Stable Sword Outward Slash
+    second: mixamo.com
+  - first:
+      74: -547057506830179536
+    second: Stable Sword Inward Slash
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Stable Sword Outward Slash
+      name: Stable Sword Inward Slash
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 61
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,15 +63,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: OnAttackAnimation
+      - time: 0.355591
+        functionName: OnDashStarted
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.51931196
-        functionName: OnAttackAnimationEnd
+      - time: 0.80884904
+        functionName: OnSlashEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

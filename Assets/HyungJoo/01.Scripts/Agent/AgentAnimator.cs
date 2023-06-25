@@ -19,6 +19,9 @@ public class AgentAnimator : MonoBehaviour{
     protected readonly int _slashBoolHash = Animator.StringToHash("IS_SLASH");
     protected readonly int _slashTriggerHash = Animator.StringToHash("SLASH");
 
+    protected readonly int _dashBoolHash = Animator.StringToHash("IS_DASH");
+    protected readonly int _dashTriggerHash = Animator.StringToHash("DASH");
+
     protected virtual void Awake(){
         _animator = transform.GetComponent<Animator>();
         _agentTransform = transform.root.GetComponent<AgentMovement>().transform;
@@ -27,32 +30,7 @@ public class AgentAnimator : MonoBehaviour{
     public void SetSpeed(float value) {
         _animator.SetFloat(_speedHash, value);
     }
-    public void OnAttackAnimation() {
-        _animator.speed = 2f;
-        _animator.SetTrigger(_attackHash);
-        _animator.SetBool(_attackBoolHash, true);
-    }
-    public void OnAttackAnimationEnd() {
-        _animator.speed = 1f;
 
-        OnAttackAnimationEndTrigger?.Invoke();
-        //SetAllParameters(false);
-        _actionData.isAttacking = false;
-        _animator.SetBool(_attackBoolHash, false);
-        _animator.ResetTrigger(_attackHash);
-    }
-
-    public void OnSlashEnd() {
-        OnSlashEndTrigger?.Invoke();
-        //_actionData.isSlashing = false;
-        Debug.Log("OnSlashEnd");
-    }
-
-    private void SetAllParameters(bool result) {
-        _actionData.isAttacking = result;
-        _actionData.isDashing = result;
-        _actionData.isSlashing = result;
-    }
 
     public void SetAttackTrigger(bool result) {
         if (result) {
@@ -74,5 +52,47 @@ public class AgentAnimator : MonoBehaviour{
         else{
             _animator.ResetTrigger(_slashTriggerHash);
         }
+    }
+    public void SetDashBool(bool result){
+        _animator.SetBool(_dashBoolHash,result);
+    }
+    public void DashAnimation(bool result){
+        if(result){
+            _animator.SetTrigger(_dashTriggerHash);
+        }
+        else{
+            _animator.ResetTrigger(_dashTriggerHash);
+        }
+    }
+
+
+
+
+    public void OnAttackAnimation() {
+        _animator.speed = 2f;
+        _animator.SetTrigger(_attackHash);
+        _animator.SetBool(_attackBoolHash, true);
+    }
+    public void OnAttackAnimationEnd() {
+        _animator.speed = 1f;
+
+        OnAttackAnimationEndTrigger?.Invoke();
+        //SetAllParameters(false);
+        _actionData.isAttacking = false;
+        _animator.SetBool(_attackBoolHash, false);
+        _animator.ResetTrigger(_attackHash);
+    }
+
+    public void OnSlashEnd() {
+        OnSlashEndTrigger?.Invoke();
+        _actionData.isSlashing = false;
+        DashAnimation(false);
+        Debug.Log("OnSlashEnd");
+    }
+
+    private void SetAllParameters(bool result) {
+        _actionData.isAttacking = result;
+        _actionData.isDashing = result;
+        _actionData.isSlashing = result;
     }
 }                

@@ -39,7 +39,7 @@ public class AgentSkill : MonoBehaviour{
     }
     
     public void Dash(float power){
-        _actionData.isAttacking = true;
+        //_actionData.isAttacking = true;
         StartCoroutine(DashCorotuine(power));
         RaycastHit hit;
         bool isHit = Physics.BoxCast(transform.position,transform.lossyScale * 2f,transform.forward,out hit,Quaternion.identity,5f * power, whatIsEnemy);
@@ -52,6 +52,7 @@ public class AgentSkill : MonoBehaviour{
 
     [ContextMenu("Slash")]
     public void Slash(float power) {
+        _agentAnimator.SetSlashBool(false);
         GroundSlash gs = PoolManager.Instance.Pop("SlashVFX") as GroundSlash;
         gs.transform.position = transform.position + new Vector3(0,0f,0.5f);
         Debug.Log(gs.transform.position);
