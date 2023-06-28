@@ -12,11 +12,11 @@ public class PlayerAttack : AgentAttack {
     private Vector3 _offset;
     protected override void Awake() {
         base.Awake();
-        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
+        _agentAnimator = GetComponent<AgentAnimator>();
         _actionData.isAttacking = false;
     }
     public void TryToAttack(){
-        if(!_actionData.isAttacking){
+        if(!_actionData.isAttacking && !_actionData.chargingSlash && !_actionData.chargingDash){
             SwordAttack();
         }
     }

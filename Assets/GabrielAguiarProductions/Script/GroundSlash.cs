@@ -56,7 +56,7 @@ public class GroundSlash : PoolableMono
         }
 
         stopped = true;
-        PlayerActionDataCompo.isAttacking = false;
+        PlayerActionDataCompo.isSlashing = false;
         //Transform transform = Core.Define.Player.transform;
 
     }
