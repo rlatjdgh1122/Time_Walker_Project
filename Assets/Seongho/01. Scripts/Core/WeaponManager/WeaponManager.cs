@@ -12,7 +12,6 @@ public class WeaponManager : MonoBehaviour //ªı∑ŒπŸ≤Ô Ω∫≈»µÈ¿ª ∏Æ≈œ
     }
     public void CreateWeapon(string weaponName, Weapon weapon)
     {
-        Debug.Log(weaponName + " " + weapon);
         _weapons.Add(weaponName, weapon);
     }
     public Weapon SpawnWeapon(string weaponName)

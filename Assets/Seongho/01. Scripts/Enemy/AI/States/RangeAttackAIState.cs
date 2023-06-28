@@ -40,7 +40,7 @@ public class RangeAttackAIState : CommonAIState
 
     private void AttackAnimationEndHandle()
     {
-
+        Debug.Log("애니메이션 끝");
         _enemyAnimationController.SetShooting(false);
         _lastAtkTime = Time.time;
         StartCoroutine(DelayCoroutine(() => _aiActionData.IsAttacking = false, _enemyController.weaponSOData.attackDelay));
