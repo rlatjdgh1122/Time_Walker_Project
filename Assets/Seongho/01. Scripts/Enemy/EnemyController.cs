@@ -19,11 +19,12 @@ public class EnemyController : MonoBehaviour
     public Transform TargetTrm => _targetTrm;
 
     private Animator _animator;
+    private AIActionData _actionData;
     private void Awake()
     {
         List<CommonAIState> states = new List<CommonAIState>();
         transform.Find("AI").GetComponentsInChildren<CommonAIState>(states);
-
+        _actionData = transform.Find("AI").GetComponent<AIActionData>();
         states.ForEach(s => s.SetUp(transform));
         /*  _actionData = transform.Find("AI").GetComponent<AIActionData>();
           _initState = _currentState;*/
@@ -35,6 +36,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _targetTrm = GameManager.Instance.PlayerTrm;
+        _actionData.Distance = enemySOData.Distance;
         SpawnWeapon();
         ChangeState(_currentState);
     }
@@ -43,7 +45,6 @@ public class EnemyController : MonoBehaviour
         Weapon weapon = WeaponManager.Instance.SpawnWeapon(weaponSOData.WeaponName);
         GameObject g = Instantiate(weapon.gameObject, weaponPivot);
         currentWeapon = g.GetComponent<Weapon>();
-
         _animator.runtimeAnimatorController = weaponSOData.animatiorController;
     }
 

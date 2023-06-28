@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   RotateSpeed: 120
-  PlayerDistance: 5
+  Distance: 15
   AttackDelay: 3

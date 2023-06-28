@@ -13,7 +13,6 @@ public class RangeAttackAIState : CommonAIState
     private float _lastAtkTime;
     public override void OnEnterState()
     {
-
         _enemyAnimationController.OnPreEventTrigger += currentWeapon.Shooting;
         _enemyAnimationController.OnPreEndEventTrigger += AttackAnimationEndHandle;
 

@@ -7,6 +7,6 @@ public class EnemySOData : ScriptableObject
 {
     public float Speed;
     public float RotateSpeed;
-    public float PlayerDistance;
+    public int Distance;
     public float AttackDelay;
 }
