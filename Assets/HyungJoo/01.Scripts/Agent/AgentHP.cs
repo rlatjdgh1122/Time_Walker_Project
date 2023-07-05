@@ -17,6 +17,7 @@ public class AgentHP : MonoBehaviour{
     private void Awake() {
         _currentHP = _hpSO.maxHP;
     }
+
     private void Update() {
         if(Input.GetKeyDown(KeyCode.T)){
             Damaged(1);

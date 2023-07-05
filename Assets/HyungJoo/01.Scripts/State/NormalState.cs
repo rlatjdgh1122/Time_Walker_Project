@@ -16,7 +16,6 @@ public class NormalState : CommonState{
     }
 
     public override void UpdateState(){
-        Debug.Log("normalState");
     }
 
     public void OnMovementHandle(Vector3 dir){

@@ -7,6 +7,8 @@ public class PlayerActionData : MonoBehaviour{
     public bool isGrounded;
     public bool isMoving;
     public bool isDashing;
+    public bool isSlashing;
+
     public bool chargingDash;
     public bool chargingSlash;
 

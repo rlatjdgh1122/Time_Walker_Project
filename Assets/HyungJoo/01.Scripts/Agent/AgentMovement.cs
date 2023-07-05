@@ -21,7 +21,7 @@ public class AgentMovement : MonoBehaviour{
     private void Awake(){
         _controller = GetComponent<CharacterController>();
         _playerAttack = GetComponent<PlayerAttack>();
-        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
+        _agentAnimator = GetComponent<AgentAnimator>();
         _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
     private void Update() {
@@ -40,9 +40,10 @@ public class AgentMovement : MonoBehaviour{
         }else{
             _verticalVelocity = _gravityScale * 0.2f * Time.fixedDeltaTime;
         }
+        if(_actionData.isAttacking || _actionData.isDashing || _actionData.isSlashing){
+            return;
+        }
 
-
-        Debug.Log($"Speed: {_movementVelocity.magnitude}");
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);

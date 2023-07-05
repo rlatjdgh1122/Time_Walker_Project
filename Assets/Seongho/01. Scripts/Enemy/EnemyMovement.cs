@@ -1,22 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using Unity.VisualScripting;
+using Core;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.Rendering;
-
 public class EnemyMovement : EnemyAnimationController
 {
-    public Vector3 Target;
-    public bool isSetActive = true;
-    private bool isMove = true;
-    private bool isRotate = true;
-
     private EnemyController _enemyController;
     private NavMeshAgent _agent;
+    private bool _isRotate;
+    public bool IsRotate { get { return _isRotate; } set { _isRotate = value; } }
     protected override void Awake()
     {
         base.Awake();
@@ -27,58 +17,37 @@ public class EnemyMovement : EnemyAnimationController
     private void Start()
     {
         _agent.isStopped = true;
-        Target = GameManager.Instance.PlayerTrm.position;
+        _agent.updateRotation = false;
 
         SetSpeed(_enemyController.EnemySoData.weaponData.speed);
     }
-    public void SetTarget(Vector3 target)
+    private void Update()
     {
-        Target = target;
+        RotateState();
     }
-    public void StopMove()
+    public void StartImmediately()
     {
-        isMove = false;
-        _agent.SetDestination(transform.position);
-    }
-    public void StartMove()
-    {
-        isMove = true;
+        _agent.SetDestination(GameManager.Instance.PlayerTrm.position);
     }
     public void SetSpeed(float speed)
     {
         _agent.speed = speed;
+    }
+    public void StopImmediately()
+    {
+        _agent.SetDestination(transform.position);
     }
     public bool CheckIsArrived()
     {
         return (_agent.pathPending == false && _agent.remainingDistance <= _agent.stoppingDistance);
     }
 
-    public void StopRotate()
+    public void RotateState()
     {
-        isRotate = false;
-    }
-    public void StartRotate()
-    {
-        isRotate = true;
-    }
-    private void RotateToTarget()
-    {
-        Vector3 direction = Target - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-        // 회전 각도 보간
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _enemyController.EnemySoData.weaponData.rotateSpeed * Time.deltaTime);
-    }
-    private void MoveToTarget()
-    {
-        _agent.SetDestination(Target);
-    }
-    private void Update()
-    {
-        if (isSetActive)
+        if (IsRotate)
         {
-            if (isMove) MoveToTarget();
-            if (isRotate) RotateToTarget();
+            Quaternion rot = Quaternion.LookRotation(GameManager.Instance.PlayerTrm.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, _enemyController.EnemySoData.weaponData.rotateSpeed * Time.deltaTime);
         }
     }
 }

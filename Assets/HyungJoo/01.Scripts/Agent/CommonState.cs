@@ -17,7 +17,7 @@ public abstract class CommonState : MonoBehaviour, IState
 
     public virtual void SetUp(Transform agentTransform)
     {
-        _agentAnimator = agentTransform.GetComponentInChildren<AgentAnimator>();
+        _agentAnimator = agentTransform.GetComponent<AgentAnimator>();
         _agentMovement = agentTransform.GetComponent<AgentMovement>();
         _agentController = agentTransform.GetComponent<AgentController>();
         _agentInput = agentTransform.GetComponent<AgentInput>();

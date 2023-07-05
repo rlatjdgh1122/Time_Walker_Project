@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveState
+public enum MOVE_STATE
 {
     Idle,
     Move,
@@ -11,28 +11,54 @@ public enum MoveState
 }
 public class EnemyAnimationController : AnimatorHash
 {
-    public void SetMove(MoveState value)
+    public event Action OnEndEventTrigger = null;
+    public event Action OnStartEventTrigger = null;
+    public event Action OnPreEventTrigger = null;
+    public void SetMove(MOVE_STATE value)
     {
-        if (value == MoveState.Move_Back)
+        if (value == MOVE_STATE.Move_Back)
             anim.SetFloat(MOVE_HASH, -1);
 
-        if (value == MoveState.Idle)
+        if (value == MOVE_STATE.Idle)
             anim.SetFloat(MOVE_HASH, 0);
 
-        if (value == MoveState.Move)
+        if (value == MOVE_STATE.Move)
             anim.SetFloat(MOVE_HASH, 1);
 
     }
-    public void SetShooting()
+    public void SetAttack(bool value)
     {
-        anim.SetTrigger(SHOOTING_HASH);
+        if (value)
+        {
+            anim.SetTrigger(SHOOTING_HASH);
+        }
+        else
+        {
+            anim.ResetTrigger(SHOOTING_HASH);
+        }
     }
+
     public void SetReloading(bool value)
     {
-        if (value == true)
-            anim.SetBool(RELOAD_HASH, true);
-
-        if (value == false)
-            anim.SetBool(RELOAD_HASH, false);
+        anim.SetBool(RELOAD_HASH, value);
+    }
+    public void SetShooting(bool value)
+    {
+        if (value)
+            anim.SetTrigger(SHOOTING_HASH);
+        else 
+            anim.ResetTrigger(SHOOTING_HASH);
+    }
+    private void OnEndEvent()
+    {
+        OnEndEventTrigger?.Invoke();
+    }
+    private void OnStartEvent()
+    {
+        OnStartEventTrigger?.Invoke();
+    }
+    private void OnPreEvent()
+    {
+        OnPreEventTrigger?.Invoke();
     }
 }

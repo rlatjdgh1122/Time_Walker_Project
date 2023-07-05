@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 
 public class EnemyWeaponController : MonoBehaviour
 {
-    private EnemyAnimationController animController;
     private EnemySoData enemySoData;
     public Transform weaponPivot;
 
@@ -24,7 +23,6 @@ public class EnemyWeaponController : MonoBehaviour
 
     private void Awake()
     {
-        animController = GetComponent<EnemyAnimationController>();
         enemySoData = GetComponent<EnemyController>().EnemySoData;
     }
     private void Start()
