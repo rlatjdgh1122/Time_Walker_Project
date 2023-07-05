@@ -54,17 +54,25 @@ public class QuestManager : MonoBehaviour
     [Tooltip("string이 null이면 다음 인덱스")]
     public void ChangeQuestAsColider(string _name = null)
     {
-        Collider[] _cols;
+        //Collider[] _cols;
 
-        _cols = Physics.OverlapBox(_currentQuest.ColiderPos, _currentQuest.ColiderSize, transform.rotation, _currentQuest._lay);
+        //_cols = Physics.OverlapBox(_currentQuest.ColiderPos, _currentQuest.ColiderSize, transform.rotation, _currentQuest._lay);
 
-        if (_cols.Length > 0)
+        if (Physics.CheckBox(_currentQuest.ColiderPos, _currentQuest.ColiderSize, transform.rotation, _currentQuest._lay))
         {
-            if (_name == null)
+            if (_name == "")
                 ChangeQuestNext();
             else
                 ChangeQuestAsName(_name);
         }
+
+        // if (_cols.Length > 0)
+        // {
+        //     if (_name == "")
+        //         ChangeQuestNext();
+        //     else
+        //         ChangeQuestAsName(_name);
+        // }
     }
 
     public void ChangeQuestAsName(string name)
