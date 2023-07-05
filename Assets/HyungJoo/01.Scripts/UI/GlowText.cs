@@ -9,6 +9,7 @@ public class GlowText : MonoBehaviour {
     [SerializeField] private GameObject _pp;
 
     private void Awake() {
+        _text.enabled = false;
         _pp.SetActive(false);    
     }
     private void Update() {
@@ -19,6 +20,7 @@ public class GlowText : MonoBehaviour {
 
     [ContextMenu("ShowingSequence")]
     public void ShowingSequence(string text, float scaleValue = 1.5f,float tweenValue = 1.5f,Action Callback = null) {
+        _text.enabled = true;
         SetText(text);
         _pp.SetActive(true);
         _text.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
@@ -26,6 +28,7 @@ public class GlowText : MonoBehaviour {
         seq.Append(_text.transform.DOScale(Vector3.one,tweenValue).SetEase(Ease.OutQuad));
         seq.AppendCallback(() => {
             Callback?.Invoke();
+            _text.enabled = false;
             _pp.SetActive(false);
         });
     }
