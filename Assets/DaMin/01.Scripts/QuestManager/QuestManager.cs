@@ -8,19 +8,25 @@ using UnityEngine.Events;
 public struct Quests
 {
     public string QuestName;
+    [Tooltip("Quest설명")][Multiline] public string QuestExplanation;
+    [Tooltip("Quest스크립트로 조종")] public QuestScript _quest;
+    [Space]
     public UnityEvent OnEnterQuest;
     public UnityEvent OnUpdateQues;
     public UnityEvent OnQuestClear;
+    [Space]
+    [Header("콜라이더")]
+    public Colider _col;
+}
+
+[Serializable]
+public struct Colider
+{
     public Vector3 ColiderSize;
+    //public Quaternion rotation;
     public Vector3 ColiderPos;
     public LayerMask _lay;
     [ColorUsage(true)] public Color ColiderColor;
-    //public Quaternion rotation;
-}
-
-public struct Colider
-{
-
 }
 
 public class QuestManager : MonoBehaviour
@@ -42,15 +48,24 @@ public class QuestManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+
+        foreach (var a in _questList)
+        {
+            if (a._quest != null)
+                a._quest.gameObject.SetActive(false);
+        }
+
         ChangeQuest(_questList[0]);
     }
 
     private void Update()
     {
         _currentQuest.OnUpdateQues?.Invoke();
+
+        if (_currentQuest._quest != null)
+            _currentQuest._quest.OnUpdateQues();
     }
 
-    public enum changeType { NextInde, Name }
     [Tooltip("string이 null이면 다음 인덱스")]
     public void ChangeQuestAsColider(string _name = null)
     {
@@ -58,7 +73,7 @@ public class QuestManager : MonoBehaviour
 
         //_cols = Physics.OverlapBox(_currentQuest.ColiderPos, _currentQuest.ColiderSize, transform.rotation, _currentQuest._lay);
 
-        if (Physics.CheckBox(_currentQuest.ColiderPos, _currentQuest.ColiderSize, transform.rotation, _currentQuest._lay))
+        if (Physics.CheckBox(_currentQuest._col.ColiderPos, _currentQuest._col.ColiderSize, transform.rotation, _currentQuest._col._lay))
         {
             if (_name == "")
                 ChangeQuestNext();
@@ -75,6 +90,7 @@ public class QuestManager : MonoBehaviour
         // }
     }
 
+    [Tooltip("Quest이름으로 넘김")]
     public void ChangeQuestAsName(string name)
     {
         for (int i = 0; i < _questList.Length; i++)
@@ -88,6 +104,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    [Tooltip("다음 Quest로 넘김 없으면 그대로")]
     public void ChangeQuestNext()
     {
         if (_currentIndex >= _questList.Length)
@@ -102,9 +119,21 @@ public class QuestManager : MonoBehaviour
     private void ChangeQuest(Quests qu)
     {
         _currentQuest.OnQuestClear?.Invoke();
+        if (_currentQuest._quest != null)
+        {
+            _currentQuest._quest.gameObject.SetActive(true);
+            _currentQuest._quest?.OnQuestClear();
+            _currentQuest._quest?.gameObject.SetActive(false);
+        }
 
         _currentQuest = qu;
+
         _currentQuest.OnEnterQuest?.Invoke();
+        if (_currentQuest._quest != null)
+        {
+            _currentQuest._quest?.gameObject.SetActive(true);
+            _currentQuest._quest.OnEnterQuest();
+        }
 
         Debug.Log($"CurrentQuest : {_currentQuest.QuestName}");
     }
@@ -113,8 +142,8 @@ public class QuestManager : MonoBehaviour
     {
         foreach (var item in _questList)
         {
-            Gizmos.color = item.ColiderColor;
-            Gizmos.DrawCube(item.ColiderPos, item.ColiderSize);
+            Gizmos.color = item._col.ColiderColor;
+            Gizmos.DrawCube(item._col.ColiderPos, item._col.ColiderSize);
         }
     }
 }
