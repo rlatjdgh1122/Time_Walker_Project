@@ -17,15 +17,20 @@ public class GameManager : MonoBehaviour
     private Transform _playerTrm;
     public Transform PlayerTrm => _playerTrm;
 
-    public AgentHP PlayerHP
-    {
-        get
-        {
+    public AgentHP PlayerHP{
+        get{
             _playerHP ??= GameObject.FindGameObjectWithTag("Player").GetComponent<AgentHP>();
             return _playerHP;
         }
     }
     private AgentHP _playerHP;
+    public GlowText GlowText{
+        get{
+            _glowText ??= GameObject.Find("GlowText").GetComponent<GlowText>();
+            return _glowText;
+        }
+    }
+    private GlowText _glowText;
 
     private void Awake()
     {
