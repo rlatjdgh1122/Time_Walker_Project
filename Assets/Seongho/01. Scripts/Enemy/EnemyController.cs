@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     public CommonAIState _currentState;
     public EnemySOData enemySOData;
-    public WeaponSOData weaponSOData;
+    public GunSOData weaponSOData;
     public Transform weaponPivot;
 
     public IWeaponable currentWeapon;

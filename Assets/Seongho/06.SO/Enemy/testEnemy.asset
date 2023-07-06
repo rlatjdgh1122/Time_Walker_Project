@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: testEnemy
   m_EditorClassIdentifier: 
   Speed: 10
-  RotateSpeed: 120
+  RotateSpeed: 10
   Distance: 15
   AttackDelay: 3
