@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.4
   xMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -43,6 +43,23 @@ MonoBehaviour:
   components:
   - {fileID: 7236535422522666796}
   - {fileID: -5811694052969551674}
+  - {fileID: 5669325350125780513}
+--- !u!114 &5669325350125780513
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d536c364ebc24dd6b769ef6affde936a, type: 3}
+  m_Name: DigitalGlitchVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &7236535422522666796
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -61,7 +78,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 11.09
+    m_Value: 10
   scatter:
     m_OverrideState: 0
     m_Value: 0.7

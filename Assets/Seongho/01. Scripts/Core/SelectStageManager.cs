@@ -26,7 +26,10 @@ public class SelectStageManager : MonoBehaviour
     public List<GameObject> items = new();
     private void Start()
     {
-        PostProcessingController.Instance.Set_LensDistortion(1, .9f, .3f);
+        PostProcessingController.Instance.StopAllCoroutine();
+
+        PostProcessingController.Instance.Set_LensDistortion(1, .3f, .9f);
+        PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 0, 1);
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -36,7 +39,10 @@ public class SelectStageManager : MonoBehaviour
 
     public void MoveScene(int sceneNumber)
     {
-        SceneManager.LoadScene(sceneNumber);
+        // SceneManager.LoadScene(sceneNumber);
+        PostProcessingController.Instance.Set_LensDistortion(1, -.5f);
+        PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 1, 0,
+            () => SceneManager.LoadScene(sceneNumber));
     }
     private void Setting(GameObject item, string stageName, string diffcultyName, string explain)
     {

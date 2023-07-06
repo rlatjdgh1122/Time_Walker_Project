@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using URPGlitch.Runtime.DigitalGlitch;
+
 public class PostProcessingController : MonoBehaviour
 {
 
     public static PostProcessingController Instance;
     private LensDistortion len;
+    private DigitalGlitchVolume dig;
     private Volume volume;
 
     private void Awake()
@@ -16,32 +20,63 @@ public class PostProcessingController : MonoBehaviour
             Instance = this;
         else Destroy(Instance);
 
-        // 포스트 프로세싱 프로필(Post-Processing Profile) 가져오기
+        DontDestroyOnLoad(Instance);
+
         volume = GetComponent<Volume>();
 
-        // 렌즈 왜곡 효과 가져오기
         volume.profile.TryGet(out len);
+        volume.profile.TryGet(out dig);
     }
-    public void Set_LensDistortion(float time, float init_intensity, float intensity)
+    public void StopAllCoroutine()
     {
-        len.intensity.value = init_intensity;
-        StartCoroutine(lenDistortion(time, intensity));
+        StopAllCoroutines();
     }
-    private IEnumerator lenDistortion(float time, float intensity)
+    public void Set_LensDistortion(float time = 0, float intensity = 0, float init_intensity = 100, Action action = null) //볼록
+    {
+        if (init_intensity == 100) init_intensity = len.intensity.value;
+
+        len.intensity.value = init_intensity;
+        StartCoroutine(lenDistortion(time, intensity, init_intensity, action));
+    }
+    public void Set_DigitalGlitchVolume(float time = 0, float intensity = 0, float init_intensity = 100, Action action = null) //볼록
+    {
+        if (init_intensity == 100) init_intensity = dig.intensity.value;
+
+        dig.intensity.value = init_intensity;
+        StartCoroutine(DigitalGlitchVolume(time, intensity, init_intensity, action));
+    }
+    private IEnumerator DigitalGlitchVolume(float time, float intensity, float init_intensity, Action action)
     {
         float elapsedTime = 0;
-        float startIntensity = len.intensity.value;
+        float startIntensity = init_intensity;
 
         while (elapsedTime < time)
         {
-            // 보간하여 intensity 값 조절
+            dig.intensity.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dig.intensity.value = intensity;
+
+        if (action != null) action();
+    }
+    private IEnumerator lenDistortion(float time, float intensity, float init_intensity, Action action)
+    {
+        float elapsedTime = 0;
+        float startIntensity = init_intensity;
+
+        while (elapsedTime < time)
+        {
             len.intensity.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // 최종 intensity 값 설정
         len.intensity.value = intensity;
+
+        if (action != null) action();
     }
 }
