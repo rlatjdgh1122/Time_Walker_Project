@@ -11,6 +11,13 @@ public class IntroManager : MonoBehaviour
 
         PostProcessingController.Instance.Set_LensDistortion(1, .3f, .9f);
         PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 0, 1);
+
+        InvokeRepeating("Noise", 3, 3);
+    }
+    private void Noise()
+    {
+        PostProcessingController.Instance.Set_DigitalGlitchVolume(.2f, 1, 0,
+            () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.2f, 0));
     }
     public void MoveScene(string sceneName)
     {

@@ -12,6 +12,7 @@ public class PostProcessingController : MonoBehaviour
     public static PostProcessingController Instance;
     private LensDistortion len;
     private DigitalGlitchVolume dig;
+    private Bloom blo;
     private Volume volume;
 
     private void Awake()
@@ -26,10 +27,19 @@ public class PostProcessingController : MonoBehaviour
 
         volume.profile.TryGet(out len);
         volume.profile.TryGet(out dig);
+        volume.profile.TryGet(out blo);
+
     }
     public void StopAllCoroutine()
     {
         StopAllCoroutines();
+    }
+    public void Set_Bloom(float time = 0, float intensity = 0, float init_intensity = 100, Action action = null) //볼록
+    {
+        if (init_intensity == 100) init_intensity = blo.intensity.value;
+
+        blo.intensity.value = init_intensity;
+        StartCoroutine(Bloom(time, intensity, init_intensity, action));
     }
     public void Set_LensDistortion(float time = 0, float intensity = 0, float init_intensity = 100, Action action = null) //볼록
     {
@@ -45,20 +55,20 @@ public class PostProcessingController : MonoBehaviour
         dig.intensity.value = init_intensity;
         StartCoroutine(DigitalGlitchVolume(time, intensity, init_intensity, action));
     }
-    private IEnumerator DigitalGlitchVolume(float time, float intensity, float init_intensity, Action action)
+    private IEnumerator Bloom(float time, float intensity, float init_intensity, Action action)
     {
         float elapsedTime = 0;
         float startIntensity = init_intensity;
 
         while (elapsedTime < time)
         {
-            dig.intensity.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+            blo.intensity.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        dig.intensity.value = intensity;
+        blo.intensity.value = intensity;
 
         if (action != null) action();
     }
@@ -79,4 +89,22 @@ public class PostProcessingController : MonoBehaviour
 
         if (action != null) action();
     }
+    private IEnumerator DigitalGlitchVolume(float time, float intensity, float init_intensity, Action action)
+    {
+        float elapsedTime = 0;
+        float startIntensity = init_intensity;
+
+        while (elapsedTime < time)
+        {
+            dig.intensity.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dig.intensity.value = intensity;
+
+        if (action != null) action();
+    }
+    
 }
