@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
     [Header("사운드 등록")]
     [SerializeField] private List<Sound> sfx_sounds = new();
 
-    [SerializeField] private AudioSource BG_Player;
+    [SerializeField] private AudioSource BGM_Player;
     [SerializeField] private AudioSource SFX_Player;
 
     private Dictionary<string, AudioClip> play_sounds = new();
@@ -33,12 +33,11 @@ public class SoundManager : MonoBehaviour
     public void PlayerSoundName(string soundName)
     {
         var clip = play_sounds[soundName];
-        //SFX_Player.clip = clip;
         SFX_Player.PlayOneShot(clip);
     }
-    public void Set_BG(float value)
+    public void Set_BGM(float value)
     {
-        BG_Player.volume = value;
+        BGM_Player.volume = value;
     }
     public void Set_SFX(float value)
     {
