@@ -17,10 +17,10 @@ public class FeedBackOnHit : Feedback
     {
         _volume = GetComponent<Volume>();
 
-        if (_volume.profile.TryGet<Bloom>(out _bloom))
-        {
+        // if (_volume.profile.TryGet<Bloom>(out _bloom))
+        // {
 
-        }
+        // }
     }
 
     void Update()

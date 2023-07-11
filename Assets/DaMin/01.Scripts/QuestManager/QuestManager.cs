@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.Events;
 
 [Serializable]
@@ -31,8 +33,17 @@ public struct Colider
 
 public class QuestManager : MonoBehaviour
 {
-    public static QuestManager Instance;
+    [Header("Quest Panel")]
+    [SerializeField] private TextMeshProUGUI _curQuestNameTXT;
+    [SerializeField] private TextMeshProUGUI _curQuestTXT;
+
+    [Space]
+
+    [Header("Quests")]
     public Quests[] _questList;
+
+
+    public static QuestManager Instance;
     public Quests _currentQuest { get; private set; }
     public int _currentIndex { get; private set; }
 
@@ -136,6 +147,12 @@ public class QuestManager : MonoBehaviour
         }
 
         Debug.Log($"CurrentQuest : {_currentQuest.QuestName}");
+
+        // if ((_curQuestNameTXT = null) || (_curQuestTXT = null))
+        //     return;
+
+        _curQuestNameTXT.text = _currentQuest.QuestName.ToString();
+        _curQuestTXT.text = _currentQuest.QuestExplanation.ToString();
     }
 
     private void OnDrawGizmos()
