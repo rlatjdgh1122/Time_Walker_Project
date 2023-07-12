@@ -22,6 +22,8 @@ public class SoundManager : MonoBehaviour
 
     private Dictionary<string, AudioClip> play_sounds = new();
 
+    private GameObject soundPanel => transform.Find("Canvas/SoundPanel").gameObject;
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,22 +32,21 @@ public class SoundManager : MonoBehaviour
 
         sfx_sounds.ForEach(p => play_sounds.Add(p.soundName, p.clip));
     }
-    public void PlayerSoundName(string soundName)
+    public void SetActive(bool value)
+    {
+        soundPanel.SetActive(value);
+    }
+    public void PlaySoundName(string soundName)
     {
         var clip = play_sounds[soundName];
         SFX_Player.PlayOneShot(clip);
     }
-    public void Set_BGM(float value)
+    private void Set_BGM(float value)
     {
         BGM_Player.volume = value;
     }
-    public void Set_SFX(float value)
+    private void Set_SFX(float value)
     {
         SFX_Player.volume = value;
-    }
-
-    public void Back()
-    {
-        SceneManager.LoadScene(0);
     }
 }

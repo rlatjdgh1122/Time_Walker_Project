@@ -40,7 +40,7 @@ public class MeleeAttackAIState : CommonAIState
 
     private void AttackAnimationPreHandle()
     {
-        SoundManager.Instance.PlayerSoundName("»÷µŒ∏£±‚");
+        SoundManager.Instance.PlaySoundName("»÷µŒ∏£±‚");
         OnDamaged?.Invoke();
     }
 
