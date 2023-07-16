@@ -11,7 +11,7 @@ public class Quest1 : QuestScript
     }
     public override void OnEnterQuest()
     {
-        _glowTXT.ShowingSequence("test1111");
+        //_glowTXT.ShowingSequence("test1111");
     }
 
     public override void OnQuestClear()
@@ -21,7 +21,8 @@ public class Quest1 : QuestScript
 
     public override void OnUpdateQues()
     {
-
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            QuestManager.Instance.ChangeQuestNext();
     }
 
 }

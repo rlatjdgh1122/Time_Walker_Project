@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 using UnityEngine.Events;
 
 [Serializable]
@@ -34,6 +35,7 @@ public struct Colider
 public class QuestManager : MonoBehaviour
 {
     [Header("Quest Panel")]
+    [SerializeField] private Image _Panel;
     [SerializeField] private TextMeshProUGUI _curQuestNameTXT;
     [SerializeField] private TextMeshProUGUI _curQuestTXT;
 
@@ -150,9 +152,11 @@ public class QuestManager : MonoBehaviour
 
         // if ((_curQuestNameTXT = null) || (_curQuestTXT = null))
         //     return;
+        // Sequence changePanel = DOTween.Sequence()
+        // .Append(_Panel.rectTransform.DOAnchorPosX(380, 3f))
+        // .Append(;
+        StartCoroutine(ChangeQuestPanel(qu));
 
-        _curQuestNameTXT.text = _currentQuest.QuestName.ToString();
-        _curQuestTXT.text = _currentQuest.QuestExplanation.ToString();
     }
 
     private void OnDrawGizmos()
@@ -162,5 +166,16 @@ public class QuestManager : MonoBehaviour
             Gizmos.color = item._col.ColiderColor;
             Gizmos.DrawCube(item._col.ColiderPos, item._col.ColiderSize);
         }
+    }
+
+    IEnumerator ChangeQuestPanel(Quests qu)
+    {
+        _Panel.rectTransform.DOAnchorPosX(400, 0.4f);
+        yield return new WaitForSeconds(0.4f);
+
+        _curQuestNameTXT.text = _currentQuest.QuestName.ToString();
+        _curQuestTXT.text = _currentQuest.QuestExplanation.ToString();
+
+        _Panel.rectTransform.DOAnchorPosX(0, 1).SetEase(Ease.OutElastic);
     }
 }
