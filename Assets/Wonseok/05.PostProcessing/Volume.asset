@@ -44,6 +44,32 @@ MonoBehaviour:
   - {fileID: 7236535422522666796}
   - {fileID: -5811694052969551674}
   - {fileID: 5669325350125780513}
+  - {fileID: 1780725069435515719}
+--- !u!114 &1780725069435515719
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45fac1424df44990a90443d3cf649a75, type: 3}
+  m_Name: AnalogGlitchVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  scanLineJitter:
+    m_OverrideState: 1
+    m_Value: 0
+  verticalJump:
+    m_OverrideState: 1
+    m_Value: 0
+  horizontalShake:
+    m_OverrideState: 1
+    m_Value: 0
+  colorDrift:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &5669325350125780513
 MonoBehaviour:
   m_ObjectHideFlags: 3

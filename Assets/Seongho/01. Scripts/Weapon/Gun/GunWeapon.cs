@@ -40,10 +40,6 @@ public class GunWeapon : Weapon
     {
         base.Awake();
         Hiden_Particle();
-        if (gunData.animatiorController != null)
-        {
-            animatorController.runtimeAnimatorController = gunData.animatiorController;
-        }
     }
     private void Hiden_Particle()
     {

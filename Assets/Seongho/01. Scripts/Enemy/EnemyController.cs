@@ -45,7 +45,6 @@ public class EnemyController : MonoBehaviour
         Weapon weapon = WeaponManager.Instance.SpawnWeapon(weaponSOData.WeaponName);
         GameObject g = Instantiate(weapon.gameObject, weaponPivot);
         currentWeapon = g.GetComponent<Weapon>();
-        _animator.runtimeAnimatorController = weaponSOData.animatiorController;
     }
 
     public void ChangeState(CommonAIState nextState)

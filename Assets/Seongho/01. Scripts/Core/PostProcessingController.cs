@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using URPGlitch.Runtime.AnalogGlitch;
 using URPGlitch.Runtime.DigitalGlitch;
 
 public class PostProcessingController : MonoBehaviour
@@ -12,6 +13,7 @@ public class PostProcessingController : MonoBehaviour
     public static PostProcessingController Instance;
     private LensDistortion len;
     private DigitalGlitchVolume dig;
+    private AnalogGlitchVolume analog;
     private Bloom blo;
     private Volume volume;
 
@@ -27,6 +29,7 @@ public class PostProcessingController : MonoBehaviour
 
         volume.profile.TryGet(out len);
         volume.profile.TryGet(out dig);
+        volume.profile.TryGet(out analog);
         volume.profile.TryGet(out blo);
 
     }

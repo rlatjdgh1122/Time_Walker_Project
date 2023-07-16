@@ -7,6 +7,4 @@ public class WeaponSoData : ScriptableObject
 {
     public string WeaponName;
     public string SoundName;
-
-    public AnimatorOverrideController animatiorController;
 }

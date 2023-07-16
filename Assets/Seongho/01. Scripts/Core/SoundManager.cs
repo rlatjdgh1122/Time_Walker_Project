@@ -14,6 +14,7 @@ public class Sound
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
+    public GameObject soundPanel;
     [Header("사운드 등록")]
     [SerializeField] private List<Sound> sfx_sounds = new();
 
@@ -22,7 +23,6 @@ public class SoundManager : MonoBehaviour
 
     private Dictionary<string, AudioClip> play_sounds = new();
 
-    private GameObject soundPanel => transform.Find("Canvas/SoundPanel").gameObject;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
 
         sfx_sounds.ForEach(p => play_sounds.Add(p.soundName, p.clip));
     }
-    public void SetActive(bool value)
+    public void SoundPanel_SetActive(bool value)
     {
         soundPanel.SetActive(value);
     }
@@ -41,11 +41,15 @@ public class SoundManager : MonoBehaviour
         var clip = play_sounds[soundName];
         SFX_Player.PlayOneShot(clip);
     }
-    private void Set_BGM(float value)
+    public void Canel()
+    {
+        soundPanel.SetActive(false);
+    }
+    public void Set_BGM(float value)
     {
         BGM_Player.volume = value;
     }
-    private void Set_SFX(float value)
+    public void Set_SFX(float value)
     {
         SFX_Player.volume = value;
     }
