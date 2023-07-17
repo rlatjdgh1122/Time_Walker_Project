@@ -22,10 +22,7 @@ public class ArrowManager : MonoBehaviour
             transform.LookAt(_currentTarget, Vector3.up);
     }
 
-    public void SetArrowTargetAsName(string _targetname)
-    {
-        _currentTarget = GameObject.Find(_targetname).transform;
-    }
+    public void SetArrowTargetAsName(string _targetname) => _currentTarget = GameObject.Find(_targetname).transform;
 
     public void SetArrowTargetAsVector(Vector3 _targetPos)
     {
@@ -33,8 +30,5 @@ public class ArrowManager : MonoBehaviour
         _currentTarget = _Tartget.transform;
     }
 
-    public void SetArrowTargetAsObject(GameObject _targetObj)
-    {
-        _currentTarget = _targetObj.transform;
-    }
+    public void SetArrowTargetAsObject(GameObject _targetObj) => _currentTarget = _targetObj.transform;
 }

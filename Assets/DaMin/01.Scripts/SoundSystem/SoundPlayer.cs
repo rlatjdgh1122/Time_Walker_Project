@@ -25,10 +25,7 @@ public class SoundPlayer : MonoBehaviour
         _basePitch = _audioSource.pitch;
     }
 
-    public void StopAudio()
-    {
-        _audioSource.Stop();
-    }
+    public void StopAudio() => _audioSource.Stop();
 
     public void SimplePlay(string _name)
     {
