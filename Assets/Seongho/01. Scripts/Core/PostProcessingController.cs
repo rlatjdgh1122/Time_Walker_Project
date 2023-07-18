@@ -33,9 +33,23 @@ public class PostProcessingController : MonoBehaviour
         volume.profile.TryGet(out blo);
 
     }
-    public void StopAllCoroutine()
+    public void StopEffect()
     {
         StopAllCoroutines();
+        Set_AnalogVolume();
+        //Set_LensDistortion();
+        //Set_Bloom();
+    }
+    public void Set_AnalogVolume(float time = 0, float intensity = 0, float init_intensity = 100, Action action = null) //볼록
+    {
+        if (init_intensity == 100) init_intensity = analog.scanLineJitter.value;
+
+        analog.scanLineJitter.value = init_intensity;
+        analog.verticalJump.value = init_intensity;
+        analog.horizontalShake.value = init_intensity;
+        analog.colorDrift.value = init_intensity;
+
+        StartCoroutine(Analog(time, intensity, init_intensity, action));
     }
     public void Set_Bloom(float time = 0, float intensity = 0, float init_intensity = 100, Action action = null) //볼록
     {
@@ -57,6 +71,29 @@ public class PostProcessingController : MonoBehaviour
 
         dig.intensity.value = init_intensity;
         StartCoroutine(DigitalGlitchVolume(time, intensity, init_intensity, action));
+    }
+    private IEnumerator Analog(float time, float intensity, float init_intensity, Action action)
+    {
+        float elapsedTime = 0;
+        float startIntensity = init_intensity;
+
+        while (elapsedTime < time)
+        {
+            analog.scanLineJitter.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+            analog.verticalJump.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+            analog.horizontalShake.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+            analog.colorDrift.value = Mathf.Lerp(startIntensity, intensity, elapsedTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        analog.scanLineJitter.value = intensity;
+        analog.verticalJump.value = intensity;
+        analog.horizontalShake.value = intensity;
+        analog.colorDrift.value = intensity;
+
+        if (action != null) action();
     }
     private IEnumerator Bloom(float time, float intensity, float init_intensity, Action action)
     {
@@ -109,5 +146,4 @@ public class PostProcessingController : MonoBehaviour
 
         if (action != null) action();
     }
-    
 }

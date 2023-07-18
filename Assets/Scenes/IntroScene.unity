@@ -905,7 +905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: -272}
+  m_AnchoredPosition: {x: 400, y: -272}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611651530
@@ -952,10 +952,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectStageManager, Assembly-CSharp
+      - m_Target: {fileID: 238487269}
+        m_TargetAssemblyTypeName: IntroManager, Assembly-CSharp
         m_MethodName: MoveScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 1261302206}
   - component: {fileID: 1261302205}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,7 +1484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -271.99997}
+  m_AnchoredPosition: {x: -400, y: -271.99997}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261302205
@@ -1531,16 +1531,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectStageManager, Assembly-CSharp
+      - m_Target: {fileID: 238487269}
+        m_TargetAssemblyTypeName: IntroManager, Assembly-CSharp
         m_MethodName: MoveScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TitleScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1261302206
@@ -1843,8 +1843,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TIME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93a2a9b751a5f4745957d4c3e9a18ac9, type: 2}
-  m_sharedMaterial: {fileID: 7453642021753212536, guid: 93a2a9b751a5f4745957d4c3e9a18ac9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
+  m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1868,8 +1868,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 240
-  m_fontSizeBase: 240
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT
+  m_text: "\rTUTORIAL"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 93a2a9b751a5f4745957d4c3e9a18ac9, type: 2}
   m_sharedMaterial: {fileID: 7453642021753212536, guid: 93a2a9b751a5f4745957d4c3e9a18ac9, type: 2}
@@ -2113,8 +2113,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: WALKER
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93a2a9b751a5f4745957d4c3e9a18ac9, type: 2}
-  m_sharedMaterial: {fileID: 7453642021753212536, guid: 93a2a9b751a5f4745957d4c3e9a18ac9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
+  m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2138,8 +2138,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 240
-  m_fontSizeBase: 240
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

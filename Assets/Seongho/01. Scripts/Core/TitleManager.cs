@@ -10,35 +10,28 @@ public class TitleManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] _texts;
     [SerializeField] private float _showSpeed;
-    [SerializeField] private float _colorChangeSpeed;
-
-    [SerializeField] private Image _line;
 
     private bool IsPress = true;
-    //지지직 거리고 타이워커 이렇게
     private void Start()
     {
         IsPress = true;
         StartNoise();
 
-        InvokeRepeating("Noise", 3, 3);
+        InvokeRepeating("Noise", 3, 5);
     }
     float timer = 0;
     private void Update()
     {
-       /* timer += (Time.deltaTime * _colorChangeSpeed);
-        _line.color = Color.HSVToRGB(timer % 360, 1, 1);
-*/
         if (IsPress)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 IsPress = false;
+                CancelInvoke("Noise");
 
-                PostProcessingController.Instance.StopAllCoroutines();
+                PostProcessingController.Instance.StopEffect();
 
-                PostProcessingController.Instance.Set_LensDistortion(1f, -.5f, 0,
-             () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
+                PostProcessingController.Instance.Set_AnalogVolume(1f, .35f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
             0, () => SceneManager.LoadScene("IntroScene")));
             }
         }

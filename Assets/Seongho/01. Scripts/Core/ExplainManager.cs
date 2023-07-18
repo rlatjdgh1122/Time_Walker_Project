@@ -35,7 +35,7 @@ public class ExplainManager : MonoBehaviour
     private string resultText;
     private void Start()
     {
-        PostProcessingController.Instance.StopAllCoroutine();
+        PostProcessingController.Instance.StopEffect();
 
         PostProcessingController.Instance.Set_LensDistortion(1, .3f, .9f);
         PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 0, 1);
