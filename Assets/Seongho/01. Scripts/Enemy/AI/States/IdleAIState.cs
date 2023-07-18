@@ -6,14 +6,15 @@ public class IdleAIState : CommonAIState
 {
     public override void OnEnterState()
     {
-        _enemyMovement.StartImmediately();
-        _enemyMovement.IsRotate = true;
+        _enemyMovement.IsRotate = false;
+        _enemyMovement.IsMove = false;
         _enemyAnimationController.SetMove(MOVE_STATE.Idle);
     }
 
     public override void OnExitState()
     {
-
+        _enemyMovement.IsRotate = true;
+        _enemyMovement.IsMove = true;
     }
     public override bool UpdateState()
     {
