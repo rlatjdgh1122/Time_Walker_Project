@@ -4,17 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/DaMin/Tutorial.unity
-    guid: 78a6d98fc695ec2458260608c0a670e8
-  - enabled: 1
-    path: Assets/Scenes/DaMin/Stage1.unity
-    guid: c152a05f6d7ec274ebe087357835fc19
-  - enabled: 1
-    path: Assets/Scenes/DaMin/Stage2.unity
-    guid: ec01a07d669014a4f9d08a21c1b22214
-  - enabled: 1
-    path: Assets/Scenes/DaMin/Stage3.unity
-    guid: c85bd787ce8b42744b7dea8cdcbfab55
+  m_Scenes: []
   m_configObjects: {}
