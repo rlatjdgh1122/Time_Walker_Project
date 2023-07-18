@@ -1,30 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class GlowText : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private TMP_FontAsset _fontAsset;
+    [SerializeField] private GameObject _pp;
 
-    public void SetText(string result) {
-        _text.SetText(result);
+    private void Awake() {
+        _text.enabled = false;
+        _pp.SetActive(false);    
     }
-
     private void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
-            ShowingSequence(1.5f);
+            ShowingSequence("Look at Behind");
         }
     }
 
     [ContextMenu("ShowingSequence")]
-    public void ShowingSequence(float scaleValue) {
+    public void ShowingSequence(string text, float scaleValue = 1.5f,float tweenValue = 1.5f,Action Callback = null) {
+        _text.enabled = true;
+        SetText(text);
+        _pp.SetActive(true);
         _text.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
-        //_text
-        //_text.material.
-        _text.transform.DOScale(Vector3.one,2f).SetEase(Ease.OutQuad);
+        Sequence seq = DOTween.Sequence();
+        seq.Append(_text.transform.DOScale(Vector3.one,tweenValue).SetEase(Ease.OutQuad));
+        seq.AppendCallback(() => {
+            Callback?.Invoke();
+            _text.enabled = false;
+            _pp.SetActive(false);
+        });
+    }
+
+    public void SetText(string result) {
+        _text.SetText(result);
     }
 
 
