@@ -8,10 +8,10 @@ using Random = UnityEngine.Random;
 
 public class EnemyWeaponController : MonoBehaviour
 {
+    private EnemySoData enemySoData;
     public Transform weaponPivot;
 
-    public Action OnShoot = null; //공격 이벤트
-    private EnemySOData enemySoData;
+    public Action OnShoot;
     /* public UnityEvent OnFeedbackShoot;
      public UnityEvent OnFeedbackNoAmmo;
      public UnityEvent OnFeedbackStopShooting;*/
@@ -21,9 +21,9 @@ public class EnemyWeaponController : MonoBehaviour
     int ammo;
     private bool delayCoroutine;
 
-   /* private void Awake()
+    private void Awake()
     {
-        enemySoData = GetComponent<EnemyController>().enemySoData;
+        enemySoData = GetComponent<EnemyController>().EnemySoData;
     }
     private void Start()
     {
@@ -112,5 +112,5 @@ public class EnemyWeaponController : MonoBehaviour
     {
         isShooting = false;
         //OnFeedbackStopShooting?.Invoke();
-    }*/
+    }
 }
