@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;   
+using System;
 
-public class AgentAnimator : MonoBehaviour{
+public class AgentAnimator : MonoBehaviour {
     protected Animator _animator;
     protected PlayerActionData _actionData;
     protected Transform _agentTransform;
-    
+    protected AgentController _agentController;
+
     public event Action OnAttackAnimationEndTrigger;
     public event Action OnSlashEndTrigger;
+    public event Action OnComboAnimationEndTrigger;
 
     protected readonly int _attackHash = Animator.StringToHash("ATTACK");
     protected readonly int _attackBoolHash = Animator.StringToHash("IS_ATTACK");
@@ -22,10 +24,12 @@ public class AgentAnimator : MonoBehaviour{
     protected readonly int _dashBoolHash = Animator.StringToHash("IS_DASH");
     protected readonly int _dashTriggerHash = Animator.StringToHash("DASH");
 
-    protected virtual void Awake(){
+
+    protected virtual void Awake() {
         _animator = transform.GetComponent<Animator>();
         _agentTransform = transform.root.GetComponent<AgentMovement>().transform;
         _actionData = transform.root.Find("ActionData").GetComponent<PlayerActionData>();
+        _agentController = GetComponent<AgentController>();
     }
     public void SetSpeed(float value) {
         _animator.SetFloat(_speedHash, value);
@@ -41,26 +45,26 @@ public class AgentAnimator : MonoBehaviour{
         }
     }
 
-    public void SetSlashBool(bool result){
-        _animator.SetBool(_slashBoolHash,result);
+    public void SetSlashBool(bool result) {
+        _animator.SetBool(_slashBoolHash, result);
     }
-    
-    public void SlashAnimation(bool result){
-        if(result){
+
+    public void SlashAnimation(bool result) {
+        if (result) {
             _animator.SetTrigger(_slashTriggerHash);
         }
-        else{
+        else {
             _animator.ResetTrigger(_slashTriggerHash);
         }
     }
-    public void SetDashBool(bool result){
-        _animator.SetBool(_dashBoolHash,result);
+    public void SetDashBool(bool result) {
+        _animator.SetBool(_dashBoolHash, result);
     }
-    public void DashAnimation(bool result){
-        if(result){
+    public void DashAnimation(bool result) {
+        if (result) {
             _animator.SetTrigger(_dashTriggerHash);
         }
-        else{
+        else {
             _animator.ResetTrigger(_dashTriggerHash);
         }
     }
@@ -81,6 +85,14 @@ public class AgentAnimator : MonoBehaviour{
         _actionData.isAttacking = false;
         _animator.SetBool(_attackBoolHash, false);
         _animator.ResetTrigger(_attackHash);
+    }
+
+    public void OnComboAnimationEnd() {
+        OnComboAnimationEndTrigger?.Invoke();
+        _animator.SetBool(_attackBoolHash, false);
+        _animator.ResetTrigger(_attackHash);
+        SetAllParameters(false);
+        _agentController.ChangeState(Core.Define.StateType.Normal);
     }
 
     public void OnSlashEnd() {
