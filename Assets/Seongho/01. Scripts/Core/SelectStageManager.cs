@@ -10,7 +10,8 @@ public enum DIFFCULTY
 {
     EASY,
     NORMAL,
-    HARD
+    HARD,
+    TUTORIAL
 }
 
 [System.Serializable]
@@ -39,10 +40,8 @@ public class SelectStageManager : MonoBehaviour
 
     public void MoveScene(int sceneNumber)
     {
-        // SceneManager.LoadScene(sceneNumber);
-        PostProcessingController.Instance.Set_LensDistortion(1, -.5f);
-        PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 1, 0,
-            () => SceneManager.LoadScene(sceneNumber));
+        PostProcessingController.Instance.Set_AnalogVolume(2, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
+            0, () => SceneManager.LoadScene(sceneNumber)));
     }
     private void Setting(GameObject item, string stageName, string diffcultyName, string explain)
     {

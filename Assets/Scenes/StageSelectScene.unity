@@ -4239,14 +4239,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setStages:
+  - StageName: tutorial
+    DiffcultyName: 3
+    Explain: 
   - StageName: 1
-    DiffcultyName: 0
-    Explain: "\u3157"
-  - StageName: 2
     DiffcultyName: 1
-    Explain: "\u3157"
-  - StageName: 3
+    Explain: 
+  - StageName: 2
     DiffcultyName: 2
+    Explain: 
+  - StageName: 3
+    DiffcultyName: 0
     Explain: "\u3157"
   - StageName: 4
     DiffcultyName: 0
@@ -4255,9 +4258,6 @@ MonoBehaviour:
     DiffcultyName: 0
     Explain: "\u3157"
   - StageName: 6
-    DiffcultyName: 0
-    Explain: "\u3157"
-  - StageName: "\uBB34\uD55C"
     DiffcultyName: 2
     Explain: "\u3157\uC774\uB098 \uBA38\uAC85"
   items:
