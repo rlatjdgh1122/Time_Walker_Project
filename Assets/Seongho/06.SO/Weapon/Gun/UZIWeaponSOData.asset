@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497eb52d2ca8358479de65f988916800, type: 3}
+  m_Name: UZIWeaponSOData
+  m_EditorClassIdentifier: 
+  WeaponName: UZI
+  SoundName: 
+  attackDelay: 2.35
+  weaponDelay: 2.68
+  spreadAngle: 0
+  bulletCount: 1
+  animatiorController: {fileID: 22100000, guid: 75726160c56fc3b41be5fcf1ec6b9309, type: 2}

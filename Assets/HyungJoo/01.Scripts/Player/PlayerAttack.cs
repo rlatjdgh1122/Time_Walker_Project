@@ -28,7 +28,6 @@ public class PlayerAttack : AgentAttack {
         _agentAnimator.OnAttackAnimation();
         RaycastHit hit;
         bool result = Physics.SphereCast(transform.position + _offset, 1f, MainCam.transform.forward ,out hit, 1f,_mask);
-        Debug.Log("Result :: " + result);
         if (result) {
             hit.collider.transform.root.GetComponent<EnemyHit>().OnCut_Hor();
             Debug.Log($"{hit.collider.gameObject.name} - ColliderName");

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PoolingList _poolingList;
     [SerializeField]
-    private WeaponList weaponList;
+    private WeaponSOList weaponList;
     [SerializeField]
     private Transform _playerTrm;
     public Transform PlayerTrm => _playerTrm;
@@ -38,9 +38,16 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else Destroy(this);
         DontDestroyOnLoad(this);
+
         CreatePool();
+        CreateWeapon();
+       
     }
 
+    private void CreateWeapon()
+    {
+      
+    }
 
     public void CreatePool()
     {
@@ -51,25 +58,29 @@ public class GameManager : MonoBehaviour
         {
             manager.CreatePool(p.poolObject, p.poolCount);
         }
-    }
-    public GunWeapon GetRandomWeightWeapon()
-    {
-        return weaponList.Weapons[GetRandomWeightWeaponIndex()].WeaponObject;
-    }
-    private int GetRandomWeightWeaponIndex()
-    {
-        float sum = 0;
-        for (int i = 0; i < weaponList.Weapons.Count; i++)
+        weaponList.Weapons.ForEach(p =>
         {
-            sum += weaponList.Weapons[i].Weight;
-        }
-        float randomValue = Random.Range(0, sum);
-        float tempSum = 0;
-        for (int i = 0; i < weaponList.Weapons.Count; i++)
-        {
-            if (randomValue >= tempSum && randomValue < tempSum + weaponList.Weapons[i].Weight) return i;
-            else tempSum += weaponList.Weapons[i].Weight;
-        }
-        return 0;
+            WeaponManager.Instance.CreateWeapon(p.WeaponName, p.Weapon);
+        });
     }
+    /* public GunWeapon GetRandomWeightWeapon()
+     {
+         return weaponList.Weapons[GetRandomWeightWeaponIndex()].WeaponObject;
+     }
+     private int GetRandomWeightWeaponIndex()
+     {
+         float sum = 0;
+         for (int i = 0; i < weaponList.Weapons.Count; i++)
+         {
+             sum += weaponList.Weapons[i].Weight;
+         }
+         float randomValue = Random.Range(0, sum);
+         float tempSum = 0;
+         for (int i = 0; i < weaponList.Weapons.Count; i++)
+         {
+             if (randomValue >= tempSum && randomValue < tempSum + weaponList.Weapons[i].Weight) return i;
+             else tempSum += weaponList.Weapons[i].Weight;
+         }
+         return 0;
+     }*/
 }
