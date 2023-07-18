@@ -14,6 +14,7 @@ public class EnemyAnimationController : AnimatorHash
     public event Action OnEndEventTrigger = null;
     public event Action OnStartEventTrigger = null;
     public event Action OnPreEventTrigger = null;
+    public event Action OnPreEndEventTrigger = null;
     public void SetMove(MOVE_STATE value)
     {
         if (value == MOVE_STATE.Move_Back)
@@ -60,5 +61,9 @@ public class EnemyAnimationController : AnimatorHash
     private void OnPreEvent()
     {
         OnPreEventTrigger?.Invoke();
+    }
+    private void OnPreEndEvent()
+    {
+        OnPreEndEventTrigger?.Invoke();
     }
 }
