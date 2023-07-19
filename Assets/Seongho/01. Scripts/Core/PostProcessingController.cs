@@ -19,11 +19,22 @@ public class PostProcessingController : MonoBehaviour
 
     private void Awake()
     {
+
+        var obj = FindObjectsOfType<PostProcessingController>();
+
         if (Instance == null)
             Instance = this;
-        else Destroy(Instance);
+        else Destroy(this);
 
-        DontDestroyOnLoad(Instance);
+        Debug.Log(obj.Length);
+        if (obj.Length == 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         volume = GetComponent<Volume>();
 

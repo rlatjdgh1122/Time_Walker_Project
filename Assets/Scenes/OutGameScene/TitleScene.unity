@@ -939,9 +939,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560039035}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Canel
+      - m_Target: {fileID: 1560039037}
+        m_TargetAssemblyTypeName: SettingPanelManager, Assembly-CSharp
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1131,9 +1131,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560039035}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Canel
+      - m_Target: {fileID: 1560039037}
+        m_TargetAssemblyTypeName: SettingPanelManager, Assembly-CSharp
+        m_MethodName: Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1240,12 +1240,12 @@ GameObject:
   - component: {fileID: 1079056355}
   - component: {fileID: 1079056354}
   m_Layer: 5
-  m_Name: SoundPanel
+  m_Name: SettingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1079056353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 0.2}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420031985
@@ -1834,19 +1834,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: 04626ba6eef0dcd48b27d0ee667f58a2, type: 3}
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 90
+    m_MinSize: 0
+    m_MaxSize: 190
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: exit
+  m_Text: Title
 --- !u!222 &1420031986
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2210,14 +2210,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1560039034}
   - component: {fileID: 1560039035}
-  - component: {fileID: 1560039036}
+  - component: {fileID: 1560039037}
   m_Layer: 0
   m_Name: SettingController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1560039034
 Transform:
   m_ObjectHideFlags: 0
@@ -2246,11 +2246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71f4b3d802cbfa49a0cb1ff574c7a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPanel: {fileID: 1079056352}
   sfx_sounds: []
   BGM_Player: {fileID: 1474054033}
   SFX_Player: {fileID: 1474054033}
---- !u!114 &1560039036
+--- !u!114 &1560039037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2259,9 +2258,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1560039033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78fa540f69dd5ed4eaa708ca55b6b2c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 29857084c5758f6489e23b0f2d52b1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SettingPanel: {fileID: 1079056352}
 --- !u!114 &1678252904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2370,8 +2370,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560039035}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1560039037}
+        m_TargetAssemblyTypeName: SettingPanelManager, Assembly-CSharp
         m_MethodName: Canel
         m_Mode: 1
         m_Arguments:

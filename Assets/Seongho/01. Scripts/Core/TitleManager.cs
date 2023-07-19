@@ -14,7 +14,13 @@ public class TitleManager : MonoBehaviour
     private bool IsPress = true;
     private void Start()
     {
+
         IsPress = true;
+        PostProcessingController.Instance.StopEffect();
+
+        PostProcessingController.Instance.Set_LensDistortion(1, .3f, .9f);
+        PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 0, 1);
+
         StartNoise();
 
         InvokeRepeating("Noise", 3, 5);
