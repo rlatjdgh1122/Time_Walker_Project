@@ -16,13 +16,12 @@ public class IntroManager : MonoBehaviour
     }
     private void Noise()
     {
-        PostProcessingController.Instance.Set_DigitalGlitchVolume(.2f, 1, 0,
-            () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.2f, 0));
+        PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1, 0,
+            () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 0));
     }
     public void MoveScene(string sceneName)
     {
-        PostProcessingController.Instance.Set_LensDistortion(1, -.5f);
-        PostProcessingController.Instance.Set_DigitalGlitchVolume(1, 1, 0,
-            () => SceneManager.LoadScene(sceneName));
+        PostProcessingController.Instance.Set_AnalogVolume(.7f, .35f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.7f, 1,
+            0, () => SceneManager.LoadScene(sceneName)));
     }
 }

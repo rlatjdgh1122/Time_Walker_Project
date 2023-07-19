@@ -40,8 +40,15 @@ public class SelectStageManager : MonoBehaviour
 
     public void MoveScene(int sceneNumber)
     {
-        PostProcessingController.Instance.Set_AnalogVolume(2, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
-            0, () => SceneManager.LoadScene(sceneNumber)));
+        PostProcessingController.Instance.Set_Bloom(1.8f, 25, 3);
+
+        PostProcessingController.Instance.Set_AnalogVolume(1.5f, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
+           0, () =>
+           {
+               SceneManager.LoadScene(sceneNumber);
+               PostProcessingController.Instance.Set_Bloom();
+           })
+        );
     }
     private void Setting(GameObject item, string stageName, string diffcultyName, string explain)
     {

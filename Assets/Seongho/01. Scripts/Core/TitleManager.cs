@@ -19,7 +19,6 @@ public class TitleManager : MonoBehaviour
 
         InvokeRepeating("Noise", 3, 5);
     }
-    float timer = 0;
     private void Update()
     {
         if (IsPress)
@@ -31,7 +30,7 @@ public class TitleManager : MonoBehaviour
 
                 PostProcessingController.Instance.StopEffect();
 
-                PostProcessingController.Instance.Set_AnalogVolume(1f, .35f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
+                PostProcessingController.Instance.Set_AnalogVolume(.7f, .35f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.7f, 1,
             0, () => SceneManager.LoadScene("IntroScene")));
             }
         }
