@@ -19,7 +19,7 @@ public class MouseHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();    
+        _actionData = transform.Find("ActionData").GetComponent<PlayerActionData>();
     }
     private void Update()
     {
