@@ -12,7 +12,6 @@ public abstract class CommonAIState : MonoBehaviour, IAIState
     protected EnemyAnimationController _enemyAnimationController;
     protected EnemyWeaponController _enemyWeaponController;
 
-    protected IWeaponable currentWeapon => _enemyController.currentWeapon;
     public abstract void OnEnterState();
     public abstract void OnExitState();
 
