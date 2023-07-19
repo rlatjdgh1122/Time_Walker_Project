@@ -21,15 +21,15 @@ public class ReloadAIState : CommonAIState
 
     }
 
-    public override bool UpdateState()
+   /* public override bool UpdateState()
     {
         time += Time.deltaTime;
-        if (time <= _enemyController.EnemySoData.weaponData.reloadTime) return false;
+        if (time <= _enemyController.enemySoData.reloadTime) return false;
         else
         {
             _enemyController.ChangeState(attackState);
             return true;
         }
 
-    }
+    }*/
 }
