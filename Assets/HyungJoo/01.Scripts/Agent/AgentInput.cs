@@ -108,6 +108,7 @@ public class AgentInput : MonoBehaviour{
                 StartCoroutine(DashDelayCor(_skillDelay.dashDelay));
                 _agentAnimator.DashAnimation(true);
             }
+            _agentAnimator.SetDashBool(false);
             _cameraHandler.ResetCamera();
             _actionData.chargingDash = false;
         }
