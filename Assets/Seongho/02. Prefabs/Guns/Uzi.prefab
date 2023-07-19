@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8719121214950444439}
-  m_LocalRotation: {x: -0.43856892, y: 0.48214677, z: -0.514048, w: -0.55762583}
-  m_LocalPosition: {x: -0.036, y: 0.171, z: 0.07}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: 0.391345, y: -0.4846179, z: 0.5227451, w: 0.5820071}
+  m_LocalPosition: {x: -0.08644394, y: 0.19510931, z: -0.0117981825}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8722836423519155571}
@@ -39,7 +39,7 @@ Transform:
   - {fileID: 8719934989968327425}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 100, y: 150, z: -120}
+  m_LocalEulerAnglesHint: {x: 74.195, y: -34.675, z: 57.292}
 --- !u!33 &8753720131333144991
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -102,18 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2e8c1c202b88f4cb0178c1c6e672fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 9f651ad3796136b468b5ac2a950766c2, type: 2}
+  weaponDataSO: {fileID: 11400000, guid: 2ded1fef127738e429a52c33bb3dfba3, type: 2}
   firePos: {fileID: 8719934989968327425}
   bullet: {fileID: 8295673042786580483, guid: 65dc6b4d15a9ac54cb80d3ac4b4d8600, type: 3}
-  OnShoot:
-    m_PersistentCalls:
-      m_Calls: []
-  OnShootNoAmmo:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStopShooting:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!64 &1488486418095244690
 MeshCollider:
   m_ObjectHideFlags: 0

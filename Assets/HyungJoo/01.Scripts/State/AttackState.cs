@@ -61,7 +61,7 @@ public class AttackState : CommonState {
         if(_actionData.isAttacking == false){
             if (_attackCombo >= 3) {
                 _attackCombo = 0;
-                _agentAnimator.OnAttackAnimationEnd();
+                _agentAnimator.OnComboAnimationEnd();
                  return;
             }
             _playerAttack.TryToAttack();
