@@ -40,7 +40,7 @@ public class AgentMovement : MonoBehaviour{
         }else{
             _verticalVelocity = _gravityScale * 0.2f * Time.fixedDeltaTime;
         }
-        if(_actionData.isAttacking || _actionData.isDashing || _actionData.isSlashing){
+        if(_actionData.isAttacking || _actionData.isDashing || _actionData.isSlashing || _actionData.chargingDash || _actionData.chargingSlash){
             return;
         }
 
