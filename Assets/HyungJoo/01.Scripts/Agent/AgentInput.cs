@@ -30,7 +30,7 @@ public class AgentInput : MonoBehaviour{
     private void Update() {
         InputFireButton();
         InputMovementKeyPress();
-        InputDashPress();
+        //InputDashPress();
         InputSlashPress();
     }
     //�������� �Ŀ��� ����� ������� �ʴ� �� ����

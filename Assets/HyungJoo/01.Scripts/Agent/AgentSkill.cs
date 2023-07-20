@@ -39,7 +39,7 @@ public class AgentSkill : MonoBehaviour{
     }
     
     public void Dash(float power){
-        //_actionData.isAttacking = true;
+        _actionData.isAttacking = true;
         StartCoroutine(DashCorotuine(power));
         RaycastHit hit;
         bool isHit = Physics.BoxCast(transform.position,transform.lossyScale * 2f,transform.forward,out hit,Quaternion.identity,5f * power, whatIsEnemy);

@@ -65,10 +65,6 @@ public class AgentAnimator : MonoBehaviour{
             _animator.ResetTrigger(_dashTriggerHash);
         }
     }
-
-
-
-
     public void OnAttackAnimation() {
         _animator.speed = 2f;
         _animator.SetTrigger(_attackHash);
