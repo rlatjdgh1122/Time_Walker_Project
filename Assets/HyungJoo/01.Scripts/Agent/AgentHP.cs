@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
-public class AgentHP : MonoBehaviour{
+public class AgentHP : MonoBehaviour,IDamagable{
     [SerializeField]
     private HPSO _hpSO;
 
     public int CurrentHP => _currentHP;
     private int _currentHP;
-    
+    protected AgentAnimator _agentAnimator;
 
     public UnityEvent<float> OnDamaged;
     public UnityEvent OnDead;
 
     private void Awake() {
         _currentHP = _hpSO.maxHP;
+        _agentAnimator = GetComponent<AgentAnimator>();
     }
 
     private void Update() {
@@ -33,8 +34,9 @@ public class AgentHP : MonoBehaviour{
         }
     }
 
-    private void DestroyProcess(){
-        Destroy(this.gameObject);
+    public void DestroyProcess(){
+        _agentAnimator.Dead();
+        //Destroy(this.gameObject);
         OnDead?.Invoke();
     }
 }
