@@ -15,7 +15,5 @@ MonoBehaviour:
   WeaponName: UZI
   SoundName: 
   attackDelay: 2.35
-  weaponDelay: 2.68
   spreadAngle: 0
   bulletCount: 1
-  animatiorController: {fileID: 22100000, guid: 75726160c56fc3b41be5fcf1ec6b9309, type: 2}

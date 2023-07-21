@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497eb52d2ca8358479de65f988916800, type: 3}
-  m_Name: SniperWeaponSOData
+  m_Script: {fileID: 11500000, guid: c1be2cd1f9a32f241882dffb54990c38, type: 3}
+  m_Name: ShotgunEnemy
   m_EditorClassIdentifier: 
-  WeaponName: "\uB300\uBB3C\uC800\uACA9\uCDA9"
-  SoundName: 
-  attackDelay: 1.86
-  spreadAngle: 0
-  bulletCount: 1
+  Speed: 10
+  RotateSpeed: 10
+  Distance: 15
+  AttackDelay: 3
