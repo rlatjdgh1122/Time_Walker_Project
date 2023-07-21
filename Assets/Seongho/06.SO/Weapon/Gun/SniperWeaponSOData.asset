@@ -15,5 +15,7 @@ MonoBehaviour:
   WeaponName: "\uB300\uBB3C\uC800\uACA9\uCDA9"
   SoundName: 
   attackDelay: 1.86
-  spreadAngle: 0
+  weaponDelay: 1.74
+  spreadAngle: 0.144
   bulletCount: 1
+  animatiorController: {fileID: 22100000, guid: 40a89cbcdf408a545bac6e50268742db, type: 2}
