@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class InnerDistanceDecision : AIDecision
 {
+    [SerializeField]
     private float _distance = 5f;
-    public float Distance
-    {
-        private get
-        {
-            return _distance;
-        }
-        set
-        {
-            _distance = value;
-        }
-    }
 
     public override bool MakeDecision()
     {

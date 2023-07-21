@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e756d19c7d6029f4db705eeb9466ab97, type: 3}
+  m_Name: Pistol Weapon Data SO
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 6886621923722612385, guid: b59553771c7d2a14bba057e1b60da79d, type: 3}
+  attackCoolTime: 3
+  shootDistance: 5
+  speed: 3
+  rotateSpeed: 1.5
+  ammoCapacity: 26
+  weaponDelay: 1
+  spreadAngle: 0
+  reloadTime: 1.203
+  bulletCount: 1
+  animatiorController: {fileID: 22100000, guid: 75726160c56fc3b41be5fcf1ec6b9309, type: 2}
+  reloadClip: {fileID: 0}

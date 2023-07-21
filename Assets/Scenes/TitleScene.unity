@@ -192,6 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafbb4c5d40e00648b18f55ce3ada175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  len: {fileID: 0}
+  dig: {fileID: 0}
+  analog: {fileID: 0}
+  blo: {fileID: 0}
+  volume: {fileID: 0}
 --- !u!114 &147655698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2200,6 +2205,8 @@ MonoBehaviour:
   - {fileID: 796748561}
   - {fileID: 241812166}
   _showSpeed: 1.5
+  IsPress: 1
+  timer: 0
 --- !u!1 &1560039033
 GameObject:
   m_ObjectHideFlags: 0
