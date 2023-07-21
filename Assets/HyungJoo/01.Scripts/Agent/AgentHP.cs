@@ -21,7 +21,7 @@ public class AgentHP : MonoBehaviour,IDamagable{
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.T)){
-            Damaged(1);
+            Damaged(20);
         }    
     }
 

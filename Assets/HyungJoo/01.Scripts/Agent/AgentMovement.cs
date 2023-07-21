@@ -47,9 +47,11 @@ public class AgentMovement : MonoBehaviour{
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);
+
+        _agentAnimator?.SetSpeed(_movementVelocity.sqrMagnitude * 180f);
     }
     private void CalculateMovement(){
-        _agentAnimator.SetSpeed(_movementVelocity.sqrMagnitude);
+        //_agentAnimator.SetSpeed(_movementVelocity.sqrMagnitude);
         _movementVelocity.Normalize();
         _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
     }
