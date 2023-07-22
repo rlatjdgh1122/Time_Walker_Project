@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using URPGlitch.Runtime.AnalogGlitch;
 using URPGlitch.Runtime.DigitalGlitch;
-
+using UnityEngine.SceneManagement;
 public class PostProcessingController : MonoBehaviour
 {
 
@@ -44,6 +44,7 @@ public class PostProcessingController : MonoBehaviour
         volume.profile.TryGet(out blo);
 
     }
+
     public void StopEffect()
     {
         StopAllCoroutines();

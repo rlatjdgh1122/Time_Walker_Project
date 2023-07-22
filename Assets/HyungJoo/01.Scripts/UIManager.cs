@@ -54,7 +54,25 @@ public class UIManager : MonoBehaviour
 
         _originScale = _uiPanel.transform.localScale;
     }
-
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex >= 4)
+        {
+            PostProcessingController.Instance.gameObject.SetActive(false);
+        }
+        else
+        {
+            PostProcessingController.Instance.gameObject.SetActive(true);
+        }
+    }
     private void GoToMain()
     {
         SceneManager.LoadScene(0);
