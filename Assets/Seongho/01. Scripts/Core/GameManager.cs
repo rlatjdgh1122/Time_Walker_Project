@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
         else Destroy(this);
-        //DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(this);
 
         CreatePool();
         CreateWeapon();

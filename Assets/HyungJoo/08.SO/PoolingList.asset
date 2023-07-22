@@ -22,7 +22,7 @@ MonoBehaviour:
   - poolObject: {fileID: 2125358121866797594, guid: f9951ecb519049649ba3f082fc122188, type: 3}
     poolCount: 50
   - poolObject: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
-    poolCount: 10
+    poolCount: 12
   - poolObject: {fileID: -4775101406750243288, guid: eabfee794acaa7047b7a3fb3c3e7e19f, type: 3}
     poolCount: 10
   - poolObject: {fileID: 1110600272384653306, guid: 221bfa72dd07ead4e82c8f713e88d25f, type: 3}
