@@ -23,7 +23,7 @@ public class AgentController : MonoBehaviour
         }
         _agentInput = GetComponent<AgentInput>();
         _agentInput.OnEscKeyPress += UIManager.Instance.ShowPanel;
-        PostProcessingController.Instance.StopEffect();
+        //PostProcessingController.Instance.StopEffect();
     }
     
     private void Start(){
