@@ -36,6 +36,7 @@ public class RegularBullet : PoolableMono
     private void OnTriggerEnter(Collider collision)
     {
         if (isDead) return;
+        Debug.Log("OnTriggered");
         //맞은게 아군에게 맞은건지 전군에게 맞은건지 체크
         //맞은게 장애물인지 적인지 체크
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
@@ -43,6 +44,10 @@ public class RegularBullet : PoolableMono
             HitObstacle(collision);
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            HitPlayer(collision);
+        }
+        if (collision.gameObject.CompareTag("Player"))
         {
             HitPlayer(collision);
         }
@@ -59,7 +64,15 @@ public class RegularBullet : PoolableMono
     {
         if (collision != null)
         {
-
+            if (collision.TryGetComponent<IDamagable>(out IDamagable damagable))
+            {
+                Debug.Log(string.Format("IDamagable: {0}", damagable));
+                damagable.Damaged(2000);
+            }
+        }
+        else
+        {
+            Debug.Log(string.Format("Collision is null! {0}", collision));
         }
     }
     public void SetPositionAndRotation(Vector3 pos, Quaternion rot)

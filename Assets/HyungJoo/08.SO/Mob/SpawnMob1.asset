@@ -15,7 +15,7 @@ MonoBehaviour:
   mobSpawnList:
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -20, y: 0, z: -66}
+    spawnPos: {x: -20.97, y: 0.4, z: -66.93}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -22, y: 0, z: -66}
+    spawnPos: {x: -22, y: 0.4, z: -66.93}
