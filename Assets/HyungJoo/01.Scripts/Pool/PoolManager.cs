@@ -16,7 +16,7 @@ public class PoolManager
     }
     public void CreatePool(PoolableMono prefab, int count)
     {
-        Pool<PoolableMono> pool = new Pool<PoolableMono>(prefab, _transformParent, count);
+        Pool<PoolableMono> pool = new Pool<PoolableMono>(prefab, null, count);
         _pools.Add(prefab.gameObject.name, pool);
     }
 

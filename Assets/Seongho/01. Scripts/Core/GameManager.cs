@@ -17,19 +17,15 @@ public class GameManager : MonoBehaviour
     private Transform _playerTrm;
     public Transform PlayerTrm => _playerTrm;
 
-    public AgentHP PlayerHP
-    {
-        get
-        {
+    public AgentHP PlayerHP{
+        get{
             _playerHP ??= GameObject.FindGameObjectWithTag("Player").GetComponent<AgentHP>();
             return _playerHP;
         }
     }
     private AgentHP _playerHP;
-    public GlowText GlowText
-    {
-        get
-        {
+    public GlowText GlowText{
+        get{
             _glowText ??= GameObject.Find("GlowText").GetComponent<GlowText>();
             return _glowText;
         }
@@ -40,12 +36,16 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        else Destroy(this);
-        // DontDestroyOnLoad(this);
+        else
+            {
+            Destroy(this.gameObject);
+            return;
+        }
+        DontDestroyOnLoad(this);
 
         CreatePool();
         CreateWeapon();
-
+       
     }
 
     private void CreateWeapon()

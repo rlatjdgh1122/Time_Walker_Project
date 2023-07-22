@@ -18,7 +18,7 @@ public class IntroManager : MonoBehaviour
     {
         PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1, 0,
             () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 0));
-    }
+}
     public void MoveScene(string sceneName)
     {
         PostProcessingController.Instance.Set_AnalogVolume(.7f, .35f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.7f, 1,

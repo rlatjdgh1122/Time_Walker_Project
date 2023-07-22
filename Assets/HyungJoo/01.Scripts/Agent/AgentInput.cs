@@ -8,6 +8,7 @@ public class AgentInput : MonoBehaviour{
     public event Action<Vector3> OnMovementKeyPress;
     public event Action<float> OnDashButtonPress;
     public event Action<float> OnSlashButtonPress;
+    public event Action OnEscKeyPress;
 
 
     protected AgentAnimator _agentAnimator;
@@ -28,11 +29,22 @@ public class AgentInput : MonoBehaviour{
     }
 
     private void Update() {
+        if (UIManager.Instance.CurrentState == UIState.UI) return;
         InputFireButton();
         InputMovementKeyPress();
         //InputDashPress();
         InputSlashPress();
+        InputEscPress();
     }
+
+    private void InputEscPress()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnEscKeyPress?.Invoke();
+        }
+    }
+
     //�������� �Ŀ��� ����� ������� �ʴ� �� ����
     private void InputSlashPress() {
         if (_actionData.canSlash == false) return;
