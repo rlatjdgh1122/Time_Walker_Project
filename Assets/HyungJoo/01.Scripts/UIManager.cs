@@ -81,9 +81,6 @@ public class UIManager : MonoBehaviour
     public void ShowPanel()
     {
         _uiPanel.SetActive(true);
-        _uiPanel.transform.localScale = Vector3.zero;
-        Sequence seq = DOTween.Sequence();
-        seq.Append(_uiPanel.transform.DOScale(_originScale, 1f));
         Time.timeScale = 0f;
         UpdateState(UIState.UI);
         Cursor.lockState = CursorLockMode.None;
