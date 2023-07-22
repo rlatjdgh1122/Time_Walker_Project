@@ -10,7 +10,6 @@ public class AgentAnimator : MonoBehaviour{
     
     public event Action OnAttackAnimationEndTrigger;
     public event Action OnSlashEndTrigger;
-    public event Action OnComboAnimationEndTrigger;
 
     protected readonly int _attackHash = Animator.StringToHash("ATTACK");
     protected readonly int _attackBoolHash = Animator.StringToHash("IS_ATTACK");
@@ -87,13 +86,6 @@ public class AgentAnimator : MonoBehaviour{
         _animator.ResetTrigger(_attackHash);
     }
 
-    public void OnComboAnimationEnd() {
-        Debug.Log("OnComboAnimationEnd");
-        OnComboAnimationEndTrigger?.Invoke();
-        _animator.SetBool(_attackBoolHash, false);
-        _animator.ResetTrigger(_attackHash);
-        SetAllParameters(false);
-    }
     public void OnSlashEnd() {
         OnSlashEndTrigger?.Invoke();
         _actionData.isSlashing = false;

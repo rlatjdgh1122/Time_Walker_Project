@@ -23,9 +23,9 @@ public class portal : MonoBehaviour
 
     public void ChangeSceenAsName(string name) => SceneManager.LoadScene(name);
 
-    private void OnTriggerEnter(Colider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other._lay == _WhatIsPlayer)
+        if (other.gameObject.layer == _WhatIsPlayer)
             OnEnterPortal?.Invoke();
     }
 }
