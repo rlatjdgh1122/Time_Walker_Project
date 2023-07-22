@@ -85,7 +85,7 @@ public class AgentAnimator : MonoBehaviour{
         _animator.SetBool(_attackBoolHash, false);
         _animator.ResetTrigger(_attackHash);
     }
-
+    
     public void OnSlashEnd() {
         OnSlashEndTrigger?.Invoke();
         _actionData.isSlashing = false;
