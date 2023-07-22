@@ -21,5 +21,6 @@ public class EnemyHit : PlaneBehaviour
     {
         Cut(transform.position, transform.right);
         OnDead.Invoke();
+        QuestManager.Instance.OnEnemyDie();
     }
 }
