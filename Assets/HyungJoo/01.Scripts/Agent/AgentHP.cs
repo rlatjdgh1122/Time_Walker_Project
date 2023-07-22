@@ -18,7 +18,7 @@ public class AgentHP : MonoBehaviour,IDamagable{
     private void Awake() {
         _currentHP = _hpSO.maxHP;
         _agentAnimator = GetComponent<AgentAnimator>();
-        _agentAnimator.OnDeadAnimationTrigger += RestartScene;
+        //_agentAnimator.OnDeadAnimationTrigger += RestartScene;
     }
 
     private void Update() {

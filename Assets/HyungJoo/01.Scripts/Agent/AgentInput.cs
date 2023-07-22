@@ -32,7 +32,7 @@ public class AgentInput : MonoBehaviour{
         if (UIManager.Instance.CurrentState == UIState.UI) return;
         InputFireButton();
         InputMovementKeyPress();
-        InputDashPress();
+        //InputDashPress();
         InputSlashPress();
         InputEscPress();
     }

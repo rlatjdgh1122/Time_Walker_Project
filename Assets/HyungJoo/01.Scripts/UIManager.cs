@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex >= 4)
         {
@@ -81,6 +81,9 @@ public class UIManager : MonoBehaviour
     public void ShowPanel()
     {
         _uiPanel.SetActive(true);
+        _uiPanel.transform.localScale = Vector3.zero;
+        Sequence seq = DOTween.Sequence();
+        seq.Append(_uiPanel.transform.DOScale(_originScale, 1f));
         Time.timeScale = 0f;
         UpdateState(UIState.UI);
         Cursor.lockState = CursorLockMode.None;
