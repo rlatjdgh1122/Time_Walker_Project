@@ -48,7 +48,7 @@ public class EnemyMovement : EnemyAnimationController
 
     public void State()
     {
-        if(!gameObject.activeSelf) return;
+        if (!gameObject.activeSelf) return;
         if (_agent.isActiveAndEnabled == false) return;
         Vector3 direction = target.position - transform.position;
         direction.y = 0;
@@ -67,14 +67,16 @@ public class EnemyMovement : EnemyAnimationController
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _enemyController.enemySOData.RotateSpeed * Time.deltaTime);
         }
-        if (IsMove)
+        if (IsMove && _agent.isOnNavMesh)
         {
             _agent?.SetDestination(GameManager.Instance.PlayerTrm.position);
         }
-        else if (IsMove == false)
+        else if (IsMove == false && _agent.isOnNavMesh)
         {
             _agent.velocity = Vector3.zero;
-            _agent?.SetDestination(transform.position);
+            _agent.ResetPath();
+            // if (_agent.isOnNavMesh)
+            // _agent?.SetDestination(transform.position);
         }
     }
 }

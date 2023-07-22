@@ -15,25 +15,25 @@ MonoBehaviour:
   mobSpawnList:
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -11.11, y: 0, z: -74.59}
+    spawnPos: {x: -11.11, y: 0.2, z: -74.59}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -31.087, y: 0, z: -74.59}
+    spawnPos: {x: -31.087, y: 0.2, z: -74.59}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: 8.9, y: 0, z: -74.59}
+    spawnPos: {x: 8.9, y: 0.2, z: -74.59}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: 8.9, y: 0, z: -94.3}
+    spawnPos: {x: 8.9, y: 0.2, z: -94.3}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: 8.9, y: 0, z: -115.6}
+    spawnPos: {x: 8.9, y: 0.2, z: -115.6}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -11.5, y: 0, z: -115.6}
+    spawnPos: {x: -11.5, y: 0.2, z: -115.6}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -33.4, y: 0, z: -115.6}
+    spawnPos: {x: -33.4, y: 0.2, z: -115.6}
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
     cnt: 1
-    spawnPos: {x: -33.4, y: 0, z: -92.2}
+    spawnPos: {x: -33.4, y: 0.2, z: -92.2}

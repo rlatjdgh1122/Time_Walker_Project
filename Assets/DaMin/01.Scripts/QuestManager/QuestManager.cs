@@ -71,6 +71,10 @@ public class QuestManager : MonoBehaviour
                 a._quest.gameObject.SetActive(false);
         }
 
+    }
+
+    private void Start()
+    {
         ChangeQuest(_questList[0]);
     }
 
