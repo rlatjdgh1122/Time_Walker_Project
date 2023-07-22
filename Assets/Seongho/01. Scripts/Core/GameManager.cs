@@ -36,7 +36,11 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        else Destroy(this);
+        else
+            {
+            Destroy(this.gameObject);
+            return;
+        }
         DontDestroyOnLoad(this);
 
         CreatePool();
