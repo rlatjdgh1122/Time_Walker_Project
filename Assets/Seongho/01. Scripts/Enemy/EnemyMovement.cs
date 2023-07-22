@@ -49,6 +49,7 @@ public class EnemyMovement : EnemyAnimationController
     public void State()
     {
         if(!gameObject.activeSelf) return;
+        if (_agent.isActiveAndEnabled == false) return;
         Vector3 direction = target.position - transform.position;
         direction.y = 0;
 
@@ -68,12 +69,12 @@ public class EnemyMovement : EnemyAnimationController
         }
         if (IsMove)
         {
-           // _agent.SetDestination(GameManager.Instance.PlayerTrm.position);
+            _agent?.SetDestination(GameManager.Instance.PlayerTrm.position);
         }
         else if (IsMove == false)
         {
             _agent.velocity = Vector3.zero;
-            //_agent.SetDestination(transform.position);
+            _agent?.SetDestination(transform.position);
         }
     }
 }
