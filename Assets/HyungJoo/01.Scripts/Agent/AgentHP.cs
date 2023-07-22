@@ -21,7 +21,7 @@ public class AgentHP : MonoBehaviour,IDamagable{
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.T)){
-            Damaged(20);
+            Damaged(100);
         }    
     }
 
@@ -35,6 +35,7 @@ public class AgentHP : MonoBehaviour,IDamagable{
     }
 
     public void DestroyProcess(){
+        Debug.Log("DestroyProcess");
         _agentAnimator.Dead();
         //Destroy(this.gameObject);
         OnDead?.Invoke();

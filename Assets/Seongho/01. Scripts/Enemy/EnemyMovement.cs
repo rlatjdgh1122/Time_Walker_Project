@@ -68,12 +68,12 @@ public class EnemyMovement : EnemyAnimationController
         }
         if (IsMove)
         {
-            _agent.SetDestination(GameManager.Instance.PlayerTrm.position);
+           // _agent.SetDestination(GameManager.Instance.PlayerTrm.position);
         }
         else if (IsMove == false)
         {
             _agent.velocity = Vector3.zero;
-            _agent.SetDestination(transform.position);
+            //_agent.SetDestination(transform.position);
         }
     }
 }

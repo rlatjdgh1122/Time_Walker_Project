@@ -21,8 +21,11 @@ using UnityEngine;
             for(int i =0 ; i < enemy.cnt; i++)
             {
                 Debug.Log(PoolManager.Instance);
+                //Vector3 pos = new Vector3(m.spawnPos + );
                 PoolableMono e = PoolManager.Instance.Pop(enemy.enemy.gameObject.name) as PoolableMono;
-                e.transform.position = m.spawnPos;
+                e.transform.position = enemy.spawnPos;
+                //Debug.LogError("MobSpawned");
+
             }
         }
     }

@@ -7,6 +7,7 @@ public class Mob
 {
     public PoolableMono enemy;
     public int cnt;
+    public Vector3 spawnPos;
 }
 
 
@@ -14,5 +15,4 @@ public class Mob
 public class MobSpawnSO : ScriptableObject
 {
     public List<Mob> mobSpawnList = new List<Mob>();
-    public Vector3 spawnPos;
 }

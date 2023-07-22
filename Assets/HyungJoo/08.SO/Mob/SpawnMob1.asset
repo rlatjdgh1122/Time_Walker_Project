@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobSpawnList:
   - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
-    cnt: 3
-  spawnPos: {x: -20, y: 0, z: -66}
+    cnt: 1
+    spawnPos: {x: -20, y: 0, z: -66}
+  - enemy: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
+    cnt: 1
+    spawnPos: {x: -22, y: 0, z: -66}
