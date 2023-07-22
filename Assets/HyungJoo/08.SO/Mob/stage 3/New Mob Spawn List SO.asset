@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: New Mob Spawn List SO
   m_EditorClassIdentifier: 
   mobSpawnList:
-  - {fileID: 11400000, guid: 127ed65fc0a64464a8bf12969e6cd4d1, type: 2}
-  - {fileID: 11400000, guid: 74e6b416d1b52c447abc4438e04130d0, type: 2}
+  - {fileID: 11400000, guid: 0ac8a7d12bb29e445935b749ce83399c, type: 2}
+  - {fileID: 11400000, guid: 58ee8a870932f5f41bd28a94df524e97, type: 2}
