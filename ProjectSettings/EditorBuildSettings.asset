@@ -18,15 +18,15 @@ EditorBuildSettings:
     path: Assets/Scenes/OutGameScene/StageSelectScene.unity
     guid: 0c52b6619bc398d489cf8723edee6193
   - enabled: 1
-    path: Assets/DaMin/Scene/Tutorial.unity
-    guid: a76a2b6ce7b03b245a091d0eb9917636
+    path: Assets/Scenes/Scene/Tutorial.unity
+    guid: 78a6d98fc695ec2458260608c0a670e8
   - enabled: 1
-    path: Assets/DaMin/Scene/Stage1.unity
-    guid: 8854cdbf26c2b574a983dfc53b416ad5
+    path: Assets/Scenes/Scene/Stage1.unity
+    guid: c152a05f6d7ec274ebe087357835fc19
   - enabled: 1
-    path: Assets/DaMin/Scene/Stage2.unity
-    guid: 19c5db1dee694dc4f8ed6254405ab7cf
+    path: Assets/Scenes/Scene/Stage2.unity
+    guid: ec01a07d669014a4f9d08a21c1b22214
   - enabled: 1
-    path: Assets/DaMin/Scene/Stage3.unity
-    guid: 777afe380f32858458fdcd3da7d6d3db
+    path: Assets/Scenes/Scene/Stage3.unity
+    guid: c85bd787ce8b42744b7dea8cdcbfab55
   m_configObjects: {}

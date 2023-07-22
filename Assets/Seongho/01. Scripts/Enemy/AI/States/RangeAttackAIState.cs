@@ -39,7 +39,7 @@ public class RangeAttackAIState : CommonAIState
 
     private void AttackAnimationEndHandle()
     {
-        Debug.Log("¾Ö´Ï¸ÞÀÌ¼Ç ³¡");
+        Debug.Log("ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½");
         _enemyAnimationController.SetShooting(false);
         _lastAtkTime = Time.time;
         StartCoroutine(DelayCoroutine(() => _aiActionData.IsAttacking = false, _enemyController.weaponSOData.attackDelay));
@@ -51,13 +51,13 @@ public class RangeAttackAIState : CommonAIState
         {
             return true;
         }
-        if (_aiActionData.IsAttacking == false && _isActive)  //¾×Æ¼ºê
+        if (_aiActionData.IsAttacking == false && _isActive)  //ï¿½ï¿½Æ¼ï¿½ï¿½
         {
             _enemyMovement.IsRotate = true;
             if (_enemyMovement.IsLookTarget == true && _lastAtkTime +
                 _enemyController.enemySOData.AttackDelay < Time.time)
             {
-                Debug.Log("°ø°Ý");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½");
                 _aiActionData.IsAttacking = true;
                 _enemyAnimationController.SetShooting(true);
             }

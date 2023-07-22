@@ -11,6 +11,7 @@ using UnityEngine.Events;
 public struct Quests
 {
     public string QuestName;
+
     [Tooltip("Quest설명")][Multiline] public string QuestExplanation;
     [Tooltip("Quest스크립트로 조종")] public QuestScript _quest;
     [Space]
@@ -34,6 +35,8 @@ public struct Colider
 
 public class QuestManager : MonoBehaviour
 {
+    public Action enemyDie;
+
     [Header("Quest Panel")]
     [SerializeField] private Image _Panel;
     [SerializeField] private TextMeshProUGUI _curQuestNameTXT;
@@ -54,7 +57,7 @@ public class QuestManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else if (Instance != this)
         {
@@ -177,5 +180,10 @@ public class QuestManager : MonoBehaviour
         _curQuestTXT.text = _currentQuest.QuestExplanation.ToString();
 
         _Panel.rectTransform.DOAnchorPosX(0, 1).SetEase(Ease.OutElastic);
+    }
+
+    public void OnEnemyDie()
+    {
+        enemyDie?.Invoke();
     }
 }

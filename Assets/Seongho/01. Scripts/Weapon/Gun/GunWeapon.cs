@@ -17,25 +17,25 @@ public class GunWeapon : Weapon
     public UnityEvent OnShootNoAmmo;
     public UnityEvent OnStopShooting; //feedback�߰�
 
-   /* [SerializeField]
-    private bool _isShooting = false;
+    /* [SerializeField]
+     private bool _isShooting = false;
 
-    public bool delayCoroutine = false;
+     public bool delayCoroutine = false;
 
-    #region AMMO ���� �ڵ��
-    [SerializeField]
-    protected int ammo;
-    public int Ammo
-    {
-        get { return ammo; }
-        set
-        {
-            ammo = Math.Clamp(value, 0, gunData.ammoCapacity);
-        }
-    }
-    public bool AmmoFull => Ammo == gunData.ammoCapacity;
-    public int EmptyBullet => gunData.ammoCapacity - ammo; //���� ������ ź�� ��
-    #endregion*/
+     #region AMMO ���� �ڵ��
+     [SerializeField]
+     protected int ammo;
+     public int Ammo
+     {
+         get { return ammo; }
+         set
+         {
+             ammo = Math.Clamp(value, 0, gunData.ammoCapacity);
+         }
+     }
+     public bool AmmoFull => Ammo == gunData.ammoCapacity;
+     public int EmptyBullet => gunData.ammoCapacity - ammo; //���� ������ ź�� ��
+     #endregion*/
     protected override void Awake()
     {
         base.Awake();
@@ -58,7 +58,7 @@ public class GunWeapon : Weapon
         SpawnBullet();
         //SoundManager.Instance.PlayerSoundName(gunData.SoundName);
         //pt.SetActive(true);
-        Invoke("Hiden_Particle", .1f);
+        // Invoke("Hiden_Particle", .1f);
     }
     public override void Shooting()
     {
