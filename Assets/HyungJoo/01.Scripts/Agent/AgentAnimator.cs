@@ -10,6 +10,7 @@ public class AgentAnimator : MonoBehaviour{
     
     public event Action OnAttackAnimationEndTrigger;
     public event Action OnSlashEndTrigger;
+    public event Action OnDeadAnimationTrigger;
 
     protected readonly int _attackHash = Animator.StringToHash("ATTACK");
     protected readonly int _attackBoolHash = Animator.StringToHash("IS_ATTACK");
@@ -92,6 +93,11 @@ public class AgentAnimator : MonoBehaviour{
         DashAnimation(false);
         Debug.Log("OnSlashEnd");
     }
+    public void OnDeadAnimation()
+    {
+        OnDeadAnimationTrigger?.Invoke();
+    }
+
 
     private void SetAllParameters(bool result) {
         _actionData.isAttacking = result;

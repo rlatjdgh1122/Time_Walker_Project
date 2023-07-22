@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 public class AgentHP : MonoBehaviour,IDamagable{
     [SerializeField]
@@ -17,6 +18,7 @@ public class AgentHP : MonoBehaviour,IDamagable{
     private void Awake() {
         _currentHP = _hpSO.maxHP;
         _agentAnimator = GetComponent<AgentAnimator>();
+        _agentAnimator.OnDeadAnimationTrigger += RestartScene;
     }
 
     private void Update() {
@@ -32,6 +34,12 @@ public class AgentHP : MonoBehaviour,IDamagable{
         if(_currentHP == 0){
             DestroyProcess();
         }
+    }
+
+    public void RestartScene()
+    {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void DestroyProcess(){
