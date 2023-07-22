@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,9 +41,13 @@ public class EnemyController : MonoBehaviour
         SpawnWeapon();
         ChangeState(_currentState);
     }
-    private void SpawnWeapon() //ÃÑ ¼ÒÈ¯
+    private void SpawnWeapon() //ï¿½ï¿½ ï¿½ï¿½È¯
     {
         Weapon weapon = WeaponManager.Instance.SpawnWeapon(weaponSOData.WeaponName);
+        Debug.Log(String.Format("Weapon: {0}",weapon));
+        Debug.Log(String.Format("WepObj: {0}",weapon.gameObject));
+        Debug.Log(String.Format("WepPivot: {0}",weaponPivot));
+
         GameObject g = Instantiate(weapon.gameObject, weaponPivot);
         currentWeapon = g.GetComponent<Weapon>();
     }

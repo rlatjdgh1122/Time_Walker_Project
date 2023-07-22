@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour //»õ·Î¹Ù²ï ½ºÅÈµéÀ» ¸®ÅÏ
+public class WeaponManager : MonoBehaviour //ï¿½ï¿½ï¿½Î¹Ù²ï¿½ ï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
     private Dictionary<string, Weapon> _weapons = new();
     public static WeaponManager Instance;
@@ -18,7 +18,7 @@ public class WeaponManager : MonoBehaviour //»õ·Î¹Ù²ï ½ºÅÈµéÀ» ¸®ÅÏ
     {
         if (_weapons.ContainsKey(weaponName) == false)
         {
-            Debug.LogError("ÇØ´çÇÏ´Â ¹«±â´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù¶÷Áã.");
+            Debug.LogError("ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´Ù¶ï¿½ï¿½ï¿½.");
             return null;
         }
         else

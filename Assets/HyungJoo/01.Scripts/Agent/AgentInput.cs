@@ -30,10 +30,10 @@ public class AgentInput : MonoBehaviour{
     private void Update() {
         InputFireButton();
         InputMovementKeyPress();
-        InputDashPress();
+        //InputDashPress();
         InputSlashPress();
     }
-    //½½·¡½¬ÀÇ ÆÄ¿ö°¡ Á¦´ë·Î Àû¿ëµÇÁö ¾Ê´Â °Í °°À½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private void InputSlashPress() {
         if (_actionData.canSlash == false) return;
         if (_actionData.isAttacking) return;
@@ -48,7 +48,7 @@ public class AgentInput : MonoBehaviour{
 
         if (Input.GetMouseButton(1)) {
             _slashTimer += Time.unscaledDeltaTime;
-            _slashTimer= Mathf.Clamp(_slashTimer, 0,2f);
+            _slashTimer = Mathf.Clamp(_slashTimer, 0,2f);
 
             _agentAnimator.SetSlashBool(true);
             _actionData.chargingSlash = true;
@@ -69,7 +69,7 @@ public class AgentInput : MonoBehaviour{
         }
     }
 
-    //ÄðÅ¸ÀÓ ±¸ÇöÇÏ·Á¸é µô·¹ÀÌ Çü½ÄÀ» while ¹® Çü½ÄÀ¸·Î ¹Ù²ã¾ß ÇÔ
+    //ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ while ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½
     IEnumerator SlashDelayCor(float timer) {
         _actionData.canSlash = false;
         yield return new WaitForSeconds(timer);
@@ -108,6 +108,7 @@ public class AgentInput : MonoBehaviour{
                 StartCoroutine(DashDelayCor(_skillDelay.dashDelay));
                 _agentAnimator.DashAnimation(true);
             }
+            _agentAnimator.SetDashBool(false);
             _cameraHandler.ResetCamera();
             _actionData.chargingDash = false;
         }

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497eb52d2ca8358479de65f988916800, type: 3}
   m_Name: SniperWeaponSOData
   m_EditorClassIdentifier: 
-  WeaponName: "\uB300\uBB3C\uC800\uACA9\uCDA9"
+  WeaponName: "\uB300\uBB3C\uC800\uACA9\uCD1D"
   SoundName: 
-  attackDelay: 1.86
-  weaponDelay: 1.74
-  spreadAngle: 0.144
+  attackDelay: 5
+  spreadAngle: 0
   bulletCount: 1
-  animatiorController: {fileID: 22100000, guid: 40a89cbcdf408a545bac6e50268742db, type: 2}

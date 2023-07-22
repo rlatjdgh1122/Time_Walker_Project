@@ -11,18 +11,18 @@ public class GunWeapon : Weapon
     public Transform firePos;
     public GameObject bullet;
 
-    private GameObject pt => transform.Find("Paticle").gameObject;
+    //private GameObject pt => transform.Find("Paticle").gameObject;
 
     public UnityEvent OnShoot;
     public UnityEvent OnShootNoAmmo;
-    public UnityEvent OnStopShooting; //feedbackÃß°¡
+    public UnityEvent OnStopShooting; //feedbackï¿½ß°ï¿½
 
    /* [SerializeField]
     private bool _isShooting = false;
 
     public bool delayCoroutine = false;
 
-    #region AMMO °ü·Ã ÄÚµåµé
+    #region AMMO ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½
     [SerializeField]
     protected int ammo;
     public int Ammo
@@ -34,7 +34,7 @@ public class GunWeapon : Weapon
         }
     }
     public bool AmmoFull => Ammo == gunData.ammoCapacity;
-    public int EmptyBullet => gunData.ammoCapacity - ammo; //ÇöÀç ºÎÁ·ÇÑ Åº¾à ¼ö
+    public int EmptyBullet => gunData.ammoCapacity - ammo; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Åºï¿½ï¿½ ï¿½ï¿½
     #endregion*/
     protected override void Awake()
     {
@@ -43,11 +43,11 @@ public class GunWeapon : Weapon
     }
     private void Hiden_Particle()
     {
-        pt.SetActive(false);
+        //spt.SetActive(false);
     }
     private void SpawnBullet()
     {
-        Vector3 randomPosition = Random.insideUnitSphere; //ÀÌºÎºÐ ¼öÁ¤ÇÊ¿ä
+        Vector3 randomPosition = Random.insideUnitSphere; //ï¿½ÌºÎºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½
         Vector3 resultPos = randomPosition * gunData.spreadAngle + transform.forward;
 
         RegularBullet b = PoolManager.Instance.Pop(bullet.name) as RegularBullet;
@@ -57,7 +57,7 @@ public class GunWeapon : Weapon
     {
         SpawnBullet();
         //SoundManager.Instance.PlayerSoundName(gunData.SoundName);
-        pt.SetActive(true);
+        //pt.SetActive(true);
         Invoke("Hiden_Particle", .1f);
     }
     public override void Shooting()

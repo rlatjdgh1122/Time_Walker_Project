@@ -40,16 +40,18 @@ public class AgentMovement : MonoBehaviour{
         }else{
             _verticalVelocity = _gravityScale * 0.2f * Time.fixedDeltaTime;
         }
-        if(_actionData.isAttacking || _actionData.isDashing || _actionData.isSlashing){
+        if(_actionData.isAttacking || _actionData.isDashing || _actionData.isSlashing || _actionData.chargingDash || _actionData.chargingSlash){
             return;
         }
 
         Vector3 move = _movementVelocity + _verticalVelocity * Vector3.up;
         _controller.Move(transform.TransformDirection(move));
         _controller.Move(_dashVelocity);
+
+        _agentAnimator?.SetSpeed(_movementVelocity.sqrMagnitude * 180f);
     }
     private void CalculateMovement(){
-        _agentAnimator.SetSpeed(_movementVelocity.sqrMagnitude);
+        //_agentAnimator.SetSpeed(_movementVelocity.sqrMagnitude);
         _movementVelocity.Normalize();
         _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
     }

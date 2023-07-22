@@ -22,10 +22,17 @@ public class AgentAnimator : MonoBehaviour{
     protected readonly int _dashBoolHash = Animator.StringToHash("IS_DASH");
     protected readonly int _dashTriggerHash = Animator.StringToHash("DASH");
 
+    protected readonly int _deadHash = Animator.StringToHash("DEAD");
+
     protected virtual void Awake(){
         _animator = transform.GetComponent<Animator>();
         _agentTransform = transform.root.GetComponent<AgentMovement>().transform;
         _actionData = transform.root.Find("ActionData").GetComponent<PlayerActionData>();
+    }
+
+    public void Dead()
+    {
+        _animator.SetTrigger(_deadHash);
     }
     public void SetSpeed(float value) {
         _animator.SetFloat(_speedHash, value);
@@ -64,10 +71,6 @@ public class AgentAnimator : MonoBehaviour{
             _animator.ResetTrigger(_dashTriggerHash);
         }
     }
-
-
-
-
     public void OnAttackAnimation() {
         _animator.speed = 2f;
         _animator.SetTrigger(_attackHash);

@@ -14,7 +14,6 @@ public class Sound
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    public GameObject soundPanel;
     [Header("사운드 등록")]
     [SerializeField] private List<Sound> sfx_sounds = new();
 
@@ -32,19 +31,12 @@ public class SoundManager : MonoBehaviour
 
         sfx_sounds.ForEach(p => play_sounds.Add(p.soundName, p.clip));
     }
-    public void SoundPanel_SetActive(bool value)
-    {
-        soundPanel.SetActive(value);
-    }
     public void PlaySoundName(string soundName)
     {
         var clip = play_sounds[soundName];
         SFX_Player.PlayOneShot(clip);
     }
-    public void Canel()
-    {
-        soundPanel.SetActive(false);
-    }
+   
     public void Set_BGM(float value)
     {
         BGM_Player.volume = value;

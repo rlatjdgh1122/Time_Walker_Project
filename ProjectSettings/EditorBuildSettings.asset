@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OutGameScene/StageSelectScene.unity
     guid: 0c52b6619bc398d489cf8723edee6193
+  - enabled: 1
+    path: Assets/DaMin/Scene/Tutorial.unity
+    guid: a76a2b6ce7b03b245a091d0eb9917636
+  - enabled: 1
+    path: Assets/DaMin/Scene/Stage1.unity
+    guid: 8854cdbf26c2b574a983dfc53b416ad5
+  - enabled: 1
+    path: Assets/DaMin/Scene/Stage2.unity
+    guid: 19c5db1dee694dc4f8ed6254405ab7cf
+  - enabled: 1
+    path: Assets/DaMin/Scene/Stage3.unity
+    guid: 777afe380f32858458fdcd3da7d6d3db
   m_configObjects: {}

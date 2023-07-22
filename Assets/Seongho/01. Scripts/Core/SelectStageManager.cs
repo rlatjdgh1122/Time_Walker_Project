@@ -38,15 +38,18 @@ public class SelectStageManager : MonoBehaviour
         }
     }
 
-    public void MoveScene(int sceneNumber)
+    public void MoveScene(string sceneName)
     {
-        PostProcessingController.Instance.Set_Bloom(1.8f, 25, 3);
+        PostProcessingController.Instance.Set_Bloom(1.2f, 25, 3);
 
-        PostProcessingController.Instance.Set_AnalogVolume(1.5f, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
+        PostProcessingController.Instance.Set_AnalogVolume(.9f, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
            0, () =>
            {
-               SceneManager.LoadScene(sceneNumber);
+               SceneManager.LoadScene(sceneName);
                PostProcessingController.Instance.Set_Bloom();
+               PostProcessingController.Instance.Set_AnalogVolume();
+               PostProcessingController.Instance.Set_DigitalGlitchVolume();
+               PostProcessingController.Instance.Set_LensDistortion();
            })
         );
     }
@@ -56,8 +59,22 @@ public class SelectStageManager : MonoBehaviour
         TextMeshProUGUI diffculty = item.transform.Find(" Difficulty").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI exp = item.transform.Find("Explain").GetComponent<TextMeshProUGUI>();
 
+
         stage.text = stageName;
-        diffculty.text = diffcultyName;
+        if (diffcultyName == DIFFCULTY.EASY.ToString())
+        {
+            diffculty.text = "<color=yellow>" + diffcultyName + "</color>";
+        }
+        else if (diffcultyName == DIFFCULTY.NORMAL.ToString())
+        {
+            diffculty.text = "<color=orange>" + diffcultyName + "</color>";
+        }
+        else if (diffcultyName == DIFFCULTY.HARD.ToString())
+        {
+            diffculty.text = "<color=red>" + diffcultyName + "</color>";
+        }
+        else
+            diffculty.text = "<color=blue>" + diffcultyName + "</color>";
         exp.text = explain;
     }
 }

@@ -46,12 +46,13 @@ public class GameManager : MonoBehaviour
 
     private void CreateWeapon()
     {
-      
     }
 
     public void CreatePool()
     {
         PoolManager manager = new PoolManager(this.transform);
+        WeaponManager.Instance = new WeaponManager();
+
         TimeController controller = transform.AddComponent<TimeController>();
 
         foreach (PoolClass p in _poolingList.poolingList)
