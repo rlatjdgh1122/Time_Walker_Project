@@ -26,6 +26,7 @@ public class MouseHandler : MonoBehaviour
         if (_actionData.chargingSlash || _actionData.isSlashing) return;
         if (_actionData.chargingDash || _actionData.isDashing) return;
         if (_actionData.isAttacking) return;
+        if (UIManager.Instance.CurrentState == UIState.UI) return;
 
         float mouseX = Input.GetAxis("Mouse X") * _lookSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * _lookSpeed;
