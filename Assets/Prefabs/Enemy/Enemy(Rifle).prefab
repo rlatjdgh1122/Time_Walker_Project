@@ -1437,6 +1437,7 @@ GameObject:
   - component: {fileID: 5584788373653530578}
   - component: {fileID: 5584788373653530579}
   - component: {fileID: 5584788373653530565}
+  - component: {fileID: -1214138667184806915}
   m_Layer: 7
   m_Name: Enemy(Rifle)
   m_TagString: Untagged
@@ -1637,6 +1638,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d70689b64548a4247944238b1eb096db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1214138667184806915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133342615357328296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc11bb4ad42c51f43ae8c133f5f34c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8133342615380865448

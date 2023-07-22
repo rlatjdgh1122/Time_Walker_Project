@@ -21,3 +21,17 @@ MonoBehaviour:
     poolCount: 50
   - poolObject: {fileID: 2125358121866797594, guid: f9951ecb519049649ba3f082fc122188, type: 3}
     poolCount: 50
+  - poolObject: {fileID: -2810254416869734077, guid: fa0250821e89f244bbcb87aeae1d08fe, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: -4775101406750243288, guid: eabfee794acaa7047b7a3fb3c3e7e19f, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: 1110600272384653306, guid: 221bfa72dd07ead4e82c8f713e88d25f, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: -1214138667184806915, guid: a677256c160f5ba4fa9440e7e313930f, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: -4184172285207137057, guid: dd1132bc90fa82d4eae5f19a37c30b17, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: 6327605143608637212, guid: 6ff955f524f1aad4bbff73ff409dca70, type: 3}
+    poolCount: 10
+  - poolObject: {fileID: -1422579319945407337, guid: a0d225c1394f6c44ab471e5532b157b2, type: 3}
+    poolCount: 10

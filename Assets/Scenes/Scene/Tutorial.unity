@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: c2b5dbfc9f7a963428addf32296029c3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4947444345d34064d850f1009af3ec97, type: 2}
 --- !u!4 &2557918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1812909498023395591, guid: 40d861437c87361439dce52b65b9b235, type: 3}
@@ -13905,7 +13905,19 @@ MonoBehaviour:
     _quest: {fileID: 611187327}
     OnEnterQuest:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1718711396}
+          m_TargetAssemblyTypeName: MobSpawner, Assembly-CSharp
+          m_MethodName: SpawnMob
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     OnUpdateQues:
       m_PersistentCalls:
         m_Calls: []
@@ -19055,6 +19067,51 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1718711395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1718711397}
+  - component: {fileID: 1718711396}
+  m_Layer: 0
+  m_Name: MobSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1718711396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718711395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec51788b4d551724ea34642d7087f7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mobSpawnListSO: {fileID: 11400000, guid: 98b79349d075f6346a5fc789853a6ab8, type: 2}
+--- !u!4 &1718711397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718711395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.674344, y: 2.015627, z: -2.2636824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1727494628
 PrefabInstance:
   m_ObjectHideFlags: 0

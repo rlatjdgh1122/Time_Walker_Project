@@ -720,6 +720,7 @@ GameObject:
   - component: {fileID: 7740371554070839800}
   - component: {fileID: 7740371554070839801}
   - component: {fileID: 7740371554070839791}
+  - component: {fileID: -4775101406750243288}
   m_Layer: 7
   m_Name: 'Enemy(Machinegun) '
   m_TagString: Untagged
@@ -920,6 +921,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d70689b64548a4247944238b1eb096db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4775101406750243288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211877310629178754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc11bb4ad42c51f43ae8c133f5f34c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6211877310631922245

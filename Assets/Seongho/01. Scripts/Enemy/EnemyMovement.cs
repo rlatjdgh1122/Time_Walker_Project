@@ -48,6 +48,7 @@ public class EnemyMovement : EnemyAnimationController
 
     public void State()
     {
+        if(!gameObject.activeSelf) return;
         Vector3 direction = target.position - transform.position;
         direction.y = 0;
 

@@ -1245,6 +1245,7 @@ GameObject:
   - component: {fileID: 2986587494771149650}
   - component: {fileID: 2986587494771149651}
   - component: {fileID: 2986587494771149637}
+  - component: {fileID: -1422579319945407337}
   m_Layer: 7
   m_Name: Enemy(UZI)
   m_TagString: Untagged
@@ -1445,6 +1446,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d70689b64548a4247944238b1eb096db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1422579319945407337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453583969508878120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc11bb4ad42c51f43ae8c133f5f34c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1453583969537645864

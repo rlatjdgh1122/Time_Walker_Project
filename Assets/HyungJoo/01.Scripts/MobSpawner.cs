@@ -20,7 +20,8 @@ using UnityEngine;
         {
             for(int i =0 ; i < enemy.cnt; i++)
             {
-                PoolableMono e = PoolManager.Instance.Pop(enemy.enemy.name) as PoolableMono;
+                Debug.Log(PoolManager.Instance);
+                PoolableMono e = PoolManager.Instance.Pop(enemy.enemy.gameObject.name) as PoolableMono;
                 e.transform.position = m.spawnPos;
             }
         }
