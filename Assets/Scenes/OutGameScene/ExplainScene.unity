@@ -237,6 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 318298136}
   - component: {fileID: 318298137}
+  - component: {fileID: 318298138}
   m_Layer: 0
   m_Name: ExplainManager
   m_TagString: Untagged
@@ -277,28 +278,165 @@ MonoBehaviour:
     PontSize: 80
     isBold: 1
     isLb: 1
-  - text: "WASD\uB85C \uC774\uB3D9"
+  - text: ' '
     color: 0
     PontSize: 50
     isBold: 0
     isLb: 1
-  - text: "\uC6B0\uD074\uB9AD\uC73C\uB85C \uCC28\uC9D5\uACF5\uACA9"
+  - text: ' '
+    color: 4
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: WASD
+    color: 3
+    PontSize: 50
+    isBold: 1
+    isLb: 0
+  - text: "\uB85C \uC774\uB3D9"
+    color: 0
+    PontSize: 35
+    isBold: 0
+    isLb: 1
+  - text: ' '
     color: 0
     PontSize: 50
     isBold: 0
     isLb: 1
-  - text: "\uC88C\uD074\uB9AD\uC73C\uB85C \uACF5\uACA9"
+  - text: "\uC6B0\uD074\uB9AD"
+    color: 3
+    PontSize: 50
+    isBold: 1
+    isLb: 0
+  - text: "\uC73C\uB85C \uCC28\uC9D5\uACF5\uACA9"
+    color: 0
+    PontSize: 35
+    isBold: 0
+    isLb: 1
+  - text: ' '
     color: 0
     PontSize: 50
     isBold: 0
     isLb: 1
-  - text: "Shift\uB85C \uC2AC\uB77C\uC774\uB529"
+  - text: "\uC88C\uD074\uB9AD"
+    color: 3
+    PontSize: 50
+    isBold: 0
+    isLb: 0
+  - text: "\uC73C\uB85C \uAE30\uBCF8\uACF5\uACA9"
+    color: 0
+    PontSize: 35
+    isBold: 0
+    isLb: 1
+  - text: ' '
     color: 0
     PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: Shift
+    color: 3
+    PontSize: 50
+    isBold: 0
+    isLb: 0
+  - text: "\uB85C \uC2AC\uB77C\uC774\uB529"
+    color: 0
+    PontSize: 35
+    isBold: 0
+    isLb: 1
+  - text: ' '
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: Esc
+    color: 3
+    PontSize: 50
+    isBold: 0
+    isLb: 0
+  - text: "\uB85C \uC774\uC804 \uC52C \uB3CC\uC544\uAC00\uAE30"
+    color: 0
+    PontSize: 30
     isBold: 0
     isLb: 1
   _tmpText: {fileID: 2100911343}
-  _oneCharacterTime: 0.01
+  _oneCharacterTime: 0.05
+  _delay: 1
+--- !u!114 &318298138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318298135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d166df46994ca14d930ad11b54f35d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfos:
+  - text: "\uAC8C\uC784\uC124\uBA85"
+    color: 0
+    PontSize: 80
+    isBold: 1
+    isLb: 1
+  - text: 
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: 
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: "\uC8FC\uC778\uACF5\uC740 \uC2DC\uAC04\uC744 \uC870\uC791\uD569\uB2C8\uB2E4."
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: 
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: "\uC6C0\uC9C1\uC774\uC9C0 \uC54A\uC73C\uBA74 \uC2DC\uAC04\uC740"
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: "\uD750\uB974\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: 
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: "\uB2E4\uB9CC, \uC6C0\uC9C1\uC774\uB294 \uC989\uC2DC"
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: "\uC2DC\uAC04\uC740 \uD750\uB974\uAC8C \uB429\uB2C8\uB2E4."
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: 
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  - text: "\uC2DC\uAC04\uC744 \uC774\uC6A9\uD558\uC5EC \uC801\uC744 \uACF5\uB7B5\uD558\uC138\uC694."
+    color: 0
+    PontSize: 50
+    isBold: 0
+    isLb: 1
+  _tmpText: {fileID: 717427034}
+  _oneCharacterTime: 0.05
+  _delay: 5.5
 --- !u!1 &367216793
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +572,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "                   <size=+50>\uAC8C\uC784\uC124\uBA85</size>\n\n\uC774
-    \uAC8C\uC784\uC740"
+    \uAC8C\uC784\uC740 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 343dc8ac93d3abd4d8796e291c2b9e9d, type: 2}
   m_sharedMaterial: {fileID: -1862627164059038159, guid: 343dc8ac93d3abd4d8796e291c2b9e9d, type: 2}
@@ -773,6 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78fa540f69dd5ed4eaa708ca55b6b2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveScene: IntroScene
 --- !u!4 &1088263477
 Transform:
   m_ObjectHideFlags: 0
