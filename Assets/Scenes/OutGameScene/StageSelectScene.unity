@@ -4241,25 +4241,25 @@ MonoBehaviour:
   setStages:
   - StageName: tutorial
     DiffcultyName: 3
-    Explain: 
+    Explain: "\uAC8C\uC784\uC744 \uC54C\uAE30 \uC704\uD55C \uD29C\uD1A0\uB9AC\uC5BC\uC785\uB2C8\uB2E4."
   - StageName: 1
-    DiffcultyName: 1
-    Explain: 
+    DiffcultyName: 0
+    Explain: "\uAE30\uBCF8\uC801\uC778 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4."
   - StageName: 2
-    DiffcultyName: 2
-    Explain: 
+    DiffcultyName: 0
+    Explain: "\uC9C0\uD615\uC744 \uC774\uC6A9\uD574 \uC2F8\uC6B0\uC138\uC694."
   - StageName: 3
-    DiffcultyName: 0
-    Explain: "\u3157"
+    DiffcultyName: 1
+    Explain: "\uC801\uC774 \uB9CE\uC73C\uB2C8 \uC870\uC2EC\uD558\uC138\uC694. "
   - StageName: 4
-    DiffcultyName: 0
-    Explain: "\u3157"
+    DiffcultyName: 1
+    Explain: "\uC0C8\uB85C\uC6B4 \uC801\uC774 \uB4F1\uC7A5\uD569\uB2C8\uB2E4."
   - StageName: 5
-    DiffcultyName: 0
-    Explain: "\u3157"
+    DiffcultyName: 2
+    Explain: "\uBB3C\uAC74\uC744 \uC774\uC6A9\uD558\uC138\uC694."
   - StageName: 6
     DiffcultyName: 2
-    Explain: "\u3157\uC774\uB098 \uBA38\uAC85"
+    Explain: "\uBCF4\uC2A4\uAC00 \uB4F1\uC7A5\uD569\uB2C8\uB2E4."
   items:
   - {fileID: 473185253}
   - {fileID: 1331455432}

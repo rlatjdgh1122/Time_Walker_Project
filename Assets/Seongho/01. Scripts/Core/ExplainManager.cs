@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public enum color
@@ -30,11 +32,14 @@ public class ExplainManager : MonoBehaviour
 
     [SerializeField]
     private float _oneCharacterTime = 0.2f;
+    [SerializeField]
+    private float _delay = 0.2f;
 
     private bool _isType = false;  //타이핑중인지 확인
     private string resultText;
     private void Start()
     {
+        _tmpText.text = "";
         PostProcessingController.Instance.StopEffect();
 
         PostProcessingController.Instance.Set_LensDistortion(1, .3f, .9f);
@@ -43,7 +48,7 @@ public class ExplainManager : MonoBehaviour
         for (int i = 0; i < textInfos.Count; i++)
             Write(textInfos[i]);
 
-        Invoke("StartEffect", 1.2f);
+        Invoke("StartEffect", _delay);
     }
 
     private void Update()
@@ -81,23 +86,21 @@ public class ExplainManager : MonoBehaviour
         _tmpText.maxVisibleCharacters = 0;
         StartCoroutine(TypeText());
     }
-
     private IEnumerator TypeText()
     {
         TMP_TextInfo textInfo = _tmpText.textInfo;
         for (int i = 0; i < textInfo.characterCount; ++i)
         {
-            yield return StartCoroutine(TypeOneCharCoroutine(textInfo, i));
+            yield return StartCoroutine(TypeOneCharCoroutine(textInfo.characterInfo[i]));
         }
     }
 
-    private IEnumerator TypeOneCharCoroutine(TMP_TextInfo textInfo, int idx)
+    private IEnumerator TypeOneCharCoroutine(TMP_CharacterInfo textInfo)
     {
         _tmpText.maxVisibleCharacters++;
         _tmpText.ForceMeshUpdate();
 
-        TMP_CharacterInfo charInfo = textInfo.characterInfo[idx];
-        if (charInfo.isVisible == false)
+        if (textInfo.isVisible == false)
         {
             yield return new WaitForSeconds(_oneCharacterTime);
         }

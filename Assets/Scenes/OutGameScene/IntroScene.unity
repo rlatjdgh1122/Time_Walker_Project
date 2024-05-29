@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STAGE
+  m_text: "\uC2A4\uD14C\uC774\uC9C0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
   m_sharedMaterial: {fileID: 721645140959940034, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXPLAIN
+  m_text: "\uC124\uBA85"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
   m_sharedMaterial: {fileID: 721645140959940034, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BACK
+  m_text: "\uB4A4\uB85C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
   m_sharedMaterial: {fileID: 721645140959940034, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
@@ -2021,7 +2021,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\rTUTORIAL"
+  m_text: "\uD29C\uD1A0\uB9AC\uC5BC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}
   m_sharedMaterial: {fileID: 721645140959940034, guid: 5de158ca5b4029a4094020e92c9241fd, type: 2}

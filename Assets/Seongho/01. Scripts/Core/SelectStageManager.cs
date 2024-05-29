@@ -40,9 +40,9 @@ public class SelectStageManager : MonoBehaviour
 
     public void MoveScene(string sceneName)
     {
-        PostProcessingController.Instance.Set_Bloom(1.2f, 25, 3);
+        PostProcessingController.Instance.Set_Bloom(2.2f, 25, 3);
 
-        PostProcessingController.Instance.Set_AnalogVolume(.9f, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(.3f, 1,
+        PostProcessingController.Instance.Set_AnalogVolume(1.9f, .7f, 0, () => PostProcessingController.Instance.Set_DigitalGlitchVolume(1.3f, 1,
            0, () =>
            {
                SceneManager.LoadScene(sceneName);
